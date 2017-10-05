@@ -553,7 +553,7 @@
           <div class="row">
             <div class="col-md-9">
               <div class="img-container">
-                <img id="image" src="images/cropper.jpg" alt="Picture">
+                <img id="image" src="{{asset('/admin/images/cropper.jpg')}}" alt="Picture">
               </div>
             </div>
             <div class="col-md-3">
