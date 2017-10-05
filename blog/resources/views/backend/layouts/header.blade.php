@@ -1,6 +1,4 @@
-@extends('backend.layouts.app')
 
-@section('header')
 <div class="top_nav">
     <div class="nav_menu">
         <nav>
@@ -95,4 +93,3 @@
         </nav>
     </div>
 </div>
-    @endsection

@@ -1,6 +1,4 @@
-@extends('backend.layouts.app')
 
-@section('footer')
 <!-- footer content -->
 <footer>
     <div class="pull-right">
@@ -9,4 +7,3 @@
     <div class="clearfix"></div>
 </footer>
 <!-- /footer content -->
-@endsection
