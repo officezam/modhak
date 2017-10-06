@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateUserMosqueTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('phone');
-            $table->string('email')->nullable();
-            $table->string('password')->nullable();
-            $table->rememberToken();
+        Schema::create('user_mosque', function (Blueprint $table) {
+            $table->integer('u_id');
+            $table->integer('m_id');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user_mosque');
     }
 }

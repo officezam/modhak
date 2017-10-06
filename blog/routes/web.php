@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('backend.add_mosque');
-});
-
+Route::get('/', function () {return view('backend.add_mosque');})->name('add_mosque_form');
 
 Route::post('Add-Mosque', 'MosqueController@saveMosque')->name('add_mosque');
+Route::get('subscribe-user', 'SubscribeUserController@index')->name('subscribe_user');
+Route::post('subscribe-user', 'SubscribeUserController@saveSubscriber')->name('save_subscriber');
