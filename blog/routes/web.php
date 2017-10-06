@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('backend.index');
 });
+
+
+Route::post('Add-Mosque', 'MosqueController@saveMosque')->name('add_mosque');
