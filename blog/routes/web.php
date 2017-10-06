@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('backend.index');
+    return view('backend.add_mosque');
 });
 
 
