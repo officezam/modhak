@@ -15,14 +15,9 @@ class CreateMosqueTable extends Migration
     {
         Schema::create('mosque', function (Blueprint $table) {
             $table->increments('id');
-	        $table->string('mosque_name');
-	        $table->string('city');
-	        $table->dateTime('date');
-	        $table->dateTime('fajar_time');
-	        $table->dateTime('zuhar_time');
-	        $table->dateTime('asar_time');
-	        $table->dateTime('magrib_time');
-	        $table->dateTime('esha_time');
+            $table->integer('u_id');
+	        $table->string('name');
+	        $table->string('keyword');
             $table->timestamps();
         });
     }

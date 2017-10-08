@@ -8,14 +8,10 @@ class Mosque extends Model
 {
 	protected $table = 'mosque';
 	protected $fillable = [
-		'mosque_name',
-		'city',
-		'date',
-		'fajar_time',
-		'zuhar_time',
-		'asar_time',
-		'magrib_time',
-		'esha_time',
+		'name',
+        'u_id',
+		'keyword',
+
 	];
 
 	public function saveMosque22($request){

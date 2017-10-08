@@ -15,18 +15,20 @@
     <link href="{{asset('/admin/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{asset('/admin/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
+    {{--<!-- bootstrap-daterangepicker -->--}}
     <link href="{{asset('/admin/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
-    <!-- bootstrap-datetimepicker -->
+    {{--<!-- bootstrap-datetimepicker -->--}}
     <link href="{{asset('/admin/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css')}}" rel="stylesheet">
-    <!-- Ion.RangeSlider -->
-    <link href="{{asset('/admin/vendors/normalize-css/normalize.css')}}" rel="stylesheet">
-    <link href="{{asset('/admin/vendors/ion.rangeSlider/css/ion.rangeSlider.css')}}" rel="stylesheet">
-    <link href="{{asset('/admin/vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css')}}" rel="stylesheet">
-    <!-- Bootstrap Colorpicker -->
-    <link href="{{ asset('/admin/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}" rel="stylesheet">
+    {{--<!-- Ion.RangeSlider -->--}}
+    {{--<link href="{{asset('/admin/vendors/normalize-css/normalize.css')}}" rel="stylesheet">--}}
+    {{--<link href="{{asset('/admin/vendors/ion.rangeSlider/css/ion.rangeSlider.css')}}" rel="stylesheet">--}}
+    {{--<link href="{{asset('/admin/vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css')}}" rel="stylesheet">--}}
+    {{--<!-- Bootstrap Colorpicker -->--}}
+    {{--<link href="{{ asset('/admin/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}" rel="stylesheet">--}}
 
-    <link href="{{asset('/admin/vendors/cropper/dist/cropper.min.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('/admin/vendors/cropper/dist/cropper.min.css')}}" rel="stylesheet">--}}
+
+    @yield('pagecss')
 
     <!-- Custom Theme Style -->
     <link href="{{asset('/admin/build/css/custom.min.css')}}" rel="stylesheet">
@@ -65,21 +67,20 @@
 <!-- bootstrap-daterangepicker -->
 <script src="{{asset('/admin/vendors/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('/admin/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-<!-- bootstrap-datetimepicker -->
+{{--<!-- bootstrap-datetimepicker -->--}}
 <script src="{{asset('/admin/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
-<!-- Ion.RangeSlider -->
-<script src="{{asset('/admin/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js')}}"></script>
-<!-- Bootstrap Colorpicker -->
-<script src="{{asset('/admin/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
-<!-- jquery.inputmask -->
-<script src="{{asset('/admin/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
-<!-- jQuery Knob -->
-<script src="{{asset('/admin/vendors/jquery-knob/dist/jquery.knob.min.js')}}"></script>
-<!-- Cropper -->
-<script src="{{asset('/admin/vendors/cropper/dist/cropper.min.js')}}"></script>
+{{--<!-- Ion.RangeSlider -->--}}
+{{--<script src="{{asset('/admin/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js')}}"></script>--}}
+{{--<!-- Bootstrap Colorpicker -->--}}
+{{--<script src="{{asset('/admin/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>--}}
+{{--<!-- jquery.inputmask -->--}}
+{{--<script src="{{asset('/admin/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>--}}
+{{--<!-- jQuery Knob -->--}}
+{{--<script src="{{asset('/admin/vendors/jquery-knob/dist/jquery.knob.min.js')}}"></script>--}}
+{{--<!-- Cropper -->--}}
+{{--<script src="{{asset('/admin/vendors/cropper/dist/cropper.min.js')}}"></script>--}}
 
-<!-- Custom Theme Scripts -->
-<script src="{{asset('/admin/build/js/custom.min.js')}}"></script>
+
 
 @yield('pagejs')
 </body>
