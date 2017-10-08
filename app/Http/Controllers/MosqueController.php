@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Mosque;
 use App\NamazTime;
+use phpDocumentor\Reflection\Types\Null_;
 
 class MosqueController extends Controller
 {
@@ -51,33 +52,67 @@ class MosqueController extends Controller
             ];
             $mosqueData = $this->mosque->create($mosqueTableData);
             $m_id = $mosqueData->id;
+            if($request->zuhar_time){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
+            if($request->jumma_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->jumma_time")); }else{ $jumma_time = null;}
             $namazTimeData = [
                 'm_id' => $m_id,
                 'date' => $request->namaz_date,
                 'fajar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->fajar_time")),
-                'zuhar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")),
-                'jumma' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->jumma_time")),
+                'zuhar' => $zuhar_time,
+                'jumma' => $jumma_time,
                 'asar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->asar_time")),
                 'maghrib' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->magrib_time")),
                 'esha' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->esha_time")),
             ];
             $namazTime = $this->namaztime->create($namazTimeData);
             return $m_id;
-
-                $dataArray[] = ['title' => " = Fajar Time",'start' => $namazTime->fajar ];
-            if(!empty($namazTime->zuhar)){
-                $dataArray[] = ['title' => " = Zhuar Time",'start' => $namazTime->zuhar ];
-            }else{
-                $dataArray[] = ['title' => " = Jumma Time", 'start' => $namazTime->jumma];
-            }
-                $dataArray[] = ['title' => " = Asar Time",'start'       => $namazTime->asar ];
-                $dataArray[] = ['title' => " = Maghrib Time",'start'    => $namazTime->maghrib ];
-                $dataArray[] = ['title' => " = Esha Time",'start'       => $namazTime->esha ];
-
-            return $dataArray;
+//                $dataArray[] = ['title' => " = Fajar Time",'start' => $namazTime->fajar ];
+//            if(!empty($namazTime->zuhar)){
+//                $dataArray[] = ['title' => " = Zhuar Time",'start' => $namazTime->zuhar ];
+//            }else{
+//                $dataArray[] = ['title' => " = Jumma Time", 'start' => $namazTime->jumma];
+//            }
+//                $dataArray[] = ['title' => " = Asar Time",'start'       => $namazTime->asar ];
+//                $dataArray[] = ['title' => " = Maghrib Time",'start'    => $namazTime->maghrib ];
+//                $dataArray[] = ['title' => " = Esha Time",'start'       => $namazTime->esha ];
+//            return $dataArray;
 
         }else{
-            return 'notEmpty';
+           $updateData =  $this->namaztime->where([
+                ['m_id', '=', $m_id],
+                ['date', '=', $request->namaz_date],
+            ])->get();
+
+           if($updateData->isEmpty()){
+               if($request->zuhar_time){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
+               if($request->jumma_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->jumma_time")); }else{ $jumma_time = null;}
+               $namazTimeData = [
+                   'm_id' => $m_id,
+                   'date' => $request->namaz_date,
+                   'fajar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->fajar_time")),
+                   'zuhar' => $zuhar_time,
+                   'jumma' => $jumma_time,
+                   'asar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->asar_time")),
+                   'maghrib' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->magrib_time")),
+                   'esha' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->esha_time")),
+               ];
+               $namazTime = $this->namaztime->create($namazTimeData);
+               return $m_id;
+           }else{
+               if($request->zuhar_time){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
+               if($request->jumma_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->jumma_time")); }else{ $jumma_time = null;}
+               $namazTimeData = [
+                   'fajar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->fajar_time")),
+                   'zuhar' => $zuhar_time,
+                   'jumma' => $jumma_time,
+                   'asar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->asar_time")),
+                   'maghrib' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->magrib_time")),
+                   'esha' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->esha_time")),
+               ];
+               $namazTime = $this->namaztime->where('m_id', $m_id)
+                   ->update($namazTimeData);
+               return $m_id;
+           }
 
         }
 
@@ -91,21 +126,25 @@ class MosqueController extends Controller
         $namazData  = $this->namaztime->where('m_id',$namaz_id)->get();
         $mosqueData = $this->mosque->find($namaz_id);
 
-
+//        $objDateTime = new DateTime('NOW');
+//        echo $objDateTime->format('c');
+//        $dt = Carbon::now($namazTime->fajar);
+        $dataArray = [];
         foreach ($namazData as $namazTime)
         {
-            $dataArray[] = (object)['title' => " = Fajar Time",'start' => $namazTime->fajar ];
-            if(!empty($namazTime->zuhar))
+            $dataArray[] = ['title' => " = Fajar Time",'start' => Carbon::parse($namazTime->fajar)->format('c') ];
+            if($namazTime->zuhar != null)
             {
-                $dataArray[] = (object)['title' => " = Zhuar Time",'start' => $namazTime->zuhar ];
-            }else{
-                $dataArray[] = (object)['title' => " = Jumma Time", 'start' => $namazTime->jumma];
+                $dataArray[] = ['title' => " = Zhuar Time",'start' =>  Carbon::parse($namazTime->zuhar)->format('c') ];
             }
-            $dataArray[] = (object)['title' => " = Asar Time",'start'       => $namazTime->asar ];
-            $dataArray[] = (object)['title' => " = Maghrib Time",'start'    => $namazTime->maghrib ];
-            $dataArray[] = (object)['title' => " = Esha Time",'start'       => $namazTime->esha ];
+            if($namazTime->jumma != null){
+                $dataArray[] = ['title' => " = Jumma Time", 'start' => Carbon::parse($namazTime->jumma)->format('c')];
+            }
+            $dataArray[] = ['title' => " = Asar Time",'start'       => Carbon::parse($namazTime->asar)->format('c') ];
+            $dataArray[] = ['title' => " = Maghrib Time",'start'    =>Carbon::parse($namazTime->maghrib)->format('c') ];
+            $dataArray[] = ['title' => " = Esha Time",'start'       => Carbon::parse($namazTime->esha)->format('c') ];
         }
-dd($dataArray);
+//dd($dataArray);
         return view('backend.update_time', compact('mosqueData','dataArray'));
 
 

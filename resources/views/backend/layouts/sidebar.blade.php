@@ -27,8 +27,9 @@
                     <ul class="nav side-menu">
                         <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
+                                <li><a href="{{ route('add_time_form') }}">Mosque Record</a></li>
                                 <li><a href="{{ route('add_time_form') }}">Add Mosque Time</a></li>
-                                <li><a href="{{ route('add_mosque_form') }}">Add Mosque</a></li>
+{{--                                <li><a href="{{ route('add_mosque_form') }}">Add Mosque</a></li>--}}
                                 <li><a href="{{ route('subscribe_user') }}">Subscribe User</a></li>
 {{--                                <li><a href="{{ route('send_sms') }}">Sned Prayer Message</a></li>--}}
                             </ul>

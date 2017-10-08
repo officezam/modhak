@@ -18,8 +18,8 @@ class CreateNamazTimeTable extends Migration
             $table->integer('m_id');
             $table->dateTime('date');
             $table->dateTime('fajar');
-            $table->dateTime('zuhar');
-            $table->dateTime('jumma');
+            $table->dateTime('zuhar')->nullable();
+            $table->dateTime('jumma')->nullable();
             $table->dateTime('asar');
             $table->dateTime('maghrib');
             $table->dateTime('esha');
