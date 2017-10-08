@@ -17,5 +17,13 @@ class NamazTime extends Model
         'maghrib',
         'esha',
     ];
+
+
+
+
+    public function mosqueName()
+    {
+        return $this->belongsTo('App\Mosque');//$this->hasOne('App\Mosque');
+    }
 }
 

@@ -326,6 +326,13 @@
                       editable: !0,
 
                       events: [
+
+                          @foreach($dataArray  as $namazTime)
+                          {{ $namazTime }}
+                          @endforeach
+
+                      ] ,
+                      /*[
                           {
                               title: " = Fajar Time",
                               start: new Date(2017, 9, 1 , 5, 0)
@@ -368,7 +375,7 @@
                               title: " = Esha Time",
                               start: new Date(2017, 9, 2 , 19, 45)
                           }
-
+*/
                           /*{
                               title: "All Day2 Event",
                               start: new Date(d, c, 1)

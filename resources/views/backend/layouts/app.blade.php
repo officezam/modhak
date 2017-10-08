@@ -80,7 +80,7 @@
 {{--<!-- Cropper -->--}}
 {{--<script src="{{asset('/admin/vendors/cropper/dist/cropper.min.js')}}"></script>--}}
 
-
+  <script src="{{asset('/admin/build/js/custom.min.js')}}"></script>
 
 @yield('pagejs')
 </body>
