@@ -16,6 +16,7 @@ Route::get('add-time', function () {return view('backend.add_time');})->name('ad
 Route::get('update-time/{namaz_id}', 'MosqueController@getNamazTime');
 
 Route::post('Add-Mosque', 'MosqueController@saveMosque')->name('add_mosque');
+Route::get('Mosque', 'MosqueController@mosqueRecord')->name('mosque_record');
 Route::post('save-namaz-time', 'MosqueController@saveNamazTime');
 Route::get('subscribe-user', 'SubscribeUserController@index')->name('subscribe_user');
 

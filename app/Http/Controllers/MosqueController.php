@@ -17,29 +17,25 @@ class MosqueController extends Controller
         $this->namaztime = new NamazTime();
 	}
 
+	/*
+	 * Show Add Mosque Time Callendar
+	 * */
 	public function index(){
 	    return view('backend.add_time');
     }
-	public function saveMosque(Request $request){
 
-		$carbon = new Carbon();
+    /*
+     * Show All Mosque Data
+     * */
+    public function mosqueRecord(){
+	    dd('Amir');
+    }
 
-		$data = [
-			'mosque_name' => $request->mosque_name,
-			'city' => $request->city,
-			'date' => $carbon->instance(new \DateTime($request->date))->toDateTimeString(),
-			'fajar_time' => $carbon->instance(new \DateTime($request->fajar_time))->toDateTimeString(),
-			'zuhar_time' => $carbon->instance(new \DateTime($request->zuhar_time))->toDateTimeString(),
-			'asar_time' => $carbon->instance(new \DateTime($request->asar_time))->toDateTimeString(),
-			'magrib_time' => $carbon->instance(new \DateTime($request->magrib_time))->toDateTimeString(),
-			'esha_time' => $carbon->instance(new \DateTime($request->esha_time))->toDateTimeString(),
-		];
-
-		$userData = Mosque::create($data);
-
-		return view('backend.add_mosque');
-	}
-
+    /*
+     * Function Save Nw=ew Mosque Data OR
+     * Update Exiting Data OR
+     * Save New Data For Existing Mosque
+     * */
 	public function saveNamazTime(Request $request){
 
         $m_id = $request->m_id;
@@ -118,17 +114,14 @@ class MosqueController extends Controller
 
     }
 
-
-
-
-    public function getNamazTime($namaz_id){
-
+    /*
+     * Function Get All Data For Specific Mosque
+     * Full Year Wise Data Fetch
+     * */
+    public function getNamazTime($namaz_id)
+    {
         $namazData  = $this->namaztime->where('m_id',$namaz_id)->get();
         $mosqueData = $this->mosque->find($namaz_id);
-
-//        $objDateTime = new DateTime('NOW');
-//        echo $objDateTime->format('c');
-//        $dt = Carbon::now($namazTime->fajar);
         $dataArray = [];
         foreach ($namazData as $namazTime)
         {
@@ -144,11 +137,30 @@ class MosqueController extends Controller
             $dataArray[] = ['title' => " = Maghrib Time",'start'    =>Carbon::parse($namazTime->maghrib)->format('c') ];
             $dataArray[] = ['title' => " = Esha Time",'start'       => Carbon::parse($namazTime->esha)->format('c') ];
         }
-//dd($dataArray);
         return view('backend.update_time', compact('mosqueData','dataArray'));
-
-
     }
+
+
+    public function saveMosque(Request $request){
+
+        $carbon = new Carbon();
+
+        $data = [
+            'mosque_name' => $request->mosque_name,
+            'city' => $request->city,
+            'date' => $carbon->instance(new \DateTime($request->date))->toDateTimeString(),
+            'fajar_time' => $carbon->instance(new \DateTime($request->fajar_time))->toDateTimeString(),
+            'zuhar_time' => $carbon->instance(new \DateTime($request->zuhar_time))->toDateTimeString(),
+            'asar_time' => $carbon->instance(new \DateTime($request->asar_time))->toDateTimeString(),
+            'magrib_time' => $carbon->instance(new \DateTime($request->magrib_time))->toDateTimeString(),
+            'esha_time' => $carbon->instance(new \DateTime($request->esha_time))->toDateTimeString(),
+        ];
+
+        $userData = Mosque::create($data);
+
+        return view('backend.add_mosque');
+    }
+
 
 
 
