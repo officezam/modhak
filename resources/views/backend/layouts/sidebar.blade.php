@@ -23,14 +23,14 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                 <div class="menu_section">
-                    <h3>General</h3>
+                    <h3>Admin</h3>
                     <ul class="nav side-menu">
-                        <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                        <li><a><i class="fa fa-home"></i> Mosque Menu <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('mosque_record') }}">Mosque Record</a></li>
-                                <li><a href="{{ route('add_time_form') }}">Add Mosque Time</a></li>
+                                <li><a href="{{ route('add_time_form') }}">Add New Mosque</a></li>
 {{--                                <li><a href="{{ route('add_mosque_form') }}">Add Mosque</a></li>--}}
-                                <li><a href="{{ route('subscribe_user') }}">Subscribe User</a></li>
+                                {{--<li><a href="{{ route('subscribe_user') }}">Subscribe User</a></li>--}}
 {{--                                <li><a href="{{ route('send_sms') }}">Sned Prayer Message</a></li>--}}
                             </ul>
                         </li>
@@ -79,7 +79,30 @@
                             {{--</ul>--}}
                         {{--</li>--}}
                     </ul>
+                    <ul class="nav side-menu">
+                        <li><a><i class="fa fa-desktop"></i> Subscriber Menu <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ route('subscriber-data') }}">Subscriber Record</a></li>
+                                <li><a href="{{ route('subscribe_user') }}">Add New Subscriber</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav side-menu">
+                        <li><a><i class="fa fa-clone"></i> SMS Sending <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ route('send_sms') }}">SMS Sending</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav side-menu">
+                        <li><a><i class="fa fa-chart"></i> SMS Template <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ route('sms_template') }}">Set Sms Template</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
+
                 {{--<div class="menu_section">--}}
                     {{--<h3>Live On</h3>--}}
                     {{--<ul class="nav side-menu">--}}

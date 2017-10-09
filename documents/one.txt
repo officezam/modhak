@@ -5,3 +5,10 @@ pass: Moon3204@@
 db   : wpsms
 user : wpsms
 pass : wpsms
+
+ftp
+login  wpsms@zoomtv.ca
+pass : wpsms
+
+Username:   zoomtv_logs
+FTP server: zoomtv.ca

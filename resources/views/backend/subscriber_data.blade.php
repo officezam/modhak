@@ -12,12 +12,12 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Mosque Record</h3>
+          <h3>Subscriber Records</h3>
         </div>
 
         <div class="pull-right">
-          <a href="{{ route('add_time_form') }}" >
-            <button type="button" class="btn btn-success">Add Mosque</button>
+          <a href="{{ route('subscribe_user') }}" >
+            <button type="button" class="btn btn-success">Add Subscriber</button>
           </a>
         </div>
       </div>
@@ -26,7 +26,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Mosque <small>Record</small></h2>
+              <h2>Subscriber <small>Records</small></h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -48,22 +48,21 @@
               <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                  <th>Mosque Name</th>
-                  <th>Mosque Keyword</th>
-                  <th>Deatil</th>
+                  <th>Subscriber Name</th>
+                  <th>Subscriber Keyword</th>
+                  <th>Created Date</th>
                   <th>Action</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                @foreach($mosqueData as $mosque)
+                @foreach($subscriber as $user)
                   <tr>
-                    <td>{{ $mosque->name }}</td>
-                    <td>{{ $mosque->keyword }}</td>
-                    <td><a href="{{ route('updae-time', $mosque->id) }}" ><button type="button" class="btn btn-success">View Tamaz Detail </button></a></td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->phone }}</td>
+                    <td>{{ $user->created_at }}</td>
                     <td>
-                      <a href="{{ route('updae-time', $mosque->id) }}" ><button type="button" class="btn btn-info">Edit</button></a>
-                      <a href="{{ route('delete-mosque-data', $mosque->id) }}" ><button type="button" class="btn btn-danger">Delete</button>
+                      <a href="{{ route('delete-subscriber-data', $user->id) }}" ><button type="button" class="btn btn-danger">Delete</button>
                     </td>
                   </tr>
                 @endforeach

@@ -142,6 +142,17 @@ class MosqueController extends Controller
     }
 
 
+    /*
+     * Delete Mosque Record From Mosque table
+     * Delete Mosque Record From Namaz Time
+     * */
+    public function deleteMosqueData($id, Request $request)
+    {
+        $this->mosque->where('id', '=', $id)->delete();
+        $this->namaztime->where('m_id', '=', $id)->delete();
+        $request->session()->flash('success', 'Delete Record and Namaz Time..!');
+        return redirect()->route('mosque_record');
+    }
     public function saveMosque(Request $request){
 
         $carbon = new Carbon();

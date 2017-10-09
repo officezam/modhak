@@ -14,6 +14,14 @@ class SubscribeUserController extends Controller
 	    return view('backend.subscribe_user' , compact('mosque'));
 
     }
+
+    /*
+     * Subscriber Record Fetch
+     * */
+    public function subscriberRecod(){
+        $subscriber = User::get();
+        return view('backend.subscriber_data' , compact('subscriber'));
+    }
     public function saveSubscriber(Request $request){
 
 	    $data = [
@@ -36,4 +44,18 @@ class SubscribeUserController extends Controller
 	    $request->session()->flash('success', 'Subscriber Saved Successfully');
 	    return view('backend.subscribe_user' , compact('mosque'));
     }
+
+
+    /*
+     * Delete User Record From user table
+     * */
+    public function deleteSubscriber($id, Request $request)
+    {
+        User::where('id', '=', $id)->delete();
+        $request->session()->flash('success', 'Delete User Record Successfully..!');
+        return redirect()->route('subscriber-data');
+    }
+
+
+
 }

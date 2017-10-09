@@ -11,4 +11,18 @@ class UserMosque extends Model
 		'u_id',
 		'm_id',
 	];
+
+
+    /**
+     * Get the post that owns the comment.
+     */
+    public function users()
+    {
+        return $this->belongsTo('App\User', 'id', 'm_id');
+    }
+
+    public function allUsers(){
+        return $this->belongsToMany('App\User');
+    }
+
 }

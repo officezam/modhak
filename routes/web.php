@@ -15,12 +15,18 @@
 Route::get('/',  'MosqueController@mosqueRecord');
 Route::get('add-time', function () {return view('backend.add_time');})->name('add_time_form');
 Route::get('update-time/{namaz_id}', 'MosqueController@getNamazTime')->name('updae-time');
+Route::get('delete-mosque-data/{mosque_id}', 'MosqueController@deleteMosqueData')->name('delete-mosque-data');
 
 Route::post('Add-Mosque', 'MosqueController@saveMosque')->name('add_mosque');
 Route::get('Mosque', 'MosqueController@mosqueRecord')->name('mosque_record');
 Route::post('save-namaz-time', 'MosqueController@saveNamazTime');
-Route::get('subscribe-user', 'SubscribeUserController@index')->name('subscribe_user');
 
+Route::get('subscriber', 'SubscribeUserController@subscriberRecod')->name('subscriber-data');
+Route::get('subscribe-user', 'SubscribeUserController@index')->name('subscribe_user');
 Route::post('subscribe-user', 'SubscribeUserController@saveSubscriber')->name('save_subscriber');
-Route::get('sms-sending', 'SmsSendController@index')->name('send_sms');
+Route::get('delete-subscriber-data/{user_id}', 'SubscribeUserController@deleteSubscriber')->name('delete-subscriber-data');
+
+Route::get('sms-template', 'SmsSendController@smsTemplate')->name('sms_template');
+
+Route::get('send-sms', 'SmsSendController@index')->name('send_sms');
 Route::get('sms-sending', 'SmsSendController@smsSending')->name('sending_sms');

@@ -41,13 +41,13 @@
               @if (Session::get('error'))
                 <div class="alert alert-danger">{{ Session::get('error') }}</div>
               @endif
-              @if (Session::get('success'))
-                <div class="alert alert-success">{{ Session::get('success') }}</div>
+              @if (Session::get('send'))
+                <div class="alert alert-success">{{ Session::get('send') }}</div>
               @endif
               <br>
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                 <a href="{{ route('sending_sms') }}">
-                <button type="button" class="btn btn-success btn-lg">Send Sms</button>
+                <button type="button" class="btn btn-success btn-lg">Start Sending Sms To All Subscriber</button>
                 </a>
               </label>
             </div>

@@ -26,7 +26,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Form Design <small>different form elements</small></h2>
+              <h2>Subscribe <small> Users</small></h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -34,7 +34,6 @@
                 </li>
               </ul>
               <div class="clearfix"></div>
-
             </div>
             <div class="x_content">
               <br>
@@ -52,7 +51,7 @@
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group">
-                      <input type="text" id="mosque_name" name="name" required="required" class="form-control col-md-7 col-xs-12">
+                      <input type="text" id="name" name="name" placeholder="Write Subscriber Name" required="required" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                 </div>
@@ -61,7 +60,7 @@
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group">
-                      <input type="text" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
+                      <input type="text" id="phone" name="phone" placeholder="Write Subscriber Phone" required="required" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                 </div>
@@ -71,7 +70,7 @@
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <select id="heard" class="form-control" required="" name="m_id">
                       @foreach($mosque as $masjid)
-                      <option value="{{ $masjid->id }}">{{ $masjid->mosque_name }}</option>
+                      <option value="{{ $masjid->id }}">{{ $masjid->name }}</option>
                       @endforeach
                     </select>
                   </div>
