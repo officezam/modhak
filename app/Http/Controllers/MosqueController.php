@@ -28,7 +28,8 @@ class MosqueController extends Controller
      * Show All Mosque Data
      * */
     public function mosqueRecord(){
-	    dd('Amir');
+    	$mosqueData = $this->mosque->get();
+	    return view('backend.mosque_data',compact('mosqueData'));
     }
 
     /*
@@ -37,19 +38,20 @@ class MosqueController extends Controller
      * Save New Data For Existing Mosque
      * */
 	public function saveNamazTime(Request $request){
-
+//dd($request);
         $m_id = $request->m_id;
 
         if(empty($m_id))
         {
             $mosqueTableData = [
+                'u_id' => '1',
                 'name' => $request->m_name,
                 'keyword' => $request->m_keyword,
             ];
             $mosqueData = $this->mosque->create($mosqueTableData);
             $m_id = $mosqueData->id;
-            if($request->zuhar_time){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
-            if($request->jumma_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->jumma_time")); }else{ $jumma_time = null;}
+            if(!empty($request->zuhar_time)){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
+            if(!empty($request->friday_time)){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->friday_time")); }else{ $jumma_time = null;}
             $namazTimeData = [
                 'm_id' => $m_id,
                 'date' => $request->namaz_date,
@@ -80,8 +82,9 @@ class MosqueController extends Controller
             ])->get();
 
            if($updateData->isEmpty()){
-               if($request->zuhar_time){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
-               if($request->jumma_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->jumma_time")); }else{ $jumma_time = null;}
+           	dd($request);
+               if(!empty($request->zuhar_time)){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
+               if(!empty($request->friday_time)){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->friday_time")); }else{ $jumma_time = null;}
                $namazTimeData = [
                    'm_id' => $m_id,
                    'date' => $request->namaz_date,
@@ -96,7 +99,7 @@ class MosqueController extends Controller
                return $m_id;
            }else{
                if($request->zuhar_time){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
-               if($request->jumma_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->jumma_time")); }else{ $jumma_time = null;}
+               if($request->friday_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->friday_time")); }else{ $jumma_time = null;}
                $namazTimeData = [
                    'fajar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->fajar_time")),
                    'zuhar' => $zuhar_time,

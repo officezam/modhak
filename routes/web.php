@@ -13,7 +13,7 @@
 
 Route::get('/', function () {return view('backend.add_mosque');})->name('add_mosque_form');
 Route::get('add-time', function () {return view('backend.add_time');})->name('add_time_form');
-Route::get('update-time/{namaz_id}', 'MosqueController@getNamazTime');
+Route::get('update-time/{namaz_id}', 'MosqueController@getNamazTime')->name('updae-time');
 
 Route::post('Add-Mosque', 'MosqueController@saveMosque')->name('add_mosque');
 Route::get('Mosque', 'MosqueController@mosqueRecord')->name('mosque_record');

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="732b3c8d-daad-465a-9393-a39b8325423c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MosqueController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MosqueController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MosqueController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MosqueController.php" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,7 +14,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -27,8 +26,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="51" />
+            <state relative-caret-position="303">
+              <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="87" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
               </folding>
@@ -39,18 +38,9 @@
       <file leaf-file-name="add_time.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/backend/add_time.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-354">
-              <caret line="305" column="110" lean-forward="false" selection-start-line="305" selection-start-column="110" selection-end-line="305" selection-end-column="110" />
-              <folding>
-                <marker date="1507458955832" expanded="true" signature="9:30" ph="..." />
-                <marker date="1507458955832" expanded="true" signature="41:50" ph="..." />
-                <marker date="1507458955832" expanded="true" signature="92:154" ph="..." />
-                <marker date="1507458955832" expanded="true" signature="192:256" ph="..." />
-                <marker date="1507458955832" expanded="true" signature="313:322" ph="..." />
-                <marker date="1507458955832" expanded="true" signature="3938:3952" ph="..." />
-                <marker date="1507458955832" expanded="true" signature="10738:10746" ph="..." />
-                <marker date="1507458955832" expanded="true" signature="11324:11385" ph="..." />
-              </folding>
+            <state relative-caret-position="528">
+              <caret line="59" column="114" selection-start-line="59" selection-start-column="114" selection-end-line="59" selection-end-column="114" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -58,57 +48,39 @@
       <file leaf-file-name="update_time.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/backend/update_time.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="314" column="52" lean-forward="true" selection-start-line="314" selection-start-column="52" selection-end-line="314" selection-end-column="52" />
-              <folding>
-                <element signature="e#4730#4756#0#HTML" expanded="true" />
-                <marker date="1507497389806" expanded="true" signature="9:30" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="41:50" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="96:158" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="198:262" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="319:328" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="2700:2719" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="3412:3434" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="4920:4934" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="5009:5026" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="13426:13434" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="14006:14067" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="19851:20063" ph="{...}" />
-                <marker date="1507497389806" expanded="true" signature="19911:20002" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="19933:19954" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="19956:20002" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="20005:20026" ph="..." />
-                <marker date="1507497389806" expanded="true" signature="20177:20178" ph="..." />
-              </folding>
+            <state relative-caret-position="436">
+              <caret line="310" column="86" selection-start-line="310" selection-start-column="86" selection-end-line="310" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sidebar.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php">
+      <file leaf-file-name="mosque_data.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/mosque_data.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="29" column="68" lean-forward="false" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="68" />
-              <folding>
-                <marker date="1507497887998" expanded="true" signature="471:501" ph="..." />
-                <marker date="1507497887998" expanded="true" signature="1264:1288" ph="..." />
-                <marker date="1507497887998" expanded="true" signature="1362:1386" ph="..." />
-                <marker date="1507497887998" expanded="true" signature="1466:1492" ph="..." />
-                <marker date="1507497887998" expanded="true" signature="1567:1592" ph="..." />
-              </folding>
+            <state relative-caret-position="445">
+              <caret line="61" column="132" selection-start-line="61" selection-start-column="132" selection-end-line="61" selection-end-column="132" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MosqueController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MosqueController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MosqueController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding>
-                <element signature="e#715#5166#0#PHP" expanded="false" />
-                <element signature="e#6462#7364#0#PHP" expanded="false" />
-              </folding>
+            <state relative-caret-position="216">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,8 +88,8 @@
       <file leaf-file-name="NamazTime.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/NamazTime.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+            <state relative-caret-position="432">
+              <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -126,8 +98,8 @@
       <file leaf-file-name="Mosque.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Mosque.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            <state relative-caret-position="144">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -165,14 +137,16 @@
         <option value="$PROJECT_DIR$/blog/resources/views/backend/layouts/footer.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/public/admin/build/js/custom.min.js" />
-        <option value="$PROJECT_DIR$/resources/views/backend/add_time.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/layouts/update_time.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2017_10_07_185509_create_namaz_time_table.php" />
         <option value="$PROJECT_DIR$/app/NamazTime.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/update_time.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/resources/views/backend/add_time.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/update_time.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MosqueController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/mosque_data.blade.php" />
       </list>
     </option>
   </component>
@@ -186,11 +160,18 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -207,25 +188,47 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Prayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -239,11 +242,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -261,11 +264,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -287,11 +290,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fiverr" />
+              <option name="myItemId" value="Prayer" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -301,8 +304,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -310,14 +311,17 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="SearchEverywhereHistoryKey" value="OR&#9;null&#9;null" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\Fiverr\resources\views\backend" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\Prayer\resources\views\backend" />
+      <recent name="E:\xampp\htdocs\Prayer" />
       <recent name="D:\xampp\htdocs\Fiverr\resources\views\backend\layouts" />
       <recent name="D:\xampp\htdocs\Fiverr" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\Fiverr\resources\views\backend" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -333,23 +337,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
-      <PhpTestRunnerSettings />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
@@ -367,10 +354,6 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
-      <PhpTestRunnerSettings />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -381,7 +364,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
+      <command value="run-script" />
       <scripts />
       <node-interpreter value="project" />
       <envs />
@@ -420,33 +403,34 @@
       <workItem from="1507447661373" duration="6554000" />
       <workItem from="1507465485495" duration="1737000" />
       <workItem from="1507481532698" duration="15624000" />
+      <workItem from="1507535652842" duration="6492000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41437000" />
+    <option name="totallyTimeSpent" value="47929000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21558245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.218509" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44517186" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4442953" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -487,11 +471,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blog/resources/views/backend/layouts/sidebar.blade.php" />
-    <entry file="file://$PROJECT_DIR$/process.php" />
-    <entry file="file://$PROJECT_DIR$/footer.php" />
-    <entry file="file://$PROJECT_DIR$/blog/routes/web.php" />
-    <entry file="file://$PROJECT_DIR$/add_mosque.php" />
     <entry file="file://$PROJECT_DIR$/blog/resources/views/welcome.blade.php" />
     <entry file="file://$PROJECT_DIR$/blog/resources/views/backend/index.blade.php" />
     <entry file="file://$PROJECT_DIR$/blog/resources/views/backend/layouts/app.blade.php" />
@@ -515,7 +494,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -532,188 +511,122 @@
     <entry file="file://$PROJECT_DIR$/resources/views/backend/add_mosque.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2412">
-          <caret line="10" column="90" lean-forward="false" selection-start-line="10" selection-start-column="90" selection-end-line="10" selection-end-column="90" />
+          <caret line="10" column="90" selection-start-line="10" selection-start-column="90" selection-end-line="10" selection-end-column="90" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="68" lean-forward="false" selection-start-line="82" selection-start-column="68" selection-end-line="82" selection-end-column="68" />
-          <folding>
-            <marker date="1507448161458" expanded="true" signature="389:449" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="515:576" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="639:686" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="773:842" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="928:1015" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="1096:1147" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="1195:1258" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="1306:1378" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="1469:1562" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="1611:1663" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="1701:1710" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="1763:1803" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="1972:1997" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2087:2111" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2193:2202" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2285:2309" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2395:2444" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2492:2550" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2598:2648" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2696:2742" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2806:2854" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="2883:2951" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="3022:3111" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="3177:3242" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="3318:3408" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="3479:3559" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="3625:3684" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="3746:3797" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="3833:3871" ph="..." />
-            <marker date="1507448161458" expanded="true" signature="3893:3901" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/build/js/custom.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="2" column="8321" lean-forward="false" selection-start-line="2" selection-start-column="8303" selection-end-line="2" selection-end-column="8323" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/build/js/custom.min.js" />
     <entry file="file://$PROJECT_DIR$/app/Mosque.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        <state relative-caret-position="144">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/add_time.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-354">
-          <caret line="305" column="110" lean-forward="false" selection-start-line="305" selection-start-column="110" selection-end-line="305" selection-end-column="110" />
-          <folding>
-            <marker date="1507458955832" expanded="true" signature="9:30" ph="..." />
-            <marker date="1507458955832" expanded="true" signature="41:50" ph="..." />
-            <marker date="1507458955832" expanded="true" signature="92:154" ph="..." />
-            <marker date="1507458955832" expanded="true" signature="192:256" ph="..." />
-            <marker date="1507458955832" expanded="true" signature="313:322" ph="..." />
-            <marker date="1507458955832" expanded="true" signature="3938:3952" ph="..." />
-            <marker date="1507458955832" expanded="true" signature="10738:10746" ph="..." />
-            <marker date="1507458955832" expanded="true" signature="11324:11385" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_06_084534_create_mosque_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="55" lean-forward="true" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_06_133244_create_user_mosque_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_07_185509_create_namaz_time_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="50" lean-forward="true" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_06_084534_create_mosque_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_06_133244_create_user_mosque_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_07_185509_create_namaz_time_table.php" />
     <entry file="file://$PROJECT_DIR$/app/NamazTime.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        <state relative-caret-position="432">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/update_time.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="314" column="52" lean-forward="true" selection-start-line="314" selection-start-column="52" selection-end-line="314" selection-end-column="52" />
-          <folding>
-            <element signature="e#4730#4756#0#HTML" expanded="true" />
-            <marker date="1507497389806" expanded="true" signature="9:30" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="41:50" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="96:158" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="198:262" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="319:328" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="2700:2719" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="3412:3434" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="4920:4934" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="5009:5026" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="13426:13434" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="14006:14067" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="19851:20063" ph="{...}" />
-            <marker date="1507497389806" expanded="true" signature="19911:20002" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="19933:19954" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="19956:20002" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="20005:20026" ph="..." />
-            <marker date="1507497389806" expanded="true" signature="20177:20178" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="29" column="68" lean-forward="false" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="68" />
+        <state relative-caret-position="696">
+          <caret line="29" column="68" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/sebastian/object-reflector/tests/ObjectReflectorTest.php" />
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/update_time.blade - Copy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="10" column="40" selection-start-line="0" selection-start-column="0" selection-end-line="358" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Prayer/build/js/custom.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="1" column="7851" selection-start-line="1" selection-start-column="7851" selection-end-line="1" selection-end-column="7876" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Prayer/production/tables_dynamic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="3685" column="0" selection-start-line="3685" selection-start-column="0" selection-end-line="3700" selection-end-column="65" />
           <folding>
-            <marker date="1507497887998" expanded="true" signature="471:501" ph="..." />
-            <marker date="1507497887998" expanded="true" signature="1264:1288" ph="..." />
-            <marker date="1507497887998" expanded="true" signature="1362:1386" ph="..." />
-            <marker date="1507497887998" expanded="true" signature="1466:1492" ph="..." />
-            <marker date="1507497887998" expanded="true" signature="1567:1592" ph="..." />
+            <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <element signature="e#7#389#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/sebastian/object-reflector/tests/ObjectReflectorTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="21" column="6" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        <state relative-caret-position="63">
+          <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MosqueController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="216">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="87" />
           <folding>
-            <element signature="e#715#5166#0#PHP" expanded="false" />
-            <element signature="e#6462#7364#0#PHP" expanded="false" />
+            <element signature="e#7#389#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/add_time.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="59" column="114" selection-start-line="59" selection-start-column="114" selection-end-line="59" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/update_time.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="310" column="86" selection-start-line="310" selection-start-column="86" selection-end-line="310" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/mosque_data.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="61" column="132" selection-start-line="61" selection-start-column="132" selection-end-line="61" selection-end-column="132" />
+          <folding />
         </state>
       </provider>
     </entry>

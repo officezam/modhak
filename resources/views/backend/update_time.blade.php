@@ -301,8 +301,6 @@
                                 }else{
                                     $("#FillAllTime").addClass('hidden');
                                     var datastring = $("#antoform").serialize();
-//                                  console.log(datastring);
-                                    alert('Not Empty');
                                     $.ajax({
                                         method: 'POST', // Type of response and matches what we said in the route
                                         url: '/save-namaz-time', // This is the url we gave in the route
