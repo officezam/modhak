@@ -76,41 +76,39 @@ class MosqueController extends Controller
 //            return $dataArray;
 
         }else{
-           $updateData =  $this->namaztime->where([
-                ['m_id', '=', $m_id],
-                ['date', '=', $request->namaz_date],
-            ])->get();
+           $updateData =  $this->namaztime->where('m_id', $m_id)->where('date', '=', $request->namaz_date)->first();
 
-           if($updateData->isEmpty()){
-           	dd($request);
-               if(!empty($request->zuhar_time)){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
-               if(!empty($request->friday_time)){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->friday_time")); }else{ $jumma_time = null;}
-               $namazTimeData = [
-                   'm_id' => $m_id,
-                   'date' => $request->namaz_date,
-                   'fajar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->fajar_time")),
-                   'zuhar' => $zuhar_time,
-                   'jumma' => $jumma_time,
-                   'asar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->asar_time")),
-                   'maghrib' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->magrib_time")),
-                   'esha' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->esha_time")),
-               ];
-               $namazTime = $this->namaztime->create($namazTimeData);
-               return $m_id;
+           if($updateData !=null ){
+
+	           if($request->zuhar_time){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
+	           if($request->friday_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->friday_time")); }else{ $jumma_time = null;}
+	           $namazTimeData = [
+		           'fajar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->fajar_time")),
+		           'zuhar' => $zuhar_time,
+		           'jumma' => $jumma_time,
+		           'asar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->asar_time")),
+		           'maghrib' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->magrib_time")),
+		           'esha' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->esha_time")),
+	           ];
+	           $namazTime = $this->namaztime->where('id', $updateData->id)
+	                                        ->update($namazTimeData);
+	           return $m_id;
            }else{
-               if($request->zuhar_time){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
-               if($request->friday_time){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->friday_time")); }else{ $jumma_time = null;}
-               $namazTimeData = [
-                   'fajar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->fajar_time")),
-                   'zuhar' => $zuhar_time,
-                   'jumma' => $jumma_time,
-                   'asar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->asar_time")),
-                   'maghrib' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->magrib_time")),
-                   'esha' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->esha_time")),
-               ];
-               $namazTime = $this->namaztime->where('m_id', $m_id)
-                   ->update($namazTimeData);
-               return $m_id;
+	           if(!empty($request->zuhar_time)){ $zuhar_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->zuhar_time")); }else{ $zuhar_time = null ;}
+	           if(!empty($request->friday_time)){ $jumma_time = date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->friday_time")); }else{ $jumma_time = null;}
+	           $namazTimeData = [
+		           'm_id' => $m_id,
+		           'date' => $request->namaz_date,
+		           'fajar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->fajar_time")),
+		           'zuhar' => $zuhar_time,
+		           'jumma' => $jumma_time,
+		           'asar' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->asar_time")),
+		           'maghrib' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->magrib_time")),
+		           'esha' => date('Y-m-d H:i:s', strtotime("$request->namaz_date $request->esha_time")),
+	           ];
+	           $namazTime = $this->namaztime->create($namazTimeData);
+	           return $m_id;
+
            }
 
         }

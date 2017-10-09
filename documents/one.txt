@@ -1,3 +1,7 @@
 godaddy.com
 login: ghrehman
 pass: Moon3204@@
+
+db   : wpsms
+user : wpsms
+pass : wpsms
