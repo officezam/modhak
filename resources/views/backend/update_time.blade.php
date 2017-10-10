@@ -325,7 +325,8 @@
                             //console.log(a);
 //                          console.log(d);
 //                          console.log(c);
-                            $("#fc_edit").click(), $("#title2").val(a.title), f = $("#event_type").val(), $(".antosubmit2").on("click", function() {
+                            $("#fc_create").click()
+                            /*$("#fc_edit").click(),*/ $("#title2").val(a.title), f = $("#event_type").val(), $(".antosubmit2").on("click", function() {
 
                                 a.title = $("#title2").val(), g.fullCalendar("updateEvent", a), $(".antoclose2").click()
                             }), g.fullCalendar("unselect")

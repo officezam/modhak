@@ -44,32 +44,35 @@ class SmsSendController extends Controller
 
     public function smsSending(Request $request)
     {
-
+        //date_default_timezone_set('Asia/Karachi');
+        date_default_timezone_set('Canada/Saskatchewan');
         $mosqueData = NamazTime::where('date','=',date("Y-m-d", time()))->get();
+        if(!$mosqueData->isEmpty()) {
+            $getTemplate = SmsTemplate::first()->template;
+            foreach ($mosqueData as $mosque):
+                $mosqueName = Mosque::first()->name;
+                $getTemplate = str_replace("{{MosqueName}}", $mosqueName, $getTemplate);
+                $getTemplate = str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
+                if ($mosque->jumma == null) {
+                    $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Zuhar Time', $getTemplate);
+                    $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->zuhar)->format('h:i A'), $getTemplate);
+                }
+                if ($mosque->zuhar == null) {
+                    $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Jumma Time', $getTemplate);
+                    $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->jumma)->format('h:i A'), $getTemplate);
+                }
+                $getTemplate = str_replace("{{AsarNamazTime}}", \Carbon\Carbon::parse($mosque->asar)->format('h:i A'), $getTemplate);
+                $getTemplate = str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
+                $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
 
-        $getTemplate = SmsTemplate::first()->template;
-        //dd($getTemplate->template);
-        foreach ($mosqueData as $mosque):
-            $mosqueName = Mosque::first()->name;
-            $getTemplate =  str_replace("{{MosqueName}}", $mosqueName, $getTemplate);
-            $getTemplate =  str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
-            if($mosque->jumma == null){
-                $getTemplate =  str_replace("{{Zuhr/Jumma}}", 'Zuhar Time', $getTemplate);
-                $getTemplate =  str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->zuhar)->format('h:i A'), $getTemplate);
-            }
-            if($mosque->zuhar == null){
-                $getTemplate =  str_replace("{{Zuhr/Jumma}}", 'Jumma Time', $getTemplate);
-                $getTemplate =  str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->jumma)->format('h:i A'), $getTemplate);
-            }
-            $getTemplate =  str_replace("{{AsarNamazTime}}", \Carbon\Carbon::parse($mosque->asar)->format('h:i A'), $getTemplate);
-            $getTemplate =  str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
-            $getTemplate =  str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
+                $u_idArray = UserMosque::where('m_id', '=', $mosque->m_id)->pluck('u_id');
+                $this->plivoSMSCampaign($u_idArray, $getTemplate);
+            endforeach;
 
-            $u_idArray = UserMosque::where('m_id' , '=' ,$mosque->m_id)->pluck('u_id');
-            $this->plivoSMSCampaign($u_idArray , $getTemplate);
-        endforeach;
-
-        $request->session()->flash('send', 'SMS Send Successfully..!');
+            $request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
+        }else{
+            $request->session()->flash('empty', 'SMS Sending Fail or No Record Found..!');
+        }
         return view('backend.sendsms');
     }
 
@@ -92,6 +95,7 @@ class SmsSendController extends Controller
             'text' => $text // Your SMS text message
         );
         $response = $this->plivo->send_message($params);
+       // dd( $response[1]['message']);
     }
 
 }

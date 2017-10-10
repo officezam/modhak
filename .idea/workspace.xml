@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="732b3c8d-daad-465a-9393-a39b8325423c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MosqueController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MosqueController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SmsSendController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SmsSendController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/one.txt" afterPath="$PROJECT_DIR$/documents/one.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/sms_template.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/sms_template.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/subscribe_user.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/subscribe_user.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/sendsms.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/sendsms.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/update_time.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/update_time.blade.php" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,10 +40,61 @@
       <file leaf-file-name="SmsSendController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsSendController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="88" column="34" lean-forward="true" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="34" />
+            <state relative-caret-position="190">
+              <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="45" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sendsms.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/sendsms.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="40" column="38" lean-forward="false" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
+              <folding>
+                <marker date="1507672018184" expanded="true" signature="9:30" ph="..." />
+                <marker date="1507672018184" expanded="true" signature="41:50" ph="..." />
+                <marker date="1507672018184" expanded="true" signature="1447:1470" ph="..." />
+                <marker date="1507672018184" expanded="true" signature="1592:1614" ph="..." />
+                <marker date="1507672018184" expanded="true" signature="1778:1800" ph="..." />
+                <marker date="1507672018184" expanded="true" signature="2067:2075" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="update_time.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/update_time.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="326" column="43" lean-forward="true" selection-start-line="326" selection-start-column="43" selection-end-line="326" selection-end-column="43" />
+              <folding>
+                <marker date="1507679350986" expanded="true" signature="9:30" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="41:50" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="96:158" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="198:262" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="319:328" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="2700:2719" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="3412:3434" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="4920:4934" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="5009:5026" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="13426:13434" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="14006:14067" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="19872:19893" ph="..." />
+                <marker date="1507679350986" expanded="true" signature="19944:19965" ph="..." />
               </folding>
             </state>
           </provider>
@@ -67,108 +116,6 @@
                 <marker date="1507668402557" expanded="true" signature="3455:3468" ph="..." />
                 <marker date="1507668402557" expanded="true" signature="3474:3489" ph="..." />
                 <marker date="1507668402557" expanded="true" signature="4116:4124" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMosque.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/UserMosque.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sidebar.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-              <folding>
-                <marker date="1507668522335" expanded="true" signature="471:501" ph="..." />
-                <marker date="1507668522335" expanded="true" signature="1269:1293" ph="..." />
-                <marker date="1507668522335" expanded="true" signature="1367:1391" ph="..." />
-                <marker date="1507668522335" expanded="true" signature="1470:1496" ph="..." />
-                <marker date="1507668522335" expanded="true" signature="1575:1600" ph="..." />
-                <marker date="1507668522335" expanded="true" signature="5601:5627" ph="..." />
-                <marker date="1507668522335" expanded="true" signature="5705:5730" ph="..." />
-                <marker date="1507668522335" expanded="true" signature="6119:6142" ph="..." />
-                <marker date="1507668522335" expanded="true" signature="6528:6547" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MosqueController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MosqueController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="46" column="26" lean-forward="false" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2017_10_06_084534_create_mosque_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_06_084534_create_mosque_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prayer.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/Downloads/prayer.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="138" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-              <folding>
-                <marker date="1507591319290" expanded="true" signature="389:449" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="515:576" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="639:686" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="773:842" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="928:1015" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="1701:1710" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="1763:1803" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="1972:1997" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2087:2111" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2193:2202" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2285:2309" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2395:2444" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2492:2550" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2598:2648" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2696:2742" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2806:2854" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="2883:2951" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="3022:3111" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="3815:3871" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="3833:3871" ph="..." />
-                <marker date="1507591319290" expanded="true" signature="3893:3901" ph="..." />
               </folding>
             </state>
           </provider>
@@ -227,7 +174,6 @@
         <option value="$PROJECT_DIR$/resources/views/backend/mosque_data.blade.php" />
         <option value="$PROJECT_DIR$/documents/one.txt" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/resources/views/backend/update_time.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/add_time.blade.php" />
         <option value="$USER_HOME$/Downloads/Compressed/ckeditor_standard_nightly/ckeditor/samples/index.html" />
         <option value="$PROJECT_DIR$/public/admin/vendors/ckeditor/ckeditor.js" />
@@ -235,10 +181,13 @@
         <option value="$PROJECT_DIR$/database/migrations/2017_10_10_082510_create_sms_template_table.php" />
         <option value="$PROJECT_DIR$/app/SmsTemplate.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/sms_template.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SmsSendController.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/subscribe_user.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MosqueController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SmsSendController.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/sendsms.blade.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/resources/views/backend/update_time.blade.php" />
       </list>
     </option>
   </component>
@@ -252,7 +201,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1378" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -295,7 +244,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -309,11 +262,29 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fiverr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fiverr" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -427,13 +398,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71282000" />
+    <option name="totallyTimeSpent" value="74622000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2245827" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22239032" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -441,7 +412,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26350245" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40425533" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -500,8 +471,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blog/routes/web.php" />
-    <entry file="file://$PROJECT_DIR$/blog/resources/views/backend/layouts/sidebar.blade.php" />
     <entry file="file://$PROJECT_DIR$/blog/resources/views/backend/layouts/header.blade.php" />
     <entry file="file://$PROJECT_DIR$/blog/resources/views/backend/layouts/footer.blade.php" />
     <entry file="file://$PROJECT_DIR$/blog/resources/views/backend/layouts/app.blade.php" />
@@ -570,6 +539,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7512">
           <caret line="313" column="105" lean-forward="false" selection-start-line="313" selection-start-column="72" selection-end-line="313" selection-end-column="105" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -620,13 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/update_time.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="315" column="114" lean-forward="false" selection-start-line="315" selection-start-column="114" selection-end-line="315" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/add_mosque.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -649,22 +612,6 @@
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/UserMosque.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,13 +755,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsSendController.php">
+    <entry file="file://$USER_HOME$/Downloads/prayer.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="88" column="34" lean-forward="true" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="34" />
+        <state relative-caret-position="280">
+          <caret line="138" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_06_084534_create_mosque_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MosqueController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
-            <element signature="e#40#55#0#PHP" expanded="true" />
+            <marker date="1507668522335" expanded="true" signature="471:501" ph="..." />
+            <marker date="1507668522335" expanded="true" signature="1269:1293" ph="..." />
+            <marker date="1507668522335" expanded="true" signature="1367:1391" ph="..." />
+            <marker date="1507668522335" expanded="true" signature="1470:1496" ph="..." />
+            <marker date="1507668522335" expanded="true" signature="1575:1600" ph="..." />
+            <marker date="1507668522335" expanded="true" signature="5601:5627" ph="..." />
+            <marker date="1507668522335" expanded="true" signature="5705:5730" ph="..." />
+            <marker date="1507668522335" expanded="true" signature="6119:6142" ph="..." />
+            <marker date="1507668522335" expanded="true" signature="6528:6547" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/UserMosque.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -837,45 +832,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/sidebar.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsSendController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+        <state relative-caret-position="190">
+          <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="45" />
           <folding>
-            <marker date="1507668522335" expanded="true" signature="471:501" ph="..." />
-            <marker date="1507668522335" expanded="true" signature="1269:1293" ph="..." />
-            <marker date="1507668522335" expanded="true" signature="1367:1391" ph="..." />
-            <marker date="1507668522335" expanded="true" signature="1470:1496" ph="..." />
-            <marker date="1507668522335" expanded="true" signature="1575:1600" ph="..." />
-            <marker date="1507668522335" expanded="true" signature="5601:5627" ph="..." />
-            <marker date="1507668522335" expanded="true" signature="5705:5730" ph="..." />
-            <marker date="1507668522335" expanded="true" signature="6119:6142" ph="..." />
-            <marker date="1507668522335" expanded="true" signature="6528:6547" ph="..." />
+            <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MosqueController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/sendsms.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="46" column="26" lean-forward="false" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+        <state relative-caret-position="117">
+          <caret line="40" column="38" lean-forward="false" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
+          <folding>
+            <marker date="1507672018184" expanded="true" signature="9:30" ph="..." />
+            <marker date="1507672018184" expanded="true" signature="41:50" ph="..." />
+            <marker date="1507672018184" expanded="true" signature="1447:1470" ph="..." />
+            <marker date="1507672018184" expanded="true" signature="1592:1614" ph="..." />
+            <marker date="1507672018184" expanded="true" signature="1778:1800" ph="..." />
+            <marker date="1507672018184" expanded="true" signature="2067:2075" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2017_10_06_084534_create_mosque_table.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/update_time.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/prayer.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="138" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="318">
+          <caret line="326" column="43" lean-forward="true" selection-start-line="326" selection-start-column="43" selection-end-line="326" selection-end-column="43" />
+          <folding>
+            <marker date="1507679350986" expanded="true" signature="9:30" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="41:50" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="96:158" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="198:262" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="319:328" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="2700:2719" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="3412:3434" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="4920:4934" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="5009:5026" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="13426:13434" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="14006:14067" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="19872:19893" ph="..." />
+            <marker date="1507679350986" expanded="true" signature="19944:19965" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

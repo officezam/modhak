@@ -38,8 +38,8 @@
             </div>
             <div class="x_content">
               <br>
-              @if (Session::get('error'))
-                <div class="alert alert-danger">{{ Session::get('error') }}</div>
+              @if (Session::get('empty'))
+                <div class="alert alert-danger">{{ Session::get('empty') }}</div>
               @endif
               @if (Session::get('send'))
                 <div class="alert alert-success">{{ Session::get('send') }}</div>
