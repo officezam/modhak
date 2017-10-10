@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\UserMosque;
 use Illuminate\Http\Request;
 use Plivo;
+use App\SmsTemplate;
 
 class SmsSendController extends Controller
 {
@@ -20,7 +21,22 @@ class SmsSendController extends Controller
     }
 
     public function smsTemplate(){
-        return view('backend.sms_template');
+	    $getData = SmsTemplate::first();
+        return view('backend.sms_template' , compact('getData'));
+    }
+    public function updateTemplate(Request $request){
+    	$getData = SmsTemplate::first();
+		if($getData == null){
+			SmsTemplate::create(['template' => $request->sms_template]);
+		}else{
+			if($request->sms_template == ''){ $sms_template = ''; }else{
+				$sms_template = $request->sms_template;
+			}
+			SmsTemplate::where('id', 1)->update(['template' => $sms_template]);
+		}
+	    $getData = SmsTemplate::first();
+		return view('backend.sms_template' , compact('getData'));
+
     }
 
     public function smsSending(Request $request){
