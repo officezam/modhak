@@ -88,19 +88,20 @@
                         </li>
                     </ul>
                     <ul class="nav side-menu">
-                        <li><a><i class="fa fa-clone"></i> SMS Sending <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                                <li><a href="{{ route('send_sms') }}">SMS Sending</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav side-menu">
                         <li><a><i class="fa fa-chart"></i> SMS Template <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('sms_template') }}">Set Sms Template</a></li>
                             </ul>
                         </li>
                     </ul>
+                    <ul class="nav side-menu">
+                        <li><a><i class="fa fa-clone"></i> SMS Sending <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ route('send_sms') }}">SMS Sending</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
                 </div>
 
                 {{--<div class="menu_section">--}}

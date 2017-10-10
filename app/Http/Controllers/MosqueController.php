@@ -44,7 +44,7 @@ class MosqueController extends Controller
         if(empty($m_id))
         {
             $mosqueTableData = [
-                'u_id' => '1',
+                'u_id' => 1,
                 'name' => $request->m_name,
                 'keyword' => $request->m_keyword,
             ];

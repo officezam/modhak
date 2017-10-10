@@ -60,7 +60,8 @@
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group">
-                      <input type="text" id="phone" name="phone" placeholder="Write Subscriber Phone" required="required" class="form-control col-md-7 col-xs-12">
+                      <input type="text" id="phone" name="phone" placeholder="Write Subscriber Phone e.g(+15876046444)" required="required"  class="form-control col-md-7 col-xs-12">
+                      <p class="alert-info">Please Enter Valid Phone Number Like <b style="color: black">+15876046444</b></p>
                     </div>
                   </div>
                 </div>

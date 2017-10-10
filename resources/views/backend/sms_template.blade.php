@@ -32,7 +32,9 @@
             </div>
             <form action="{{ route('tempalte_update') }}" method="post" class="form-horizontal form-label-left" >
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <textarea name="sms_template" >{{ $getData->template }}</textarea>
+              <div class="form-group">
+              <textarea rows="14" class="col-md-12" name="sms_template" >{{ $getData->template }}</textarea>
+              </div>
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-12 col-sm-12 col-xs-12 ">
@@ -48,8 +50,8 @@
 @stop
 @section('pagejs')
 
-  <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+  {{--<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>--}}
   <script>
-    CKEDITOR.replace( 'sms_template' );
+//    CKEDITOR.replace( 'sms_template' );
   </script>
 @endsection

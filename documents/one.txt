@@ -2,6 +2,13 @@ godaddy.com
 login: ghrehman
 pass: Moon3204@@
 
+Plivo 
+login: ghrehman@gmail.com
+Password: Moon3204@
+
+
+
+
 db   : wpsms
 user : wpsms
 pass : wpsms
@@ -12,3 +19,4 @@ pass : wpsms
 
 Username:   zoomtv_logs
 FTP server: zoomtv.ca
+
