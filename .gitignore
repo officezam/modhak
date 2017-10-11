@@ -5,7 +5,6 @@
 /vendor
 /.idea
 /.vagrant
-/.idea/workspace.xml
 Homestead.json
 Homestead.yaml
 npm-debug.log
