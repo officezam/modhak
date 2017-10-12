@@ -84,14 +84,16 @@
                     <ul class="nav side-menu">
                         <li><a><i class="fa fa-windows"></i> SMS Template <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="{{ route('sms_template') }}">Set Sms Template</a></li>
+                                <li><a href="{{ route('sms_template') }}">Namaz Sms Template</a></li>
+                                <li><a href="{{ route('event_sms_template') }}">Event Sms Template</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="nav side-menu">
                         <li><a><i class="fa fa-clone"></i> SMS Sending <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="{{ route('send_sms') }}">SMS Sending</a></li>
+                                <li><a href="{{ route('send_sms') }}">Namaz Time SMS Sending</a></li>
+                                <li><a href="{{ route('event_send_sms') }}">Event SMS Sending</a></li>
                             </ul>
                         </li>
                     </ul>

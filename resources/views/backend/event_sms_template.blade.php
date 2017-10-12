@@ -5,7 +5,7 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Namaz SMS Template</h3>
+          <h3>Event SMS Template</h3>
         </div>
 
         {{--<div class="title_right">--}}
@@ -27,12 +27,12 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Namaz SMS<small>Template</small></h2>
+              <h2>Event SMS<small>Template</small></h2>
               <div class="clearfix"></div>
             </div>
             <form action="{{ route('tempalte_update') }}" method="post" class="form-horizontal form-label-left" >
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" name="type" value="namaz">
+              <input type="hidden" name="type" value="event">
               <div class="form-group">
               <textarea rows="14" class="col-md-12" name="sms_template" >{{ $getData ? $getData->template : "" }}</textarea>
               </div>

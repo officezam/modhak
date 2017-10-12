@@ -34,7 +34,12 @@ Route::post('subscribe-user', 'SubscribeUserController@saveSubscriber')->name('s
 Route::get('delete-subscriber-data/{user_id}', 'SubscribeUserController@deleteSubscriber')->name('delete-subscriber-data');
 
 Route::get('sms-template', 'SmsSendController@smsTemplate')->name('sms_template');
+Route::get('event-sms-template', 'SmsSendController@eventsmsTemplate')->name('event_sms_template');
 Route::post('sms-template-update', 'SmsSendController@updateTemplate')->name('tempalte_update');
+
+
+Route::get('event-send-sms', 'SmsSendController@eventSMS')->name('event_send_sms');
+Route::get('event-sms-sending', 'SmsSendController@eventSmsSending')->name('event_sending_sms');
 
 Route::get('send-sms', 'SmsSendController@index')->name('send_sms');
 Route::get('sms-sending', 'SmsSendController@smsSending')->name('sending_sms');

@@ -16,6 +16,7 @@ class CreateSmsTemplateTable extends Migration
         Schema::create('sms_template', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('template');
+            $table->string('type');
             $table->timestamps();
         });
     }

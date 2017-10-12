@@ -9,6 +9,7 @@ use App\UserMosque;
 use Illuminate\Http\Request;
 use Plivo;
 use App\SmsTemplate;
+use App\Event;
 
 class SmsSendController extends Controller
 {
@@ -22,23 +23,33 @@ class SmsSendController extends Controller
     {
         return view('backend.sendsms');
     }
+    public function eventSMS()
+    {
+        return view('backend.eventsendsms');
+    }
 
     public function smsTemplate(){
-	    $getData = SmsTemplate::first();
+	    $getData = SmsTemplate::where('type','=','namaz')->first();
         return view('backend.sms_template' , compact('getData'));
     }
+
+    public function eventsmsTemplate(){
+        $getData = SmsTemplate::where('type','=','event')->first();
+        return view('backend.event_sms_template' , compact('getData'));
+    }
+
     public function updateTemplate(Request $request){
-    	$getData = SmsTemplate::first();
+    	$getData = SmsTemplate::where('type','=',$request->type)->first();
 		if($getData == null){
-			SmsTemplate::create(['template' => $request->sms_template]);
+			SmsTemplate::create(['template' => $request->sms_template , 'type' => $request->type]);
 		}else{
 			if($request->sms_template == ''){ $sms_template = ''; }else{
 				$sms_template = $request->sms_template;
 			}
-			SmsTemplate::where('id', 1)->update(['template' => $sms_template]);
+			SmsTemplate::where('type' ,'=', $request->type)->update(['template' => $sms_template]);
 		}
-	    $getData = SmsTemplate::first();
-		return view('backend.sms_template' , compact('getData'));
+	    $getData = SmsTemplate::where('type' ,'=', $request->type)->first();
+		return view($request->type=='namaz'  ? 'backend.sms_template' : 'backend.event_sms_template' , compact('getData'));
 
     }
 
@@ -48,7 +59,7 @@ class SmsSendController extends Controller
         date_default_timezone_set('Canada/Saskatchewan');
         $mosqueData = NamazTime::where('date','=',date("Y-m-d", time()))->get();
         if(!$mosqueData->isEmpty()) {
-            $getTemplate = SmsTemplate::first()->template;
+            $getTemplate = SmsTemplate::where('type','=','namaz')->first()->template;
             foreach ($mosqueData as $mosque):
                 $mosqueName = Mosque::first()->name;
                 $getTemplate = str_replace("{{MosqueName}}", $mosqueName, $getTemplate);
@@ -66,6 +77,30 @@ class SmsSendController extends Controller
                 $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
 
                 $u_idArray = UserMosque::where('m_id', '=', $mosque->m_id)->pluck('u_id');
+                $this->plivoSMSCampaign($u_idArray, $getTemplate);
+            endforeach;
+
+            $request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
+        }else{
+            $request->session()->flash('empty', 'SMS Sending Fail or No Record Found..!');
+        }
+        return view('backend.sendsms');
+    }
+
+
+    public function eventSmsSending(Request $request)
+    {
+        //date_default_timezone_set('Asia/Karachi');
+        date_default_timezone_set('Canada/Saskatchewan');
+        $eventData = Event::where('date','=',date("Y-m-d", time()))->get();
+        if(!$eventData->isEmpty()) {
+            $getTemplate = SmsTemplate::where('type','=','event')->first()->template;
+            foreach ($eventData as $event):
+                $getTemplate = str_replace("{{EventName}}", $event->name, $getTemplate);
+                $getTemplate = str_replace("{{EventDate}}", \Carbon\Carbon::parse($event->date)->format('l jS \\of F Y'), $getTemplate);
+                $getTemplate = str_replace("{{EventTime}}", \Carbon\Carbon::parse($event->time)->format('h:i A'), $getTemplate);
+
+                $u_idArray = UserMosque::where('m_id', '=', $event->m_id)->pluck('u_id');
                 $this->plivoSMSCampaign($u_idArray, $getTemplate);
             endforeach;
 

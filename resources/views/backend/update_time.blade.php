@@ -310,8 +310,7 @@
                                             $('#antoform')[0].reset();
                                             //g.fullCalendar("renderEvents",response);
                                             $(".antoclose").click();
-                                            window.location.href = "http://127.0.0.1:8000/update-time/"+response;
-
+                                            window.location.href = "{{ url('update-time')}}"+response;
                                         },
                                         error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
                                             console.log(JSON.stringify(jqXHR));

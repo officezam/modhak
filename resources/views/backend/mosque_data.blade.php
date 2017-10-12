@@ -60,7 +60,7 @@
                   <tr>
                     <td>{{ $mosque->name }}</td>
                     <td>{{ $mosque->keyword }}</td>
-                    <td><a href="{{ route('updae-time', $mosque->id) }}" ><button type="button" class="btn btn-success">View Tamaz Detail </button></a></td>
+                    <td><a href="{{ route('updae-time', $mosque->id) }}" ><button type="button" class="btn btn-success">View Namaz Time Detail </button></a></td>
                     <td>
                       <a href="{{ route('updae-time', $mosque->id) }}" ><button type="button" class="btn btn-info">Edit</button></a>
                       <a href="{{ route('delete-mosque-data', $mosque->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
