@@ -87,12 +87,14 @@
                         <form id="antoform" class="form-horizontal calender" role="form">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="m_id" value="" id="m_id">
+                            <input type="hidden" name="date" value="" id="event_date">
                             <div class="form-group">
                                 <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Evnet Name</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                     <div class="form-group">
                                         <div class='input-group date' id=''>
-                                            <input type='text' class="form-control" name="name" id="name" required="required" placeholder="Select Evet Name"  />
+                                            <input type='text' class="form-control" name="name" id="name" required="required" placeholder="Write Event Name"  />
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-text-width"></span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +105,7 @@
                                     <div class="form-group">
                                         <div class='input-group date' id='event_time_picker'>
                                             <input type='text' class="form-control" name="time" id="time" required="required" placeholder="Select Time"  />
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +187,7 @@
                             var a = new Date(date.format());
                             var day = weekday[a.getDay()];
                             $('#myModalLabel').html( "Event Timing For "+day+", "+date.format('DD MM YYYY'));
-                            $('#namaz_date').val(date.format());
+                            $('#event_date').val(date.format());
                             var heard    = $('#heard').val();
                             if(heard ==0){
                                 $("#writefirst").removeClass('hidden');
@@ -226,7 +228,7 @@
                                             $('#antoform')[0].reset();
                                             //g.fullCalendar("renderEvents",response);
                                             $(".antoclose").click();
-                                            window.location.href = "{{ route('/') }}updae-event-time/"+response;
+                                            window.location.href = "{{ url('updae-event-time')}}/"+response;
 
                                         },
                                         error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail

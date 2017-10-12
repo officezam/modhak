@@ -62,9 +62,9 @@
                     <td>{{ $event->name }}</td>
                     <td>{{ $event->date }}</td>
                     <td>{{ $event->time }}</td>
-                    <td><a href="{{ route('updae-event-time', $event->id) }}" ><button type="button" class="btn btn-success">View Tamaz Detail </button></a></td>
+                    <td><a href="{{ route('updae-event-time', $event->m_id) }}" ><button type="button" class="btn btn-success">View Tamaz Detail </button></a></td>
                     <td>
-                      <a href="{{ route('updae-event-time', $event->id) }}" ><button type="button" class="btn btn-info">Edit</button></a>
+                      <a href="{{ route('updae-event-time', $event->m_id) }}" ><button type="button" class="btn btn-info">Edit</button></a>
                       <a href="{{ route('delete-event-data', $event->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
                     </td>
                   </tr>

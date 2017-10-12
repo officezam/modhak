@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Mosque;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
 
-    public function eventsRecord(){
-        $events = Event::get();
+	public function __construct() {
+		$this->event  = new Event();
+		$this->mosque = new Mosque();
+	}
+
+	public function eventsRecord(){
+        $events = $this->event->get();
         return view('backend.event_data' , compact('events'));
     }
 
@@ -20,7 +26,7 @@ class EventController extends Controller
      * Event Add Form Display
      * */
     public function eventAdd(){
-        $mosque = Mosque::get();
+        $mosque = $this->mosque->get();
         return view('backend.add_event' , compact('mosque'));
     }
 
@@ -28,40 +34,83 @@ class EventController extends Controller
     * Function Get All Data For Specific Event
     * Full Year Wise Data Fetch
     * */
-    public function getEventTime($event_id)
+    public function getEventTime($m_id)
     {
-        dd($event_id);
-        $namazData  = $this->namaztime->where('m_id',$namaz_id)->get();
-        $mosqueData = $this->mosque->find($namaz_id);
+	    $mosque = $this->mosque->get();
+	    $eventData  = $this->event->where('m_id',$m_id)->get();
         $dataArray = [];
-        foreach ($namazData as $namazTime)
+        foreach ($eventData as $eventTime)
         {
-            $dataArray[] = ['title' => " = Fajar Time",'start' => Carbon::parse($namazTime->fajar)->format('c') ];
-            if($namazTime->zuhar != null)
-            {
-                $dataArray[] = ['title' => " = Zhuar Time",'start' =>  Carbon::parse($namazTime->zuhar)->format('c') ];
-            }
-            if($namazTime->jumma != null){
-                $dataArray[] = ['title' => " = Jumma Time", 'start' => Carbon::parse($namazTime->jumma)->format('c')];
-            }
-            $dataArray[] = ['title' => " = Asar Time",'start'       => Carbon::parse($namazTime->asar)->format('c') ];
-            $dataArray[] = ['title' => " = Maghrib Time",'start'    =>Carbon::parse($namazTime->maghrib)->format('c') ];
-            $dataArray[] = ['title' => " = Esha Time",'start'       => Carbon::parse($namazTime->esha)->format('c') ];
+            $dataArray[] = ['title' => " = $eventTime->name",'start' => Carbon::parse($eventTime->time)->format('c') ];
         }
-        return view('backend.update_time', compact('mosqueData','dataArray'));
+        return view('backend.update_event', compact('mosque','m_id','dataArray'));
     }
 
 
-    /*
-     * Delete Event Record From Event table
-     * Delete Event Record
-     * */
+
+
+	/*
+ * Function Save Nw=ew Mosque Data OR
+ * Update Exiting Data OR
+ * Save New Data For Existing Mosque
+ * */
+	public function saveEventTime(Request $request){
+
+		$m_id = $request->m_id;
+
+		if(empty($m_id))
+		{
+			$eventTableData = [
+				'u_id' => 1,
+				'm_id' => $m_id,
+				'name' => $request->name,
+				'date' => date('Y-m-d H:i:s', strtotime("$request->date")),
+				'time' => date('Y-m-d H:i:s', strtotime("$request->date $request->time")),
+			];
+
+			$eventData = $this->event->create($eventTableData);
+			//$e_id = $eventData->id;
+			return $m_id;
+		}else{
+			$updateData =  $this->event->where('m_id', $m_id)->where('date', '=', $request->date)->first();
+			if($updateData !=null ){
+				$eventTableData = [
+					'u_id' => 1,
+					'm_id' => $m_id,
+					'name' => $request->name,
+					'date' => date('Y-m-d H:i:s', strtotime("$request->date")),
+					'time' => date('Y-m-d H:i:s', strtotime("$request->date $request->time")),
+				];
+				 $this->event->where('id', $updateData->id)
+				                             ->update($eventTableData);
+				return $m_id;
+			}else{
+				$eventTableData = [
+					'u_id' => 1,
+					'm_id' => $m_id,
+					'name' => $request->name,
+					'date' => date('Y-m-d H:i:s', strtotime("$request->date")),
+					'time' => date('Y-m-d H:i:s', strtotime("$request->date $request->time")),
+				];
+				$eventData = $this->event->create($eventTableData);
+				//$e_id = $eventData->id;
+				return $m_id;
+			}
+
+		}
+
+	}
+
+
+	/*
+	 * Delete Event Record From Event table
+	 * Delete Event Record
+	 * */
     public function deleteEventData($id, Request $request)
     {
-        $this->mosque->where('id', '=', $id)->delete();
-        $this->namaztime->where('m_id', '=', $id)->delete();
-        $request->session()->flash('success', 'Delete Record and Namaz Time..!');
-        return redirect()->route('mosque_record');
+	    $this->event->where('id', '=', $id)->delete();
+        $request->session()->flash('success', 'Event Deleted Successfully..!');
+        return redirect()->route('events_record');
     }
 
 }

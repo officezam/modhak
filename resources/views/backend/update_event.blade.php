@@ -23,7 +23,6 @@
                 {{--</div>--}}
                 {{--</div>--}}
             </div>
-
             <div class="clearfix"></div>
 
             <div class="row">
@@ -43,21 +42,18 @@
                         <div class="x_content well">
                             <form class="form-horizontal form-label-left" novalidate="">
 
-                                <span class="section">Mosque Info</span>
-                                <div class="alert alert-danger hidden" id="writefirst">Please write mosque name and keyword First</div>
+                                <span class="section">Event Info</span>
+                                <div class="alert alert-danger hidden" id="writefirst">Please choose Event Name First</div>
 
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Mosque Name <span class="required">*</span>
-                                    </label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Mosque</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="mosque_mame" class="form-control col-md-7 col-xs-12" value="{{ $mosqueData->name }}" data-validate-length-range="15" data-validate-words="2" name="mosque_mame" placeholder="Mosque name(s) e.g Masjid Faisal" required="required" type="text">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Mosque Keyword <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="mosque_keyword" class="form-control col-md-7 col-xs-12" value="{{ $mosqueData->keyword }}" data-validate-length-range="15" data-validate-words="2" name="mosque_keyword" placeholder="Mosque Keyword(s) e.g Masjid Faisal" required="required" type="text">
+                                        <select id="heard" class="form-control" required="" name="m_id">
+                                            <option value="0">Please Select Mosque </option>
+                                            @foreach($mosque as $masjid)
+                                                <option @if($masjid->id == $m_id) selected @endif value="{{ $masjid->id }}">{{ $masjid->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </form>
@@ -79,94 +75,35 @@
     <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Set Namaz Timing </h4>
+                    <h4 class="modal-title" id="myModalLabel">Set Event Timing </h4>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-danger hidden" id="FillAllTime">Please select all Namaz time </div>
+                    <div class="alert alert-danger hidden" id="FillAllTime">Please set Event Name and Event Time </div>
                     <div id="testmodal" style="padding: 5px 20px;">
                         <form id="antoform" class="form-horizontal calender" role="form">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="m_id" value="{{ $mosqueData->id }}" id="m_id">
-                            <input type="hidden" name="m_name" value="" id="m_name">
-                            <input type="hidden" name="m_keyword" value="" id="m_keyword">
-                            <input type="hidden" name="namaz_date" value="" id="namaz_date">
+                            <input type="hidden" name="m_id" value="{{ $m_id }}" id="m_id">
+                            <input type="hidden" name="date" value="" id="event_date">
                             <div class="form-group">
-                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Fajar Namaz Time</label>
+                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Evnet Name</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                     <div class="form-group">
-                                        <div class='input-group date' id='fajar_time_picker'>
-                                            <input type='text' class="form-control" name="fajar_time" id="fajar_time" required="required" placeholder="Select Time"  />
-                                            <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                                        <div class='input-group date' id=''>
+                                            <input type='text' class="form-control" name="name" id="name" required="required" placeholder="Write Event Name"  />
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-text-width"></span></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group zuhar">
-                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Zuhar Namaz Time</label>
+                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Event Time</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                     <div class="form-group">
-                                        <div class='input-group date' id='zuhar_time_picker'>
-                                            <input type='text' class="form-control" name="zuhar_time" id="zuhar_time" required="required" placeholder="Select Time"  />
-                                            <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group friday">
-                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Friday Namaz Time</label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <div class="form-group">
-                                        <div class='input-group date' id='friday_time_picker'>
-                                            <input type='text' class="form-control" name="friday_time" id="friday_time" required="required" placeholder="Select Time"  />
-                                            <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Asar Namaz Time</label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <div class="form-group">
-                                        <div class='input-group date' id='asar_time_picker'>
-                                            <input type='text' class="form-control" name="asar_time" id="asar_time" required="required" placeholder="Select Time"  />
-                                            <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Magrib Namaz Time</label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <div class="form-group">
-                                        <div class='input-group date' id='magrib_time_picker'>
-                                            <input type='text' class="form-control" name="magrib_time" id="magrib_time" required="required" placeholder="Select Time" />
-                                            <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Esha Namaz Time</label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <div class="form-group">
-                                        <div class='input-group date' id='esha_time_picker'>
-                                            <input type='text' class="form-control" name="esha_time" id="esha_time" required="required" placeholder="Select Time"  />
-                                            <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                                        <div class='input-group date' id='event_time_picker'>
+                                            <input type='text' class="form-control" name="time" id="time" required="required" placeholder="Select Time"  />
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -227,13 +164,7 @@
     <!-- Initialize datetimepicker -->
     <script>
         $('#myDatepicker').datetimepicker({  format: 'DD.MM.YYYY' });
-        $('#fajar_time_picker').datetimepicker({format: 'hh:mm A'});
-        $('#zuhar_time_picker').datetimepicker({format: 'hh:mm A'});
-        $('#friday_time_picker').datetimepicker({format: 'hh:mm A'});
-        $('#asar_time_picker').datetimepicker({format: 'hh:mm A'});
-        $('#magrib_time_picker').datetimepicker({format: 'hh:mm A'});
-        $('#esha_time_picker').datetimepicker({format: 'hh:mm A'});
-
+        $('#event_time_picker').datetimepicker({format: 'hh:mm A'});
     </script>
     <script src="{{asset('/admin/vendors/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 
@@ -263,11 +194,10 @@
                                 $(".friday").hide();
                                 $(".zuhar").show();
                             }
-                            $('#myModalLabel').html( "Namaz Timing For "+day+", "+date.format('DD MM YYYY'));
-                            $('#namaz_date').val(date.format());
-                            var mosque_mame    = $('#mosque_mame').val();
-                            var mosque_keyword = $('#mosque_keyword').val();
-                            if(!(mosque_mame) || !(mosque_keyword)){
+                            $('#myModalLabel').html( "Event Timing For "+day+", "+date.format('DD MM YYYY'));
+                            $('#event_date').val(date.format());
+                            var heard    = $('#heard').val();
+                            if(heard ==0){
                                 $("#writefirst").removeClass('hidden');
                                 return false;
                             }else{
@@ -289,28 +219,24 @@
                         select: function(a, b, c) {
                             $(".antosubmit").on("click", function()
                             {
-                                $("#m_name").val($('#mosque_mame').val());
-                                $("#m_keyword").val($('#mosque_keyword').val());
-                                var fajar_time  = $("#fajar_time").val();
-                                var asar_time   = $("#asar_time").val();
-                                var magrib_time = $("#magrib_time").val();
-                                var esha_time   = $("#esha_time").val();
-
-                                if(!(fajar_time) || !(asar_time) || !(magrib_time)|| !(esha_time)){
+                                $("#m_id").val($('#heard').val());
+                                var name  = $("#name").val();
+                                var time   = $("#time").val();
+                                if(!(name) || !(time)){
                                     $("#FillAllTime").removeClass('hidden');
                                 }else{
                                     $("#FillAllTime").addClass('hidden');
                                     var datastring = $("#antoform").serialize();
                                     $.ajax({
                                         method: 'POST', // Type of response and matches what we said in the route
-                                        url: '/save-namaz-time', // This is the url we gave in the route
+                                        url: '/save-event-time', // This is the url we gave in the route
                                         data: datastring, // a JSON object to send back
                                         success: function(response){ // What to do if we succeed
-                                            console.log(response);
+                                            //console.log(response);
                                             $('#antoform')[0].reset();
                                             //g.fullCalendar("renderEvents",response);
                                             $(".antoclose").click();
-                                            window.location.href = "http://127.0.0.1:8000/update-time/"+response;
+                                            window.location.href = "{{ url('updae-event-time')}}/"+response;
 
                                         },
                                         error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
@@ -337,10 +263,10 @@
                             [
 
                                     @if($dataArray)
-                                    @foreach($dataArray  as $namazTime)
+                                    @foreach($dataArray  as $eventTime)
                                 {
-                                    title:  "{{ $namazTime['title'] }}",
-                                    start: "{{ $namazTime['start'] }}"
+                                    title:  "{{ $eventTime['title'] }}",
+                                    start: "{{ $eventTime['start'] }}"
                                 },
                                 @endforeach
                                 @endif
