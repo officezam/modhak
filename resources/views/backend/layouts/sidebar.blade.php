@@ -29,20 +29,14 @@
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('mosque_record') }}">Mosque Record</a></li>
                                 <li><a href="{{ route('add_time_form') }}">Add New Mosque</a></li>
-{{--                                <li><a href="{{ route('add_mosque_form') }}">Add Mosque</a></li>--}}
-                                {{--<li><a href="{{ route('subscribe_user') }}">Subscribe User</a></li>--}}
-{{--                                <li><a href="{{ route('send_sms') }}">Sned Prayer Message</a></li>--}}
                             </ul>
                         </li>
-                        {{--<li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>--}}
-                            {{--<ul class="nav child_menu">--}}
-                                {{--<li><a href="form.html">General Form</a></li>--}}
-                                {{--<li><a href="form_advanced.html">Advanced Components</a></li>--}}
-                                {{--<li><a href="form_validation.html">Form Validation</a></li>--}}
-                                {{--<li><a href="form_wizards.html">Form Wizard</a></li>--}}
-                                {{--<li><a href="form_upload.html">Form Upload</a></li>--}}
-                                {{--<li><a href="form_buttons.html">Form Buttons</a></li>--}}
-                            {{--</ul>--}}
+                        <li><a><i class="fa fa-edit"></i> Events <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ route('events_record') }}">Events Record</a></li>
+                                <li><a href="{{ route('add_event_form') }}">Add New Event</a></li>
+                            </ul>
+                        </li>
                         {{--</li>--}}
                         {{--<li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>--}}
                             {{--<ul class="nav child_menu">--}}
@@ -88,7 +82,7 @@
                         </li>
                     </ul>
                     <ul class="nav side-menu">
-                        <li><a><i class="fa fa-chart"></i> SMS Template <span class="fa fa-chevron-down"></span></a>
+                        <li><a><i class="fa fa-windows"></i> SMS Template <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('sms_template') }}">Set Sms Template</a></li>
                             </ul>

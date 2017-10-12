@@ -21,6 +21,13 @@ Route::post('Add-Mosque', 'MosqueController@saveMosque')->name('add_mosque');
 Route::get('Mosque', 'MosqueController@mosqueRecord')->name('mosque_record');
 Route::post('save-namaz-time', 'MosqueController@saveNamazTime');
 
+Route::get('add-event', 'EventController@eventAdd')->name('add_event_form');
+Route::post('save-event-time', 'EventController@saveEvintTime');
+Route::get('Events', 'EventController@eventsRecord')->name('events_record');
+Route::get('updae-event-time/{event_id}', 'EventController@getEventTime')->name('updae-event-time');
+Route::get('delete-event-data/{event_id}', 'EventController@deleteEventData')->name('delete-event-data');
+
+
 Route::get('subscriber', 'SubscribeUserController@subscriberRecod')->name('subscriber-data');
 Route::get('subscribe-user', 'SubscribeUserController@index')->name('subscribe_user');
 Route::post('subscribe-user', 'SubscribeUserController@saveSubscriber')->name('save_subscriber');
