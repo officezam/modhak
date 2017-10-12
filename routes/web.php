@@ -43,3 +43,4 @@ Route::get('event-sms-sending', 'SmsSendController@eventSmsSending')->name('even
 
 Route::get('send-sms', 'SmsSendController@index')->name('send_sms');
 Route::get('sms-sending', 'SmsSendController@smsSending')->name('sending_sms');
+Route::post('receive-sms', 'SmsSendController@receiveSms');

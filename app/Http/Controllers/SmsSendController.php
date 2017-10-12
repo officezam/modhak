@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Plivo;
 use App\SmsTemplate;
 use App\Event;
+use App\ReceiveSms;
 
 class SmsSendController extends Controller
 {
@@ -61,7 +62,7 @@ class SmsSendController extends Controller
         if(!$mosqueData->isEmpty()) {
             $getTemplate = SmsTemplate::where('type','=','namaz')->first()->template;
             foreach ($mosqueData as $mosque):
-                $mosqueName = Mosque::first()->name;
+                $mosqueName = Mosque::where('id', '=' ,$mosque->id )->first()->name;
                 $getTemplate = str_replace("{{MosqueName}}", $mosqueName, $getTemplate);
                 $getTemplate = str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
                 if ($mosque->jumma == null) {
@@ -126,11 +127,67 @@ class SmsSendController extends Controller
         $params = array(
             'src' => '+15876046444', // Sender's phone number with country code
             'dst' => $userPhone, // receiver's phone number with country code
-            //'dst' => '+17802456176', // receiver's phone number with country code
             'text' => $text // Your SMS text message
         );
         $response = $this->plivo->send_message($params);
        // dd( $response[1]['message']);
     }
+
+
+
+    public function receiveSms(Request $request)
+    {
+        // Sender's phone numer
+        $from_number = $request->From;
+        // Receiver's phone number - Plivo number
+        $to_number = $request->To;
+        // The SMS text message which was received
+        $keyword = $request->Text;
+        // Output the text which was received to the log file.
+        $receiveSms = ReceiveSms::create(['from' => $from_number , 'to' => $to_number, 'keyword' => $keyword]);
+
+        $mosque = Mosque::where('keyword' , 'like' , '%'.$keyword.'%')->first();
+        if($mosque->isEmpty()){
+            $params = array(
+                'src' => '+15876046444', // Sender's phone number with country code
+                'dst' => $from_number, // receiver's phone number with country code
+                'text' => 'Related to your keyword Not Found Please Contact on that Number 7802456176' // Your SMS text message
+            );
+        }else{
+            $mosque = NamazTime::where('m_id' , '=' , $mosque->id)->where('date','=',date("Y-m-d", time()))->get();
+            if(!$mosque->isEmpty()) {
+                $getTemplate = SmsTemplate::where('type','=','namaz')->first()->template;
+                $mosqueName = Mosque::where('id', '=' ,$mosque->id )->first()->name;
+                $getTemplate = str_replace("{{MosqueName}}", $mosqueName, $getTemplate);
+                    $getTemplate = str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
+                    if ($mosque->jumma == null) {
+                        $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Zuhar Time', $getTemplate);
+                        $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->zuhar)->format('h:i A'), $getTemplate);
+                    }
+                    if ($mosque->zuhar == null) {
+                        $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Jumma Time', $getTemplate);
+                        $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->jumma)->format('h:i A'), $getTemplate);
+                    }
+                    $getTemplate = str_replace("{{AsarNamazTime}}", \Carbon\Carbon::parse($mosque->asar)->format('h:i A'), $getTemplate);
+                    $getTemplate = str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
+                    $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
+
+                    $u_idArray = UserMosque::where('m_id', '=', $mosque->m_id)->pluck('u_id');
+                    $this->plivoSMSCampaign($u_idArray, $getTemplate);
+            }else{
+                $params = array(
+                    'src' => '+15876046444', // Sender's phone number with country code
+                    'dst' => $from_number, // receiver's phone number with country code
+                    'text' => 'No Namaz Time Registered Please Contact on that Number 7802456176' // Your SMS text message
+                );
+            }
+
+        }
+
+        error_log("Message received - From: $from_number, To: $to_number, Text: $keyword");
+        dd($request);
+    }
+
+
 
 }
