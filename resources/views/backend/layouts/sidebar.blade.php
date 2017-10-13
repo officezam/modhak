@@ -94,6 +94,7 @@
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('send_sms') }}">Namaz Time SMS Sending</a></li>
                                 <li><a href="{{ route('event_send_sms') }}">Event SMS Sending</a></li>
+                                <li><a href="{{ route('bulk_sms_page') }}">Bulk SMS Sending</a></li>
                             </ul>
                         </li>
                     </ul>

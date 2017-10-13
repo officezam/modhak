@@ -12,6 +12,24 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/receive-sms/'
     ];
+
+
+//    //modify this function
+//    public function handle($request, Closure $next)
+//    {
+//        //add this condition
+//        foreach($this->except as $route) {
+//
+//            if ($request->is($route)) {
+//                return $this->next($request);
+//            }
+//        }
+//
+//        return parent::handle($request, $next);
+//    }
+
+
+
 }

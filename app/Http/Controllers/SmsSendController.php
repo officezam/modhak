@@ -24,6 +24,10 @@ class SmsSendController extends Controller
     {
         return view('backend.sendsms');
     }
+    public function bulkSms()
+    {
+        return view('backend.bulk_sms_template');
+    }
     public function eventSMS()
     {
         return view('backend.eventsendsms');
@@ -137,30 +141,39 @@ class SmsSendController extends Controller
 
     public function receiveSms(Request $request)
     {
+        //dd($request);
         // Sender's phone numer
-        $from_number = $request->From;
+        $from_number = $_REQUEST['From'];
         // Receiver's phone number - Plivo number
-        $to_number = $request->To;
+        $to_number = $_REQUEST['To'];
         // The SMS text message which was received
-        $keyword = $request->Text;
+        $keyword = $_REQUEST['Text'];
         // Output the text which was received to the log file.
         $receiveSms = ReceiveSms::create(['from' => $from_number , 'to' => $to_number, 'keyword' => $keyword]);
 
-        $mosque = Mosque::where('keyword' , 'like' , '%'.$keyword.'%')->first();
-        if($mosque->isEmpty()){
+        $mosqueData = Mosque::where('keyword' , 'like' , '%'.$keyword.'%')->first();
+
+        if( $mosqueData == null){
             $params = array(
                 'src' => '+15876046444', // Sender's phone number with country code
                 'dst' => $from_number, // receiver's phone number with country code
                 'text' => 'Related to your keyword Not Found Please Contact on that Number 7802456176' // Your SMS text message
             );
+            $response = $this->plivo->send_message($params);
         }else{
-            $mosque = NamazTime::where('m_id' , '=' , $mosque->id)->where('date','=',date("Y-m-d", time()))->get();
-            if(!$mosque->isEmpty()) {
-                $getTemplate = SmsTemplate::where('type','=','namaz')->first()->template;
-                $mosqueName = Mosque::where('id', '=' ,$mosque->id )->first()->name;
+            date_default_timezone_set('Canada/Saskatchewan');
+            $mosque = NamazTime::where('m_id' , '=' , $mosqueData->id)->where('date','=',date("Y-m-d", time()))->first();
+            if($mosque != null) {
+                $getTemplate = SmsTemplate::where('type','=','namaz')->first()
+                    ->template;
+                $mosqueName = Mosque::where('id', '=' ,$mosqueData->id)->first();
+                $mosqueName = $mosqueName->name;
+
                 $getTemplate = str_replace("{{MosqueName}}", $mosqueName, $getTemplate);
-                    $getTemplate = str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
-                    if ($mosque->jumma == null) {
+
+                $getTemplate = str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
+
+                if ($mosque->jumma == null) {
                         $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Zuhar Time', $getTemplate);
                         $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->zuhar)->format('h:i A'), $getTemplate);
                     }
@@ -172,22 +185,43 @@ class SmsSendController extends Controller
                     $getTemplate = str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
                     $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
 
-                    $u_idArray = UserMosque::where('m_id', '=', $mosque->m_id)->pluck('u_id');
-                    $this->plivoSMSCampaign($u_idArray, $getTemplate);
+                $params = array(
+                    'src' => '+15876046444', // Sender's phone number with country code
+                    'dst' => $from_number, // receiver's phone number with country code
+                    'text' => $getTemplate // Your SMS text message
+                );
+                $response = $this->plivo->send_message($params);
             }else{
                 $params = array(
                     'src' => '+15876046444', // Sender's phone number with country code
                     'dst' => $from_number, // receiver's phone number with country code
                     'text' => 'No Namaz Time Registered Please Contact on that Number 7802456176' // Your SMS text message
                 );
+                $response = $this->plivo->send_message($params);
             }
 
         }
 
         error_log("Message received - From: $from_number, To: $to_number, Text: $keyword");
-        dd($request);
+        dd('Test Done');
     }
 
+    public function bulkSmsSending(Request $request)
+    {
+        $user = User::get();
+        $userPhone = '';
+        foreach ($user as $userData):
+            $userPhone.=$userData->phone.'<';
+        endforeach;
+        $params = array(
+            'src' => '+15876046444', // Sender's phone number with country code
+            'dst' => $userPhone, // receiver's phone number with country code
+            'text' => $request->sms_text // Your SMS text message
+        );
+        $response = $this->plivo->send_message($params);
+        $request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
+        return view('backend.bulk_sms_template');
+    }
 
 
 }
