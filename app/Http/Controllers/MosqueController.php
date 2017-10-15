@@ -64,17 +64,6 @@ class MosqueController extends Controller
             ];
             $namazTime = $this->namaztime->create($namazTimeData);
             return $m_id;
-//                $dataArray[] = ['title' => " = Fajar Time",'start' => $namazTime->fajar ];
-//            if(!empty($namazTime->zuhar)){
-//                $dataArray[] = ['title' => " = Zhuar Time",'start' => $namazTime->zuhar ];
-//            }else{
-//                $dataArray[] = ['title' => " = Jumma Time", 'start' => $namazTime->jumma];
-//            }
-//                $dataArray[] = ['title' => " = Asar Time",'start'       => $namazTime->asar ];
-//                $dataArray[] = ['title' => " = Maghrib Time",'start'    => $namazTime->maghrib ];
-//                $dataArray[] = ['title' => " = Esha Time",'start'       => $namazTime->esha ];
-//            return $dataArray;
-
         }else{
            $updateData =  $this->namaztime->where('m_id', $m_id)->where('date', '=', $request->namaz_date)->first();
 

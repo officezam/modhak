@@ -53,3 +53,7 @@ Route::get('bulk-sms-send', 'SmsSendController@bulkSms')->name('bulk_sms_page');
 Route::post('bulk-sms-sending', 'SmsSendController@bulkSmsSending')->name('bulk_sms_send');
 Route::get('sms-sending', 'SmsSendController@smsSending')->name('sending_sms');
 Route::post('receive-sms', 'SmsSendController@receiveSms');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

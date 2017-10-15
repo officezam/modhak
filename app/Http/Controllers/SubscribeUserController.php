@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Mosque;
-use App\User;
-
+use App\Subscriber;
 use App\UserMosque;
 use Illuminate\Http\Request;
 
@@ -19,27 +18,20 @@ class SubscribeUserController extends Controller
      * Subscriber Record Fetch
      * */
     public function subscriberRecod(){
-        $subscriber = User::get();
+        $subscriber = Subscriber::where('u_id' , '=' , 1)->get();
         return view('backend.subscriber_data' , compact('subscriber'));
     }
     public function saveSubscriber(Request $request){
 
 	    $data = [
+            'm_id' => $request->m_id,
+            'u_id' => 1,
 		    'name' => $request->name,
 		    'phone' => $request->phone,
-		    'email' => 'officezam@gmail.com',
-	        'password' => '123456',
 	    ];
 
-	    $userData = User::create($data);
 
-
-	    $data = [
-		    'm_id' => $request->m_id,
-		    'u_id' => $userData->id,
-	    ];
-
-	    $userData = UserMosque::create($data);
+	    $userData = Subscriber::create($data);
 	    $mosque = Mosque::get();
 	    $request->session()->flash('success', 'Subscriber Saved Successfully');
 	    return view('backend.subscribe_user' , compact('mosque'));
@@ -51,7 +43,7 @@ class SubscribeUserController extends Controller
      * */
     public function deleteSubscriber($id, Request $request)
     {
-        User::where('id', '=', $id)->delete();
+        Subscriber::where('id', '=', $id)->delete();
         $request->session()->flash('success', 'Delete User Record Successfully..!');
         return redirect()->route('subscriber-data');
     }

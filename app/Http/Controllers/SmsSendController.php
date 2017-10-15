@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Advertisement;
 use App\Mosque;
 use App\NamazTime;
+use App\Subscriber;
 use App\User;
 use App\UserMosque;
 use Illuminate\Http\Request;
@@ -124,7 +125,7 @@ class SmsSendController extends Controller
      * */
     public function plivoSMSCampaign($u_idArray , $text)
     {
-        $user = User::find($u_idArray);
+        $user = Subscriber::find($u_idArray);
        // $userPhone = '';
         $AddsTemplate = Advertisement::where('type','=','namaz')->get();
         $totalAddsTemplate = count($AddsTemplate);
@@ -132,13 +133,13 @@ class SmsSendController extends Controller
         foreach ($user as $userData):
             //$userPhone.=$userData->phone.'<';
             if($NumberCount ==  $totalAddsTemplate){ $NumberCount = 0; }
-            $text = str_replace("{{Advertisement}}", $AddsTemplate[$NumberCount]->template, $text);
+            $sms = str_replace("{{Advertisement}}", $AddsTemplate[$NumberCount]->template, $text);
             $params = array(
             'src' => '+15876046444', // Sender's phone number with country code
             'dst' => $userData->phone, // receiver's phone number with country code
-            'text' => $text // Your SMS text message
+            'text' => $sms // Your SMS text message
         );
-        //$response = $this->plivo->send_message($params);
+        $response = $this->plivo->send_message($params);
             $NumberCount++;
         endforeach;
         // dd( $response[1]['message']);
