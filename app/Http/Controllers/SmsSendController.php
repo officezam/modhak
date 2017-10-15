@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Advertisement;
 use App\Mosque;
 use App\NamazTime;
 use App\User;
@@ -34,7 +35,7 @@ class SmsSendController extends Controller
     }
 
     public function smsTemplate(){
-	    $getData = SmsTemplate::where('type','=','namaz')->first();
+        $getData = SmsTemplate::where('type','=','namaz')->first();
         return view('backend.sms_template' , compact('getData'));
     }
 
@@ -44,17 +45,17 @@ class SmsSendController extends Controller
     }
 
     public function updateTemplate(Request $request){
-    	$getData = SmsTemplate::where('type','=',$request->type)->first();
-		if($getData == null){
-			SmsTemplate::create(['template' => $request->sms_template , 'type' => $request->type]);
-		}else{
-			if($request->sms_template == ''){ $sms_template = ''; }else{
-				$sms_template = $request->sms_template;
-			}
-			SmsTemplate::where('type' ,'=', $request->type)->update(['template' => $sms_template]);
-		}
-	    $getData = SmsTemplate::where('type' ,'=', $request->type)->first();
-		return view($request->type=='namaz'  ? 'backend.sms_template' : 'backend.event_sms_template' , compact('getData'));
+        $getData = SmsTemplate::where('type','=',$request->type)->first();
+        if($getData == null){
+            SmsTemplate::create(['template' => $request->sms_template , 'type' => $request->type]);
+        }else{
+            if($request->sms_template == ''){ $sms_template = ''; }else{
+                $sms_template = $request->sms_template;
+            }
+            SmsTemplate::where('type' ,'=', $request->type)->update(['template' => $sms_template]);
+        }
+        $getData = SmsTemplate::where('type' ,'=', $request->type)->first();
+        return view($request->type=='namaz'  ? 'backend.sms_template' : 'backend.event_sms_template' , compact('getData'));
 
     }
 
@@ -66,7 +67,7 @@ class SmsSendController extends Controller
         if(!$mosqueData->isEmpty()) {
             $getTemplate = SmsTemplate::where('type','=','namaz')->first()->template;
             foreach ($mosqueData as $mosque):
-                $mosqueName = Mosque::where('id', '=' ,$mosque->id )->first()->name;
+                $mosqueName = Mosque::where('id', '=' ,$mosque->m_id )->first()->name;
                 $getTemplate = str_replace("{{MosqueName}}", $mosqueName, $getTemplate);
                 $getTemplate = str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
                 if ($mosque->jumma == null) {
@@ -124,17 +125,23 @@ class SmsSendController extends Controller
     public function plivoSMSCampaign($u_idArray , $text)
     {
         $user = User::find($u_idArray);
-        $userPhone = '';
+       // $userPhone = '';
+        $AddsTemplate = Advertisement::where('type','=','namaz')->get();
+        $totalAddsTemplate = count($AddsTemplate);
+        $NumberCount = 0;
         foreach ($user as $userData):
-            $userPhone.=$userData->phone.'<';
-        endforeach;
-        $params = array(
+            //$userPhone.=$userData->phone.'<';
+            if($NumberCount ==  $totalAddsTemplate){ $NumberCount = 0; }
+            $text = str_replace("{{Advertisement}}", $AddsTemplate[$NumberCount]->template, $text);
+            $params = array(
             'src' => '+15876046444', // Sender's phone number with country code
-            'dst' => $userPhone, // receiver's phone number with country code
+            'dst' => $userData->phone, // receiver's phone number with country code
             'text' => $text // Your SMS text message
         );
-        $response = $this->plivo->send_message($params);
-       // dd( $response[1]['message']);
+        //$response = $this->plivo->send_message($params);
+            $NumberCount++;
+        endforeach;
+        // dd( $response[1]['message']);
     }
 
 
@@ -174,16 +181,16 @@ class SmsSendController extends Controller
                 $getTemplate = str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
 
                 if ($mosque->jumma == null) {
-                        $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Zuhar Time', $getTemplate);
-                        $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->zuhar)->format('h:i A'), $getTemplate);
-                    }
-                    if ($mosque->zuhar == null) {
-                        $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Jumma Time', $getTemplate);
-                        $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->jumma)->format('h:i A'), $getTemplate);
-                    }
-                    $getTemplate = str_replace("{{AsarNamazTime}}", \Carbon\Carbon::parse($mosque->asar)->format('h:i A'), $getTemplate);
-                    $getTemplate = str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
-                    $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
+                    $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Zuhar Time', $getTemplate);
+                    $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->zuhar)->format('h:i A'), $getTemplate);
+                }
+                if ($mosque->zuhar == null) {
+                    $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Jumma Time', $getTemplate);
+                    $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->jumma)->format('h:i A'), $getTemplate);
+                }
+                $getTemplate = str_replace("{{AsarNamazTime}}", \Carbon\Carbon::parse($mosque->asar)->format('h:i A'), $getTemplate);
+                $getTemplate = str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
+                $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
 
                 $params = array(
                     'src' => '+15876046444', // Sender's phone number with country code

@@ -98,6 +98,14 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul class="nav side-menu">
+                        <li><a><i class="fa fa-braille" aria-hidden="true"></i> Adds Templates <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ route('adds-data') }}">Adds Record</a></li>
+                                <li><a href="{{ route('addNewAddsTemlate') }}">Add New Template</a></li>
+                            </ul>
+                        </li>
+                    </ul>
 
                 </div>
 

@@ -28,6 +28,13 @@ Route::get('updae-event-time/{event_id}', 'EventController@getEventTime')->name(
 Route::get('delete-event-data/{event_id}', 'EventController@deleteEventData')->name('delete-event-data');
 
 
+Route::get('addvertisement', 'AddsController@smsTemplate')->name('adds-data');
+Route::get('Add-New-Addvertisement-Template', 'AddsController@addNewAddsTemlate')->name('addNewAddsTemlate');
+Route::post('Save-Addvertisement-Template', 'AddsController@saveNewAddsTemlate')->name('adds_tempalte_update');
+Route::get('Edit-Addvertisement-Template/{template_id}', 'AddsController@editTemplateData')->name('edit-template-data');
+Route::get('Delete-Addvertisement-Template/{template_id}', 'AddsController@deletTemplateData')->name('delete-template-data');
+
+
 Route::get('subscriber', 'SubscribeUserController@subscriberRecod')->name('subscriber-data');
 Route::get('subscribe-user', 'SubscribeUserController@index')->name('subscribe_user');
 Route::post('subscribe-user', 'SubscribeUserController@saveSubscriber')->name('save_subscriber');
