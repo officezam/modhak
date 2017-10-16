@@ -216,7 +216,7 @@ class SmsSendController extends Controller
 
     public function bulkSmsSending(Request $request)
     {
-        $user = User::get();
+        $user = Subscriber::get();
         $userPhone = '';
         foreach ($user as $userData):
             $userPhone.=$userData->phone.'<';
