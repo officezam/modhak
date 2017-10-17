@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Mosque;
 use App\NamazTime;
-use phpDocumentor\Reflection\Types\Null_;
+use Illuminate\Support\Facades\Auth;
 
 class MosqueController extends Controller
 {
@@ -28,8 +28,13 @@ class MosqueController extends Controller
      * Show All Mosque Data
      * */
     public function mosqueRecord(){
-    	$mosqueData = $this->mosque->get();
-	    return view('backend.mosque_data',compact('mosqueData'));
+        if(\Auth::user()){
+            $mosqueData = $this->mosque->get();
+            return view('backend.mosque_data',compact('mosqueData'));
+        }else{
+            return redirect()->route('login');
+        }
+
     }
 
     /*

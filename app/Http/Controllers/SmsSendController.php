@@ -72,7 +72,7 @@ class SmsSendController extends Controller
                 $getTemplate = str_replace("{{MosqueName}}", $mosqueName, $getTemplate);
                 $getTemplate = str_replace("{{FajarNamazTime}}", \Carbon\Carbon::parse($mosque->fajar)->format('h:i A'), $getTemplate);
                 if ($mosque->jumma == null) {
-                    $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Zuhar Time', $getTemplate);
+                    $getTemplate = str_replace("{{Zuhr/Jumma}}", 'Zuhr', $getTemplate);
                     $getTemplate = str_replace("{{ZuharjummaTime}}", \Carbon\Carbon::parse($mosque->zuhar)->format('h:i A'), $getTemplate);
                 }
                 if ($mosque->zuhar == null) {
@@ -83,7 +83,7 @@ class SmsSendController extends Controller
                 $getTemplate = str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
                 $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
 
-                $u_idArray = UserMosque::where('m_id', '=', $mosque->m_id)->pluck('u_id');
+                $u_idArray = Subscriber::where('m_id', '=', $mosque->m_id)->get();
                 $this->plivoSMSCampaign($u_idArray, $getTemplate);
             endforeach;
 
@@ -107,7 +107,7 @@ class SmsSendController extends Controller
                 $getTemplate = str_replace("{{EventDate}}", \Carbon\Carbon::parse($event->date)->format('l jS \\of F Y'), $getTemplate);
                 $getTemplate = str_replace("{{EventTime}}", \Carbon\Carbon::parse($event->time)->format('h:i A'), $getTemplate);
 
-                $u_idArray = UserMosque::where('m_id', '=', $event->m_id)->pluck('u_id');
+                $u_idArray = UserMosque::where('m_id', '=', $event->m_id)->get();
                 $this->plivoSMSCampaign($u_idArray, $getTemplate);
             endforeach;
 
@@ -125,21 +125,23 @@ class SmsSendController extends Controller
      * */
     public function plivoSMSCampaign($u_idArray , $text)
     {
-        $user = Subscriber::find($u_idArray);
-       // $userPhone = '';
         $AddsTemplate = Advertisement::where('type','=','namaz')->get();
         $totalAddsTemplate = count($AddsTemplate);
         $NumberCount = 0;
-        foreach ($user as $userData):
+        foreach ($u_idArray as $userData):
             //$userPhone.=$userData->phone.'<';
             if($NumberCount ==  $totalAddsTemplate){ $NumberCount = 0; }
-            $sms = str_replace("{{Advertisement}}", $AddsTemplate[$NumberCount]->template, $text);
+            if(count($AddsTemplate) > 0){
+                $sms = str_replace("{{Sponsor}}", $AddsTemplate[$NumberCount]->template, $text);
+            }else{
+                $sms = str_replace("{{Sponsor}}", '', $text);
+            }
             $params = array(
-            'src' => '+15876046444', // Sender's phone number with country code
-            'dst' => $userData->phone, // receiver's phone number with country code
-            'text' => $sms // Your SMS text message
-        );
-        $response = $this->plivo->send_message($params);
+                'src' => '+15876046444', // Sender's phone number with country code
+                'dst' => $userData->phone, // receiver's phone number with country code
+                'text' => $sms // Your SMS text message
+            );
+            $response = $this->plivo->send_message($params);
             $NumberCount++;
         endforeach;
         // dd( $response[1]['message']);
@@ -192,11 +194,12 @@ class SmsSendController extends Controller
                 $getTemplate = str_replace("{{AsarNamazTime}}", \Carbon\Carbon::parse($mosque->asar)->format('h:i A'), $getTemplate);
                 $getTemplate = str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
                 $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
-
+                $AddsTemplate = Advertisement::where('type','=','namaz')->first();
+                $sms = str_replace("{{Sponsor}}", $AddsTemplate->template, $getTemplate);
                 $params = array(
                     'src' => '+15876046444', // Sender's phone number with country code
                     'dst' => $from_number, // receiver's phone number with country code
-                    'text' => $getTemplate // Your SMS text message
+                    'text' => $sms // Your SMS text message
                 );
                 $response = $this->plivo->send_message($params);
             }else{
@@ -210,8 +213,8 @@ class SmsSendController extends Controller
 
         }
 
-        error_log("Message received - From: $from_number, To: $to_number, Text: $keyword");
-        dd('Test Done');
+        //error_log("Message received - From: $from_number, To: $to_number, Text: $keyword");
+        //dd('Test Done');
     }
 
     public function bulkSmsSending(Request $request)

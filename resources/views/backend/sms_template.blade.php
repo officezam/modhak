@@ -34,7 +34,7 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" name="type" value="namaz">
               <div class="form-group">
-              <textarea rows="14" class="col-md-12" name="sms_template" >{{ $getData ? $getData->template : "" }}</textarea>
+                <textarea rows="14" class="col-md-12" name="sms_template" >{{ $getData ? $getData->template : "" }}</textarea>
               </div>
               <div class="ln_solid"></div>
               <div class="form-group">
@@ -45,6 +45,32 @@
             </form>
           </div>
         </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Default<small>Template (Follow this Template)</small></h2>
+              <div class="clearfix"></div>
+            </div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="type" value="namaz">
+            <div class="form-group">
+                <textarea rows="14" readonly class="col-md-12" name="" ><?php echo
+                "
+                {{MosqueName}}
+
+                Fajr:{{FajarNamazTime}}
+                {{Zuhr/Jumma}}:{{ZuharjummaTime}}
+                Asr:{{AsarNamazTime}}
+                Maghrib:{{MaghribNamazTime}}
+                Isha:{{IshaNamazTime}}
+
+                {{Sponsor}}
+                " ?>
+                </textarea>
+            </div>
+            <div class="ln_solid"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -53,6 +79,6 @@
 
   {{--<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>--}}
   <script>
-//    CKEDITOR.replace( 'sms_template' );
+      //    CKEDITOR.replace( 'sms_template' );
   </script>
 @endsection
