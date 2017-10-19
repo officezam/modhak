@@ -111,7 +111,7 @@
                         <li><a><i class="fa fa-user" aria-hidden="true"></i> User <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('users-data') }}">Users Record</a></li>
-                                <li><a href="{{ route('addNewAddsTemlate') }}">Add New User</a></li>
+                                <li><a href="{{ route('addNewUser') }}">Add New User</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -57,7 +57,9 @@ Route::post('receive-sms', 'SmsSendController@receiveSms');
 Auth::routes();
 
 Route::get('users', 'UsersController@usersData')->name('users-data');
-//Route::get('Add-New-Addvertisement-Template', 'AddsController@addNewAddsTemlate')->name('addNewAddsTemlate');
+Route::get('Add-New-User', 'UsersController@registerForm')->name('addNewUser');
 //Route::post('Save-Addvertisement-Template', 'AddsController@saveNewAddsTemlate')->name('adds_tempalte_update');
+Route::get('Delete-User/{user_id}', 'UsersController@deletUser')->name('delete-user-data');
+
 
 Route::get('/home', 'HomeController@index')->name('home');

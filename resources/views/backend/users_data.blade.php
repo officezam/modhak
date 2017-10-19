@@ -12,12 +12,12 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Advertisement Records</h3>
+          <h3>Users Records</h3>
         </div>
 
         <div class="pull-right">
-          <a href="{{ route('addNewAddsTemlate') }}" >
-            <button type="button" class="btn btn-success">Add New Template</button>
+          <a href="{{ route('addNewUser') }}" >
+            <button type="button" class="btn btn-success">Add New User</button>
           </a>
         </div>
       </div>
@@ -26,7 +26,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Advertisement <small>Records</small></h2>
+              <h2>Users <small>Records</small></h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -48,8 +48,10 @@
               <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                  <th>Advertisement Name</th>
-                  <th>Template Text </th>
+                  <th>Name</th>
+                  <th>Email </th>
+                  <th>Phone </th>
+                  <th>Address </th>
                   <th>Created Date</th>
                   <th>Action</th>
                 </tr>
@@ -57,14 +59,16 @@
 
                 <tbody>
                 @if($getData)
-                @foreach($getData as $template)
+                @foreach($getData as $user)
                   <tr>
-                    <td>{{ $template->name }}</td>
-                    <td>{{ $template->template }}</td>
-                    <td>{{ $template->created_at }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->phone }}</td>
+                    <td>{{ $user->address }}</td>
+                    <td>{{ $user->created_at }}</td>
                     <td>
-                      <a href="{{ route('edit-template-data', $template->id) }}" ><button type="button" class="btn btn-danger">Edit</button></a>
-                      <a href="{{ route('delete-template-data', $template->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
+                      {{--<a href="{{ route('edit-template-data', $user->id) }}" ><button type="button" class="btn btn-danger">Edit</button></a>--}}
+                      <a href="{{ route('delete-user-data', $user->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
                     </td>
                   </tr>
                 @endforeach
