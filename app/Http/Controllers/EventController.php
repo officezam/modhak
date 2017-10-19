@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Mosque;
 use Carbon\Carbon;
-
+use Auth;
 class EventController extends Controller
 {
 
@@ -16,7 +16,11 @@ class EventController extends Controller
 	}
 
 	public function eventsRecord(){
-        $events = $this->event->get();
+        if(Auth::user()->type == 'admin'){
+            $events = $this->event->get();
+        }else{
+            $events = $this->event->where('u_id',Auth::user()->id)->get();
+        }
         return view('backend.event_data' , compact('events'));
     }
 
@@ -26,7 +30,11 @@ class EventController extends Controller
      * Event Add Form Display
      * */
     public function eventAdd(){
-        $mosque = $this->mosque->get();
+        if(Auth::user()->type == 'admin'){
+            $mosque = $this->mosque->get();
+        }else{
+            $mosque = $this->mosque->where('u_id',Auth::user()->id)->get();
+        }
         return view('backend.add_event' , compact('mosque'));
     }
 
@@ -61,7 +69,7 @@ class EventController extends Controller
 		if(empty($m_id))
 		{
 			$eventTableData = [
-				'u_id' => 1,
+				'u_id' => Auth::user()->id,
 				'm_id' => $m_id,
 				'name' => $request->name,
 				'date' => date('Y-m-d H:i:s', strtotime("$request->date")),
@@ -75,7 +83,7 @@ class EventController extends Controller
 			$updateData =  $this->event->where('m_id', $m_id)->where('date', '=', $request->date)->first();
 			if($updateData !=null ){
 				$eventTableData = [
-					'u_id' => 1,
+					'u_id' => Auth::user()->id,
 					'm_id' => $m_id,
 					'name' => $request->name,
 					'date' => date('Y-m-d H:i:s', strtotime("$request->date")),
@@ -86,7 +94,7 @@ class EventController extends Controller
 				return $m_id;
 			}else{
 				$eventTableData = [
-					'u_id' => 1,
+					'u_id' => Auth::user()->id,
 					'm_id' => $m_id,
 					'name' => $request->name,
 					'date' => date('Y-m-d H:i:s', strtotime("$request->date")),

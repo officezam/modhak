@@ -5,27 +5,35 @@ use App\Mosque;
 use App\Subscriber;
 use App\UserMosque;
 use Illuminate\Http\Request;
+use Auth;
 
 class SubscribeUserController extends Controller
 {
     public function index(){
-    	$mosque = Mosque::get();
+        if(Auth::user()->type == 'admin'){
+            $mosque = Mosque::get();
+        }else{
+            $mosque = Mosque::where('u_id',Auth::user()->id)->get();
+        }
 	    return view('backend.subscribe_user' , compact('mosque'));
-
     }
 
     /*
      * Subscriber Record Fetch
      * */
     public function subscriberRecod(){
-        $subscriber = Subscriber::where('u_id' , '=' , 1)->get();
+        if(Auth::user()->type == 'admin'){
+            $subscriber = Subscriber::get();
+        }else{
+            $subscriber = Subscriber::where('u_id',Auth::user()->id)->get();
+        }
         return view('backend.subscriber_data' , compact('subscriber'));
     }
     public function saveSubscriber(Request $request){
 
 	    $data = [
             'm_id' => $request->m_id,
-            'u_id' => 1,
+            'u_id' => Auth::user()->id,
 		    'name' => $request->name,
 		    'phone' => $request->phone,
 	    ];

@@ -13,6 +13,7 @@ use Plivo;
 use App\SmsTemplate;
 use App\Event;
 use App\ReceiveSms;
+use Auth;
 
 class SmsSendController extends Controller
 {
@@ -62,9 +63,16 @@ class SmsSendController extends Controller
 
     public function smsSending(Request $request)
     {
+
         //date_default_timezone_set('Asia/Karachi');
         date_default_timezone_set('Canada/Saskatchewan');
-        $mosqueData = NamazTime::where('date','=',date("Y-m-d", time()))->get();
+        if(Auth::user()->type == 'admin'){
+            $mosqueData = NamazTime::where('date','=',date("Y-m-d", time()))->get();
+        }else{
+            $m_id = Mosque::where('u_id',Auth::user()->id)->pluck('id');
+            $mosqueData = NamazTime::where('date','=',date("Y-m-d", time()))->whereIn('m_id', $m_id)->get();
+        }
+
         if(!$mosqueData->isEmpty()) {
             $getTemplate = SmsTemplate::where('type','=','namaz')->first()->template;
             foreach ($mosqueData as $mosque):
@@ -99,7 +107,12 @@ class SmsSendController extends Controller
     {
         //date_default_timezone_set('Asia/Karachi');
         date_default_timezone_set('Canada/Saskatchewan');
-        $eventData = Event::where('date','=',date("Y-m-d", time()))->get();
+        if(Auth::user()->type == 'admin'){
+            $eventData = Event::where('date','=',date("Y-m-d", time()))->get();
+        }else{
+            $eventData = Event::where('date','=',date("Y-m-d", time()))->where('u_id',Auth::user()->id)->get();
+        }
+
         if(!$eventData->isEmpty()) {
             $getTemplate = SmsTemplate::where('type','=','event')->first()->template;
             foreach ($eventData as $event):
@@ -107,7 +120,7 @@ class SmsSendController extends Controller
                 $getTemplate = str_replace("{{EventDate}}", \Carbon\Carbon::parse($event->date)->format('l jS \\of F Y'), $getTemplate);
                 $getTemplate = str_replace("{{EventTime}}", \Carbon\Carbon::parse($event->time)->format('h:i A'), $getTemplate);
 
-                $u_idArray = UserMosque::where('m_id', '=', $event->m_id)->get();
+                $u_idArray = Subscriber::where('m_id', '=', $event->m_id)->get();
                 $this->plivoSMSCampaign($u_idArray, $getTemplate);
             endforeach;
 
@@ -219,7 +232,11 @@ class SmsSendController extends Controller
 
     public function bulkSmsSending(Request $request)
     {
-        $user = Subscriber::get();
+        if(Auth::user()->type == 'admin'){
+            $user = Subscriber::get();
+        }else{
+            $user = Subscriber::where('u_id',Auth::user()->id)->get();
+        }
         $userPhone = '';
         foreach ($user as $userData):
             $userPhone.=$userData->phone.'<';

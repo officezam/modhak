@@ -29,7 +29,11 @@ class MosqueController extends Controller
      * */
     public function mosqueRecord(){
         if(\Auth::user()){
-            $mosqueData = $this->mosque->get();
+            if(Auth::user()->type == 'admin'){
+                $mosqueData = $this->mosque->get();
+            }else{
+                $mosqueData = $this->mosque->where('u_id',Auth::user()->id)->get();
+            }
             return view('backend.mosque_data',compact('mosqueData'));
         }else{
             return redirect()->route('login');
@@ -49,7 +53,7 @@ class MosqueController extends Controller
         if(empty($m_id))
         {
             $mosqueTableData = [
-                'u_id' => 1,
+                'u_id' => Auth::user()->id,
                 'name' => $request->m_name,
                 'keyword' => $request->m_keyword,
             ];
