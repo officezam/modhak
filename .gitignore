@@ -4,6 +4,8 @@
 /storage/*.key
 /vendor
 /.idea/*
+.idea/*
+.idea/
 /.idea/wordkspace.xml
 /.vagrant
 Homestead.json
