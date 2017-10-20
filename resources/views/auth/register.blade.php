@@ -38,7 +38,7 @@
                         </div>
                         <div class="x_content">
                             <br>
-                            <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('register_user') }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

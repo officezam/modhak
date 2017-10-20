@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Validator;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class UsersController extends Controller
 {
@@ -22,12 +23,18 @@ class UsersController extends Controller
     public function deletUser($id){
         User::where('id',$id)->delete();
         return redirect()->route('users-data');
-
     }
 
 
-    public function registerUser(Request $request){
-        return Validator::make($request, [
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'address' => 'required',
@@ -35,4 +42,33 @@ class UsersController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'address' => $data['address'],
+            'phone' => $data['phone'],
+            'remember_token' => $data['_token'],
+            'type' => 'user',
+            'password' => bcrypt($data['password']),
+        ]);
+    }
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event( $this->create($request->all()));
+
+        //$this->guard()->login($user);
+        return redirect()->route('users-data');
+    }
+
 }
