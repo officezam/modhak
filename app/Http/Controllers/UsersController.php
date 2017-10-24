@@ -63,12 +63,8 @@ class UsersController extends Controller
     }
     public function register(Request $request)
     {
-        $environment = $app->environment();
-        dd($environment);
         $this->validator($request->all())->validate();
-
         event( $this->create($request->all()));
-
         //$this->guard()->login($user);
         return redirect()->route('users-data');
     }
