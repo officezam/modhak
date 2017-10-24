@@ -54,19 +54,25 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="type" value="namaz">
             <div class="form-group">
-                <textarea rows="14" readonly class="col-md-12" name="" ><?php echo
-                "
-                {{MosqueName}}
-
-                Fajr:{{FajarNamazTime}}
-                {{Zuhr/Jumma}}:{{ZuharjummaTime}}
-                Asr:{{AsarNamazTime}}
-                Maghrib:{{MaghribNamazTime}}
-                Isha:{{IshaNamazTime}}
-
-                {{Sponsor}}
-                " ?>
-                </textarea>
+                <div rows="14" readonly class="col-md-4" name="" >
+                  <br>
+                <?php
+                echo "{{MosqueName}}";
+                echo '<br>';
+                echo "Fajr:{{FajarNamazTime}}";
+                echo '<br>';
+                echo "{{Zuhr/Jumma}}:{{ZuharjummaTime}}";
+                echo '<br>';
+                echo "Asr:{{AsarNamazTime}}";
+                echo '<br>';
+                echo "Maghrib:{{MaghribNamazTime}}";
+                echo '<br>';
+                echo "Isha:{{IshaNamazTime}}";
+                echo '<br>';
+                echo '<br>';
+                echo "{{Sponsor}}"
+                    ?>
+                </div>
             </div>
             <div class="ln_solid"></div>
           </div>

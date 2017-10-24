@@ -237,16 +237,37 @@ class SmsSendController extends Controller
         }else{
             $user = Subscriber::where('u_id',Auth::user()->id)->get();
         }
-        $userPhone = '';
-        foreach ($user as $userData):
-            $userPhone.=$userData->phone.'<';
-        endforeach;
-        $params = array(
-            'src' => '+15876046444', // Sender's phone number with country code
-            'dst' => $userPhone, // receiver's phone number with country code
-            'text' => $request->sms_text // Your SMS text message
-        );
-        $response = $this->plivo->send_message($params);
+
+        $AddsTemplate = Advertisement::where('type','=','namaz')->get();
+        $totalAddsTemplate = count($AddsTemplate);
+        $NumberCount = 0;
+
+        foreach ($user as $useData):
+            if($NumberCount ==  $totalAddsTemplate){ $NumberCount = 0; }
+            if(count($AddsTemplate) > 0){
+                $sms = str_replace("{{Sponsor}}", $AddsTemplate[$NumberCount]->template, $request->sms_text);
+            }else{
+                $sms = str_replace("{{Sponsor}}", '', $request->sms_text);
+            }
+            $params = array(
+                'src' => '+15876046444', // Sender's phone number with country code
+                'dst' => $useData->phone, // receiver's phone number with country code
+                'text' => $sms // Your SMS text message
+            );
+            $response = $this->plivo->send_message($params);
+            $NumberCount++;
+            endforeach;
+
+//        $userPhone = '';
+//        foreach ($user as $userData):
+//            $userPhone.=$userData->phone.'<';
+//        endforeach;
+//        $params = array(
+//            'src' => '+15876046444', // Sender's phone number with country code
+//            'dst' => $userPhone, // receiver's phone number with country code
+//            'text' => $request->sms_text // Your SMS text message
+//        );
+//        $response = $this->plivo->send_message($params);
         $request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
         return view('backend.bulk_sms_template');
     }

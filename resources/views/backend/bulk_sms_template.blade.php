@@ -33,7 +33,7 @@
               <div class="alert alert-success">{{ Session::get('send') }}</div>
             @endif
             <div class="x_title">
-              <h2>Bulk SMS<small>Sending</small></h2>
+              <h4>Must Used This <h3><?php echo "{{Sponsor}}"; ?> </h3>Tag At end of Your Message for Adds Template</h4>
               <div class="clearfix"></div>
             </div>
             <form action="{{ route('bulk_sms_send') }}" method="post" class="form-horizontal form-label-left" >

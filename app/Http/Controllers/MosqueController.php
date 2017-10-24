@@ -151,27 +151,54 @@ class MosqueController extends Controller
         $request->session()->flash('success', 'Delete Record and Namaz Time..!');
         return redirect()->route('mosque_record');
     }
-    public function saveMosque(Request $request){
+//    public function saveMosque(Request $request){
+//
+//        $carbon = new Carbon();
+//
+//        $data = [
+//            'mosque_name' => $request->mosque_name,
+//            'city' => $request->city,
+//            'date' => $carbon->instance(new \DateTime($request->date))->toDateTimeString(),
+//            'fajar_time' => $carbon->instance(new \DateTime($request->fajar_time))->toDateTimeString(),
+//            'zuhar_time' => $carbon->instance(new \DateTime($request->zuhar_time))->toDateTimeString(),
+//            'asar_time' => $carbon->instance(new \DateTime($request->asar_time))->toDateTimeString(),
+//            'magrib_time' => $carbon->instance(new \DateTime($request->magrib_time))->toDateTimeString(),
+//            'esha_time' => $carbon->instance(new \DateTime($request->esha_time))->toDateTimeString(),
+//        ];
+//
+//        $userData = Mosque::create($data);
+//
+//        return view('backend.add_mosque');
+//    }
 
-        $carbon = new Carbon();
 
-        $data = [
-            'mosque_name' => $request->mosque_name,
-            'city' => $request->city,
-            'date' => $carbon->instance(new \DateTime($request->date))->toDateTimeString(),
-            'fajar_time' => $carbon->instance(new \DateTime($request->fajar_time))->toDateTimeString(),
-            'zuhar_time' => $carbon->instance(new \DateTime($request->zuhar_time))->toDateTimeString(),
-            'asar_time' => $carbon->instance(new \DateTime($request->asar_time))->toDateTimeString(),
-            'magrib_time' => $carbon->instance(new \DateTime($request->magrib_time))->toDateTimeString(),
-            'esha_time' => $carbon->instance(new \DateTime($request->esha_time))->toDateTimeString(),
+    public function copyMosque(Request $request){
+
+        $copiedMosqueID = $request->m_id;
+        $mosqueTableData = [
+            'u_id' => Auth::user()->id,
+            'name' => $request->mosque_mame,
+            'keyword' => $request->mosque_keyword,
         ];
-
-        $userData = Mosque::create($data);
-
-        return view('backend.add_mosque');
+        $mosqueData = $this->mosque->create($mosqueTableData);
+        $m_id = $mosqueData->id;
+        $copyData = $this->namaztime->where('m_id' ,$copiedMosqueID)->get();
+        foreach ($copyData as $namazTime)
+        {
+            $namazTimeData = [
+                'm_id' => $m_id,
+                'date' => $namazTime->date,
+                'fajar' =>  $namazTime->fajar,
+                'zuhar' => $namazTime->zuhar,
+                'jumma' => $namazTime->jumma,
+                'asar' =>  $namazTime->asar,
+                'maghrib' => $namazTime->maghrib,
+                'esha' =>  $namazTime->esha,
+            ];
+            $namazTime = $this->namaztime->create($namazTimeData);
+        }
+        return redirect()->route('mosque_record');
     }
-
-
 
 
 

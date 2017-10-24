@@ -6,7 +6,7 @@
   {{--<link href="{{asset('/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">--}}
   {{--<link href="{{asset('/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">--}}
   {{--<link href="{{asset('/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">--}}
-  @endsection
+@endsection
 @section('content')
   <div class="right_col" role="main">
     <div class="">
@@ -62,6 +62,8 @@
                     <td>{{ $mosque->keyword }}</td>
                     <td><a href="{{ route('updae-time', $mosque->id) }}" ><button type="button" class="btn btn-success">View Namaz Time Detail </button></a></td>
                     <td>
+
+                      <button type="button" id="copy_mosque_data" onclick="mosque_data({{ $mosque->id }})" class="btn btn-primary">Copy Mosque Data</button>
                       <a href="{{ route('updae-time', $mosque->id) }}" ><button type="button" class="btn btn-info">Edit</button></a>
                       <a href="{{ route('delete-mosque-data', $mosque->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
                     </td>
@@ -73,23 +75,63 @@
           </div>
         </div>
       </div>
-  </div>
-@stop
-@section('pagejs')
-  <!-- Datatables -->
-    <script src="{{asset('/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    {{--<script src="{{asset('/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/jszip/dist/jszip.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/pdfmake/build/pdfmake.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/pdfmake/build/vfs_fonts.js')}}"></script>--}}
+    </div>
+
+
+    <div id="Copy_Mosque" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel2">Copy Mosque Data</h4>
+          </div>
+          <form id="antoform2" class="form-horizontal calender" action="{{ route('copy_mosque') }}" method="post" role="form">
+          <div class="modal-body">
+
+            <div id="testmodal2" style="padding: 5px 20px;">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="m_id" id="m_id" value="">
+                <div class="item form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Mosque Name <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="mosque_mame" class="form-control col-md-7 col-xs-12" value="" data-validate-length-range="15" data-validate-words="2" name="mosque_mame" placeholder="Mosque name(s) e.g Masjid Faisal" required="required" type="text">
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Mosque Keyword <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="mosque_keyword" class="form-control col-md-7 col-xs-12" value="" data-validate-length-range="15" data-validate-words="2" name="mosque_keyword" placeholder="Mosque Keyword(s) e.g Masjid Faisal" required="required" type="text">
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary antosubmit2">Save changes</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="click_Copy_Mosque" data-toggle="modal" data-target="#Copy_Mosque"></div>
+
+
+
+    @stop
+    @section('pagejs')
+      <script>
+          function mosque_data(value) {
+              $("#m_id").val(value);
+              $('#Copy_Mosque').modal('show');
+          }
+
+      </script>
+      <!-- Datatables -->
+      <script src="{{asset('/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+
+
+
 @endsection

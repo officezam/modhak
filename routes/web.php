@@ -20,6 +20,8 @@ Route::get('delete-mosque-data/{mosque_id}', 'MosqueController@deleteMosqueData'
 Route::post('Add-Mosque', 'MosqueController@saveMosque')->name('add_mosque');
 Route::get('Mosque', 'MosqueController@mosqueRecord')->name('mosque_record');
 Route::post('save-namaz-time', 'MosqueController@saveNamazTime');
+Route::post('Copy-Mosque', 'MosqueController@copyMosque')->name('copy_mosque');
+
 
 Route::get('add-event', 'EventController@eventAdd')->name('add_event_form');
 Route::post('save-event-time', 'EventController@saveEventTime');
