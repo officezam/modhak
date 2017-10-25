@@ -166,11 +166,11 @@ class SmsSendController extends Controller
     {
         //dd($request);
         // Sender's phone numer
-        $from_number = $_REQUEST['From'];
+        $from_number = '+923007272332';// $_REQUEST['From'];
         // Receiver's phone number - Plivo number
-        $to_number = $_REQUEST['To'];
+        $to_number = '+15876046444';//$_REQUEST['To'];
         // The SMS text message which was received
-        $keyword = $_REQUEST['Text'];
+        $keyword = 'Mosque';//$_REQUEST['Text'];
         // Output the text which was received to the log file.
         $receiveSms = ReceiveSms::create(['from' => $from_number , 'to' => $to_number, 'keyword' => $keyword]);
 
@@ -207,8 +207,21 @@ class SmsSendController extends Controller
                 $getTemplate = str_replace("{{AsarNamazTime}}", \Carbon\Carbon::parse($mosque->asar)->format('h:i A'), $getTemplate);
                 $getTemplate = str_replace("{{MaghribNamazTime}}", \Carbon\Carbon::parse($mosque->maghrib)->format('h:i A'), $getTemplate);
                 $getTemplate = str_replace("{{IshaNamazTime}}", \Carbon\Carbon::parse($mosque->esha)->format('h:i A'), $getTemplate);
-                $AddsTemplate = Advertisement::where('type','=','namaz')->first();
-                $sms = str_replace("{{Sponsor}}", $AddsTemplate->template, $getTemplate);
+
+                $AddsCout =  count(Advertisement::get());
+                if($AddsCout > 0){
+                    $AddsTemplate = Advertisement::where('sendingstatus','!=',1)->first();
+                    if($AddsTemplate==null){
+                        Advertisement::where('sendingstatus' ,'=' , 1)->update(['sendingstatus' => 0]);
+                        $AddsTemplate = Advertisement::where('sendingstatus','!=',1)->first();
+                    }
+                    $sms = str_replace("{{Sponsor}}", $AddsTemplate->template, $getTemplate);
+                    Advertisement::where('id',$AddsTemplate->id)->update(['sendingstatus' => 1]);
+
+                }else{
+                    $sms = str_replace("{{Sponsor}}", '', $getTemplate);
+                }
+
                 $params = array(
                     'src' => '+15876046444', // Sender's phone number with country code
                     'dst' => $from_number, // receiver's phone number with country code
@@ -256,7 +269,7 @@ class SmsSendController extends Controller
             );
             $response = $this->plivo->send_message($params);
             $NumberCount++;
-            endforeach;
+        endforeach;
 
 //        $userPhone = '';
 //        foreach ($user as $userData):
