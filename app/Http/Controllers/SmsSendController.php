@@ -166,11 +166,11 @@ class SmsSendController extends Controller
     {
         //dd($request);
         // Sender's phone numer
-        $from_number = '+923007272332';// $_REQUEST['From'];
+        $from_number = $_REQUEST['From'];
         // Receiver's phone number - Plivo number
-        $to_number = '+15876046444';//$_REQUEST['To'];
+        $to_number = $_REQUEST['To'];
         // The SMS text message which was received
-        $keyword = 'Mosque';//$_REQUEST['Text'];
+        $keyword = $_REQUEST['Text'];
         // Output the text which was received to the log file.
         $receiveSms = ReceiveSms::create(['from' => $from_number , 'to' => $to_number, 'keyword' => $keyword]);
 
