@@ -17,9 +17,9 @@ class ExcelReadController extends Controller
     public function excelReader(){
 
         dump(public_path().'/csvFiles/Final-List.xlsx');
-        $result = \Excel::load(public_path().'/csvFiles/Final-List.xlsx', function($reader){})->get();
-echo phpinfo();
-        //dump($result);
+        $result = \Excel::load(public_path().'/csvFiles/Final-List.xlsx', function($reader){})->limitRows(10);
+//echo phpinfo();
+        dump($result);
 exit;
         $result->each(function($row)
         {
