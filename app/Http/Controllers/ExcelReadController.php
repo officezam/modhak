@@ -17,6 +17,8 @@ class ExcelReadController extends Controller
     public function excelReader(){
 
         $result = \Excel::load(base_path().'/documents/Final-List.xlsx', function($reader){})->get();
+
+        dd($result);
         $result->each(function($row)
         {
             $Number = trim(str_replace('-','',$row->phone));
