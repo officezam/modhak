@@ -14,6 +14,7 @@ use App\SmsTemplate;
 use App\Event;
 use App\ReceiveSms;
 use Auth;
+use App\ExcelModel;
 
 class SmsSendController extends Controller
 {
@@ -172,7 +173,25 @@ class SmsSendController extends Controller
         // The SMS text message which was received
         $keyword = $_REQUEST['Text'];
         // Output the text which was received to the log file.
+
         $receiveSms = ReceiveSms::create(['from' => $from_number , 'to' => $to_number, 'keyword' => $keyword]);
+
+//        $c = 10293;
+        $Number = trim(str_replace('-','',$keyword));
+        $Number = trim(str_replace('+','',$Number));
+
+
+        if(is_numeric($Number)){
+            $result = ExcelModel::where('phone' , '=' , $Number)->first();
+            $text = ("You are registered \n ".$result->first_name.' '.$result->last_name."\n".$result->address."\n".$result->email);
+
+            $params = array(
+                'src' => '+15876046444', // Sender's phone number with country code
+                'dst' => $from_number, // receiver's phone number with country code
+                'text' => $text // Your SMS text message
+            );
+            $response = $this->plivo->send_message($params);
+        }
 
         $mosqueData = Mosque::where('keyword' , 'like' , '%'.$keyword.'%')->first();
 
@@ -221,7 +240,6 @@ class SmsSendController extends Controller
                 }else{
                     $sms = str_replace("{{Sponsor}}", '', $getTemplate);
                 }
-
                 $params = array(
                     'src' => '+15876046444', // Sender's phone number with country code
                     'dst' => $from_number, // receiver's phone number with country code
