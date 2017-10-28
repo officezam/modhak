@@ -18,7 +18,8 @@ class ExcelReadController extends Controller
 
         dump(public_path().'/csvFiles/Final-List.xlsx');
         $result = \Excel::load(public_path().'/csvFiles/Final-List.xlsx', function($reader){})->get();
-dump($result);
+dd(phpinfo());
+        dump($result);
 exit;
         $result->each(function($row)
         {
