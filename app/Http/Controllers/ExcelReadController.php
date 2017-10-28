@@ -16,10 +16,10 @@ class ExcelReadController extends Controller
 
     public function excelReader(){
 
-        dd('amir');
-        $result = \Excel::load(base_path().'/documents/Final-List.xlsx', function($reader){})->get();
-
-
+        dump(public_path().'/csvFiles/Final-List.xlsx');
+        $result = \Excel::load(public_path().'/csvFiles/Final-List.xlsx', function($reader){})->get();
+dump($result);
+exit;
         $result->each(function($row)
         {
             $Number = trim(str_replace('-','',$row->phone));
