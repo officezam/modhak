@@ -16,27 +16,26 @@ class ExcelReadController extends Controller
 
     public function excelReader(){
 
-        dump(public_path().'/csvFiles/Final-List.xlsx');
-        $result = Excel::load(public_path().'/csvFiles/Final-List.xlsx', function($reader){
+//        Excel::selectSheets('sheet1','LIFE MEMBERS')->load();
+        $result = Excel::load(public_path().'/csvFiles/Member-till-April.xls', function($reader){})->get();
 
-            dd($reader);
-        })->limitRows(10);
-//echo phpinfo();
-        dump($result);
-exit;
         $result->each(function($row)
         {
+            //dd($row);
+            //dd($row->first_name);
+
             $Number = trim(str_replace('-','',$row->phone));
             $Number = trim(str_replace('+','',$Number));
             $data = [
                 'first_name' => $row->first_name,
                 'last_name' => $row->last_name,
                 'address' => $row->address,
-                'phone' => $Number,
+                'phone' => $row->phone,
                 'email' => $row->email,
             ];
             $this->ExcelModel->create($data);
         });
+        echo '<h1> Updated Record </h1>';
     }
 
 

@@ -182,15 +182,29 @@ class SmsSendController extends Controller
 
 
         if(is_numeric($Number)){
-            $result = ExcelModel::where('phone' , '=' , $Number)->first();
-            $text = ("You are registered \n ".$result->first_name.' '.$result->last_name."\n".$result->address."\n".$result->email);
-
+            $result = ExcelModel::where('phone' , '=' , $Number)->get();
+            if(count($result) > 0) {
+                $text = "Dear Member, \n \n";
+                $text .= "You are PCAE registered member. \n ";
+                $text .= "Details as: \n ";
+                foreach ($result as $member):
+                    $text .= $member->first_name . ' ' . $member->last_name . " \n ";
+                endforeach;
+                $text .= "If you don't find your record email to pcaedmonton1@gmail.com \n \n ";
+                $text .= "Developed by. \n ";
+                $text .= "Ghazanfar Rehman. \n ";
+                //$text .= ("Dear Member, \n ".$result->first_name.' '.$result->last_name."\n".$result->address."\n".$result->email);
+            }else{
+                $text = "Dear Member, \n \n";
+                $text .= "We don't find your record please send email to pcaedmonton1@gmail.com \n ";
+            }
             $params = array(
                 'src' => '+15876046444', // Sender's phone number with country code
                 'dst' => $from_number, // receiver's phone number with country code
                 'text' => $text // Your SMS text message
             );
             $response = $this->plivo->send_message($params);
+            exit;
         }
 
         $mosqueData = Mosque::where('keyword' , 'like' , '%'.$keyword.'%')->first();
