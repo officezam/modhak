@@ -17,7 +17,7 @@ class ExcelReadController extends Controller
     public function excelReader(){
 
 //        Excel::selectSheets('sheet1','LIFE MEMBERS')->load();
-        $result = Excel::load(public_path().'/csvFiles/Member-till-April.xls', function($reader){})->get();
+        $result = Excel::load(public_path().'/csvFiles/Final.xlsx', function($reader){})->get();
 
         $result->each(function($row)
         {
@@ -26,11 +26,13 @@ class ExcelReadController extends Controller
 
             $Number = trim(str_replace('-','',$row->phone));
             $Number = trim(str_replace('+','',$Number));
+            $Number = trim(str_replace(' ','',$Number));
+            echo $Number.'<br>';
             $data = [
                 'first_name' => $row->first_name,
                 'last_name' => $row->last_name,
                 'address' => $row->address,
-                'phone' => $row->phone,
+                'phone' => $Number,
                 'email' => $row->email,
             ];
             $this->ExcelModel->create($data);
