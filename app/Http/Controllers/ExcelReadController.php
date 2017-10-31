@@ -41,6 +41,43 @@ class ExcelReadController extends Controller
     }
 
 
+    public function excelCeater(){
 
+        $data = $this->ExcelModel->get();
+        $EmailArr = array();
+
+        foreach ($data as $value):
+            $EmailArr[] = array($value->email);
+        endforeach;
+
+        $data = $EmailArr;
+
+        Excel::create('Filename', function($excel) use($data) {
+
+            $excel->sheet('Sheetname', function($sheet) use($data) {
+                $sheet->fromArray($data);
+            });
+
+        })->export('csv');
+        dd($EmailArr);
+        $result = Excel::load(public_path().'/csvFiles/Outlook.csv', function($reader){})->get();
+        $result->each(function($row)
+        {
+            $sheetData = $row->email;
+            if (strpos($sheetData, '@') !== false) {
+                $EmailArr[] = [$sheetData];
+                $data = [
+                    'first_name' => 'amir',
+                    'last_name' => 'Shahzad',
+                    'address' => '123',
+                    'phone' => '12334',
+                    'email' => $sheetData,
+                ];
+                $this->ExcelModel->create($data);
+            }else{
+                $ExtraDataArr[] = [$sheetData];
+            }
+        });
+    }
 
 }
