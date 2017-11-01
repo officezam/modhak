@@ -202,7 +202,7 @@ class SmsSendController extends Controller
             }
 //            dd($text);
             $params = array(
-                'src' => '+15876046444', // Sender's phone number with country code
+                'src' => $to_number, // Sender's phone number with country code
                 'dst' => $from_number, // receiver's phone number with country code
                 'text' => $text // Your SMS text message
             );
@@ -258,14 +258,14 @@ class SmsSendController extends Controller
                     $sms = str_replace("{{Sponsor}}", '', $getTemplate);
                 }
                 $params = array(
-                    'src' => '+15876046444', // Sender's phone number with country code
+                    'src' => $to_number, // Sender's phone number with country code
                     'dst' => $from_number, // receiver's phone number with country code
                     'text' => $sms // Your SMS text message
                 );
                 $response = $this->plivo->send_message($params);
             }else{
                 $params = array(
-                    'src' => '+15876046444', // Sender's phone number with country code
+                    'src' => $to_number, // Sender's phone number with country code
                     'dst' => $from_number, // receiver's phone number with country code
                     'text' => 'No Namaz Time Registered Please Contact on that Number 7802456176' // Your SMS text message
                 );
