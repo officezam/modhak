@@ -15,6 +15,7 @@ use App\Event;
 use App\ReceiveSms;
 use Auth;
 use App\ExcelModel;
+use App\Members;
 
 class SmsSendController extends Controller
 {
@@ -319,6 +320,9 @@ class SmsSendController extends Controller
         $request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
         return view('backend.bulk_sms_template');
     }
+
+
+
 
 
 }

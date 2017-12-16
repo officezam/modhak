@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Prayer SMS</span></a>
+            <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Bulk SMS</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -25,18 +25,18 @@
             <div class="menu_section">
                 <h3>{{ Auth::user()->type }}</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> Mosque Menu <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{ route('mosque_record') }}">Mosque Record</a></li>
-                            <li><a href="{{ route('add_time_form') }}">Add New Mosque</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fa fa-edit"></i> Events <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{ route('events_record') }}">Events Record</a></li>
-                            <li><a href="{{ route('add_event_form') }}">Add New Event</a></li>
-                        </ul>
-                    </li>
+                    {{--<li><a><i class="fa fa-home"></i> Mosque Menu <span class="fa fa-chevron-down"></span></a>--}}
+                        {{--<ul class="nav child_menu">--}}
+                            {{--<li><a href="{{ route('mosque_record') }}">Mosque Record</a></li>--}}
+                            {{--<li><a href="{{ route('add_time_form') }}">Add New Mosque</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                    {{--<li><a><i class="fa fa-edit"></i> Events <span class="fa fa-chevron-down"></span></a>--}}
+                        {{--<ul class="nav child_menu">--}}
+                            {{--<li><a href="{{ route('events_record') }}">Events Record</a></li>--}}
+                            {{--<li><a href="{{ route('add_event_form') }}">Add New Event</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
                     {{--</li>--}}
                     {{--<li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>--}}
                     {{--<ul class="nav child_menu">--}}
@@ -73,53 +73,62 @@
                     {{--</ul>--}}
                     {{--</li>--}}
                 </ul>
-                <ul class="nav side-menu">
-                    <li><a><i class="fa fa-desktop"></i> Subscriber Menu <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{ route('subscriber-data') }}">Subscriber Record</a></li>
-                            <li><a href="{{ route('subscribe_user') }}">Add New Subscriber</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                @if(Auth::user()->type == 'admin')
-                <ul class="nav side-menu">
-                    <li><a><i class="fa fa-windows"></i> SMS Template <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{ route('sms_template') }}">Namaz Sms Template</a></li>
-                            <li><a href="{{ route('event_sms_template') }}">Event Sms Template</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                @endif
-                <ul class="nav side-menu">
-                    <li><a><i class="fa fa-clone"></i> SMS Sending <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{ route('send_sms') }}">Namaz Time SMS Sending</a></li>
-                            <li><a href="{{ route('event_send_sms') }}">Event SMS Sending</a></li>
-                            <li><a href="{{ route('bulk_sms_page') }}">Bulk SMS Sending</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                @if(Auth::user()->type == 'admin')
-                <ul class="nav side-menu">
-                    <li><a><i class="fa fa-braille" aria-hidden="true"></i> Adds Templates <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{ route('adds-data') }}">Adds Record</a></li>
-                            <li><a href="{{ route('addNewAddsTemlate') }}">Add New Template</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                {{--<ul class="nav side-menu">--}}
+                    {{--<li><a><i class="fa fa-desktop"></i> Subscriber Menu <span class="fa fa-chevron-down"></span></a>--}}
+                        {{--<ul class="nav child_menu">--}}
+                            {{--<li><a href="{{ route('subscriber-data') }}">Subscriber Record</a></li>--}}
+                            {{--<li><a href="{{ route('subscribe_user') }}">Add New Subscriber</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+                {{--@if(Auth::user()->type == 'admin')--}}
+                {{--<ul class="nav side-menu">--}}
+                    {{--<li><a><i class="fa fa-windows"></i> SMS Template <span class="fa fa-chevron-down"></span></a>--}}
+                        {{--<ul class="nav child_menu">--}}
+                            {{--<li><a href="{{ route('sms_template') }}">Namaz Sms Template</a></li>--}}
+                            {{--<li><a href="{{ route('event_sms_template') }}">Event Sms Template</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+                {{--@endif--}}
+                {{--<ul class="nav side-menu">--}}
+                    {{--<li><a><i class="fa fa-clone"></i> SMS Sending <span class="fa fa-chevron-down"></span></a>--}}
+                        {{--<ul class="nav child_menu">--}}
+                            {{--<li><a href="{{ route('send_sms') }}">Namaz Time SMS Sending</a></li>--}}
+                            {{--<li><a href="{{ route('event_send_sms') }}">Event SMS Sending</a></li>--}}
+                            {{--<li><a href="{{ route('bulk_sms_page') }}">Bulk SMS Sending</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+                {{--@if(Auth::user()->type == 'admin')--}}
+                {{--<ul class="nav side-menu">--}}
+                    {{--<li><a><i class="fa fa-braille" aria-hidden="true"></i> Adds Templates <span class="fa fa-chevron-down"></span></a>--}}
+                        {{--<ul class="nav child_menu">--}}
+                            {{--<li><a href="{{ route('adds-data') }}">Adds Record</a></li>--}}
+                            {{--<li><a href="{{ route('addNewAddsTemlate') }}">Add New Template</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
 
-                    <ul class="nav side-menu">
-                        <li><a><i class="fa fa-user" aria-hidden="true"></i> User <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                                <li><a href="{{ route('users-data') }}">Users Record</a></li>
-                                <li><a href="{{ route('addNewUser') }}">Add New User</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                @endif
-
+                    {{--<ul class="nav side-menu">--}}
+                        {{--<li><a><i class="fa fa-user" aria-hidden="true"></i> User <span class="fa fa-chevron-down"></span></a>--}}
+                            {{--<ul class="nav child_menu">--}}
+                                {{--<li><a href="{{ route('users-data') }}">Users Record</a></li>--}}
+                                {{--<li><a href="{{ route('addNewUser') }}">Add New User</a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--@endif--}}
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-user" aria-hidden="true"></i> Members <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('members-type-data') }}">Members Category</a></li>
+                            <li><a href="{{ route('members-data') }}">Members Record</a></li>
+                            <li><a href="{{ route('bulkmessages') }}">Send Bulk SMS</a></li>
+                            <li><a href="{{ route('singlemessages') }}">Indvidual SMS</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
             {{--<div class="menu_section">--}}

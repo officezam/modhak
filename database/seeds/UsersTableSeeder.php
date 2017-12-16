@@ -22,19 +22,11 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456'),
             ],
             [
-                'name' => 'Ghazanfar Rehman',
+                'name' => 'Admin',
                 'type' => 'admin',
-                'email' => 'grehman@gmail.com',
-                'address' => 'Canada',
-                'phone' => '+17802456176',
-                'password' => bcrypt('pass2word'),
-            ],
-            [
-                'name' => 'Ghazanfar Rehman',
-                'type' => 'admin',
-                'email' => 'moon3204@gmail.com',
-                'address' => 'Canada',
-                'phone' => '17802456176',
+                'email' => 'admin@gmail.com',
+                'address' => 'USA',
+                'phone' => '+923007272332',
                 'password' => bcrypt('pass2word'),
             ]
         ]);

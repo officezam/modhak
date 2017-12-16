@@ -11,8 +11,10 @@
 |
 */
 
-//Route::get('/', function () {return view('backend.add_mosque');})->name('add_mosque_form');
-Route::get('/',  'MosqueController@mosqueRecord');
+Auth::routes();
+
+Route::group(['middleware' => ['auth']], function() {
+Route::get('/',  'MemberstypeController@membersTypeData');
 Route::get('add-time', function () {return view('backend.add_time');})->name('add_time_form');
 Route::get('update-time/{namaz_id}', 'MosqueController@getNamazTime')->name('updae-time');
 Route::get('delete-mosque-data/{mosque_id}', 'MosqueController@deleteMosqueData')->name('delete-mosque-data');
@@ -56,7 +58,24 @@ Route::post('bulk-sms-sending', 'SmsSendController@bulkSmsSending')->name('bulk_
 Route::get('sms-sending', 'SmsSendController@smsSending')->name('sending_sms');
 Route::post('receive-sms', 'SmsSendController@receiveSms');
 
-Auth::routes();
+
+
+Route::get('Members-Category', 'MemberstypeController@membersTypeData')->name('members-type-data');
+Route::get('Add-Members-Category', 'MemberstypeController@registerForm')->name('addMemberstype');
+Route::get('delete-memberstype/{memberstype_id}', 'MemberstypeController@deletMembertype')->name('delete-memberstype-data');
+Route::post('Save-Members-Type', 'MemberstypeController@register')->name('save_memberstype');
+
+Route::get('members-data', 'MembersController@membersData')->name('members-data');
+Route::get('Add-Member', 'MembersController@registerForm')->name('addMember');
+Route::get('delete-member/{member_id}', 'MembersController@deletMember')->name('delete-member-data');
+Route::post('Save-Member', 'MembersController@register')->name('save_member');
+
+Route::get('bulk-sms-sending', 'MembersController@smsPage')->name('bulkmessages');
+Route::post('Sms-send', 'SmsSendTwilioController@smsBulkSend')->name('smsBulkSend');
+Route::get('Single-sms-sending', 'MembersController@smsSinglePage')->name('singlemessages');
+Route::post('Indvidual-Sms-send', 'SmsSendTwilioController@smssingleSend')->name('singleBulkSend');
+
+
 
 Route::get('users', 'UsersController@usersData')->name('users-data');
 Route::get('Add-New-User', 'UsersController@registerForm')->name('addNewUser');
@@ -68,3 +87,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('excel-read', 'ExcelReadController@excelReader');
 
+});
