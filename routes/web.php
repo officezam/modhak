@@ -76,6 +76,11 @@ Route::get('Single-sms-sending', 'MembersController@smsSinglePage')->name('singl
 Route::post('Indvidual-Sms-send', 'SmsSendTwilioController@smssingleSend')->name('singleBulkSend');
 
 
+Route::get('click-to-call', 'MembersController@clicktocall')->name('clicktocall');
+Route::post('call-created', 'TwilioController@createcall')->name('createcall');
+
+Route::get('browser-to-phone', 'MembersController@browserCall')->name('browsercall');
+
 
 Route::get('users', 'UsersController@usersData')->name('users-data');
 Route::get('Add-New-User', 'UsersController@registerForm')->name('addNewUser');

@@ -78,5 +78,11 @@ class MembersController extends Controller
 		return view('backend.singlesms');
 	}
 
+	public function clicktocall(){
+		return view('backend.clicktocall');
+	}
+	public function browserCall(){
+		return view('backend.browsercall');
+	}
 
 }

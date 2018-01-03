@@ -126,6 +126,9 @@
                             <li><a href="{{ route('members-data') }}">Members Record</a></li>
                             <li><a href="{{ route('bulkmessages') }}">Send Bulk SMS</a></li>
                             <li><a href="{{ route('singlemessages') }}">Indvidual SMS</a></li>
+                            {{--<li><a href="{{ route('clicktocall') }}">Click to Call</a></li>--}}
+                            {{--<li><a href="{{ route('browsercall') }}">browser call</a></li>--}}
+
                         </ul>
                     </li>
                 </ul>
