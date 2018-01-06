@@ -12,21 +12,26 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Members Category Records</h3>
+          <h3>Members Records</h3>
         </div>
 
         <div class="pull-right">
-          <a href="{{ route('addMemberstype') }}" >
-            <button type="button" class="btn btn-success">Add New Category</button>
+          <a href="{{ route('addMember') }}" >
+            <button type="button" class="btn btn-success">Add New Member</button>
+          </a>
+          <a href="{{ route('addMemberbyExcel') }}" >
+            <button type="button" class="btn btn-success">Save Excel Sheet</button>
           </a>
         </div>
       </div>
       <div class="clearfix"></div>
       <div class="row">
+        {{--{{ dd($getData) }}--}}
+
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Memebrs <small>Category</small></h2>
+              <h2>Memebrs <small></small></h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -48,28 +53,46 @@
               <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                  <th>Members Category Name</th>
-                  <th>Show Members</th>
-                  <th>Created Date</th>
+                  <th>Members Name</th>
+                  <th>Members Phone</th>
+                  <th>Members Category</th>
+                  <th>Members Address</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Country</th>
+                  <th>Zip Code</th>
+                  <th>Members Email</th>
                   <th>Action</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                @if($getData)
-                  @foreach($getData as $membersCategory)
-                    <tr>
-                      <td>{{ $membersCategory->type }}</td>
-                      <td>
-                        <a href="{{ route('memberstype-data', $membersCategory->id) }}" ><button type="button" class="btn btn-info">Click to Show</button></a>
-                      </td>
-                      <td>{{ $membersCategory->created_at }}</td>
 
+                @if($getData)
+                  @foreach($getData as $members)
+                    <tr>
+                      @if($members->type == 'Excell')
+                        <td>{{ $members->first_name }} {{ $members->last_name }}</td>
+                      @else
+                        <td>{{ $members->name }}</td>
+                      @endif
+                      <td>{{ $members->phone }}</td>
+                      <th>{{ $membersType->type }}</th>
+                      <th>{{ $members->address }}</th>
+                      <th>{{ $members->city }}</th>
+                      <th>{{ $members->state }}</th>
+                      <th>{{ $members->country }}</th>
+                      <th>{{ $members->zip_code }}</th>
+                      <th>{{ $members->email }}</th>
                       <td>
                         {{--<a href="{{ route('edit-template-data', $membersCategory->id) }}" ><button type="button" class="btn btn-danger">Edit</button></a>--}}
-                        <a href="{{ route('delete-memberstype-data', $membersCategory->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
-                      </td>
+                        @if($members->type == 'Excell')
+                          <a href="{{ route('delete-member-data-excel', $members->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
+                        @else
+                          <a href="{{ route('delete-member-data', $members->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
 
+                        @endif
+                      </td>
                     </tr>
                   @endforeach
                 @endif

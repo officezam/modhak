@@ -5,18 +5,40 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Memberstype;
 use App\Members;
+use App\ExcelModel;
 
 class MembersController extends Controller
 {
 
 	public function membersData(){
-		$getData = Members::get();
-		return view('backend.members_data', compact('getData'));
+//		$getData = Members::whereNull('type')->get();
+		$getData = Memberstype::with('members')->get();
+		$dataType = 'invidual';
+		return view('backend.members_data', compact('getData', 'dataType'));
 	}
 
 	public function registerForm(){
 		$meberType = Memberstype::get();
 		return view('backend.add_member' ,compact('meberType'));
+	}
+	public function excellMembersData(){
+		//$getData  = Members::where('type','Excel')->get();
+		$getData = Memberstype::with('members')->get();
+//		dd($getData->type);
+		$dataType = 'Excell';
+		return view('backend.members_data', compact('getData', 'dataType'));
+	}
+	public function ExcelForm(){
+		$meberType = Memberstype::get();
+		return view('backend.add_memberby_excel' ,compact('meberType'));
+	}
+
+	public function membersType($id){
+		//Members::where('id',$id)->get();
+		$membersType = Memberstype::find($id);
+		$getData = Members::with('membersType')->where('membertype_id',$id)->get();
+
+		return view('backend.members_databytype', compact('getData', 'membersType'));
 	}
 
 	public function deletMember($id){
@@ -24,6 +46,10 @@ class MembersController extends Controller
 		return redirect()->route('members-data');
 	}
 
+	public function deletMemberExcel($id){
+		Members::where('id',$id)->delete();
+		return redirect()->route('excel-members-data');
+	}
 
 	/**
 	 * Get a validator for an incoming registration request.
@@ -62,7 +88,7 @@ class MembersController extends Controller
 	}
 	public function register(Request $request)
 	{
-		$data = ['membertype_id' => $request->membertype_id,'name'=> $request->name ,'phone'=> $request->phone];
+		$data = ['membertype_id' => $request->membertype_id,'name'=> $request->name ,'phone'=> $request->phone, 'type' => 'invidual'];
 		Members::create($data);
 
 		return redirect()->route('members-data');

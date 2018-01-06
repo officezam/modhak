@@ -4,80 +4,92 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Excel;
-use App\ExcelModel;
+use App\Members;
 
 class ExcelReadController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->ExcelModel = new ExcelModel();
-    }
+	public function __construct()
+	{
+		$this->MembersModel = new Members();
+	}
 
-    public function excelReader(){
+	public function excelReader(Request $request){
+		//dd($request);
+		//Excel::load(Input::file('file'), function ($reader) {});
 
 //        Excel::selectSheets('sheet1','LIFE MEMBERS')->load();
-        $result = Excel::load(public_path().'/csvFiles/Final.xlsx', function($reader){})->get();
+//        $result = Excel::load(public_path().'/csvFiles/600USALeadsRoyharber.xlsx', function($reader){})->get();
+		$membertype_id = $request->membertype_id;
+		$path = $request->file('sheet')->getRealPath();
 
-        $result->each(function($row)
-        {
-            //dd($row);
-            //dd($row->first_name);
+		$result = Excel::load($path, function($reader){})->get();
+		$result->each(function($row )
+		{
+			$number = str_replace('-', '',$row->phonenumber);
+			$number = '+1'.$number;
+			$result = $this->MembersModel->where('phone',$number)->first();
+			if($result == null && $row->phonenumber != ''){
+				$data = [
+					'membertype_id' => 'Excel',
+					'name' => $row->firstname.' '.$row->lastname,
+					'first_name' => $row->firstname,
+					'last_name' => $row->lastname,
+					'address' => $row->address,
+					'city' => $row->city,
+					'state' => $row->provincestate,
+					'country' => $row->country,
+					'zip_code' => $row->zippostal_code,
+					'phone' => $number,
+					'email' => $row->email,
+					'type' => 'Excell',
+				];
+				$this->MembersModel->create($data);
+			}
+		});
+		$this->MembersModel->where('membertype_id' , 'Excel')->update(['membertype_id' => $request->membertype_id]);
+		return redirect()->route('excel-members-data');
+		echo '<h1> Updated Record </h1>';
+	}
 
-            $Number = trim(str_replace('-','',$row->phone));
-            $Number = trim(str_replace('+','',$Number));
-            $Number = trim(str_replace(' ','',$Number));
-            echo $Number.'<br>';
-            $data = [
-                'first_name' => $row->first_name,
-                'last_name' => $row->last_name,
-                'address' => $row->address,
-                'phone' => $Number,
-                'email' => $row->email,
-            ];
-            $this->ExcelModel->create($data);
-        });
-        echo '<h1> Updated Record </h1>';
-    }
 
+	public function excelCeater(){
 
-    public function excelCeater(){
+		$data = $this->MembersModel->get();
+		$EmailArr = array();
 
-        $data = $this->ExcelModel->get();
-        $EmailArr = array();
+		foreach ($data as $value):
+			$EmailArr[] = array($value->email);
+		endforeach;
 
-        foreach ($data as $value):
-            $EmailArr[] = array($value->email);
-        endforeach;
+		$data = $EmailArr;
 
-        $data = $EmailArr;
+		Excel::create('Filename', function($excel) use($data) {
 
-        Excel::create('Filename', function($excel) use($data) {
+			$excel->sheet('Sheetname', function($sheet) use($data) {
+				$sheet->fromArray($data);
+			});
 
-            $excel->sheet('Sheetname', function($sheet) use($data) {
-                $sheet->fromArray($data);
-            });
-
-        })->export('csv');
-        dd($EmailArr);
-        $result = Excel::load(public_path().'/csvFiles/Outlook.csv', function($reader){})->get();
-        $result->each(function($row)
-        {
-            $sheetData = $row->email;
-            if (strpos($sheetData, '@') !== false) {
-                $EmailArr[] = [$sheetData];
-                $data = [
-                    'first_name' => 'amir',
-                    'last_name' => 'Shahzad',
-                    'address' => '123',
-                    'phone' => '12334',
-                    'email' => $sheetData,
-                ];
-                $this->ExcelModel->create($data);
-            }else{
-                $ExtraDataArr[] = [$sheetData];
-            }
-        });
-    }
+		})->export('csv');
+		dd($EmailArr);
+		$result = Excel::load(public_path().'/csvFiles/Outlook.csv', function($reader){})->get();
+		$result->each(function($row)
+		{
+			$sheetData = $row->email;
+			if (strpos($sheetData, '@') !== false) {
+				$EmailArr[] = [$sheetData];
+				$data = [
+					'first_name' => 'amir',
+					'last_name' => 'Shahzad',
+					'address' => '123',
+					'phone' => '12334',
+					'email' => $sheetData,
+				];
+				$this->MembersModel->create($data);
+			}else{
+				$ExtraDataArr[] = [$sheetData];
+			}
+		});
+	}
 
 }

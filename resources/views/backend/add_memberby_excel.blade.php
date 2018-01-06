@@ -12,7 +12,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Member Save</h3>
+                    <h3>Member Save By Excel Sheet</h3>
                 </div>
 
             </div>
@@ -21,7 +21,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>New Member <small>Save Member Information</small></h2>
+                            <h2>New Members <small>Save Members Information</small></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -32,30 +32,17 @@
                         </div>
                         <div class="x_content">
                             <br>
-                            <form class="form-horizontal" method="POST" action="{{ route('save_member') }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('save_member_by_excell') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label">Member Name</label>
+                                    <label for="name" class="col-md-4 control-label">Choose Excell Sheet</label>
 
                                     <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Enter Member Name" required autofocus>
-                                        @if ($errors->has('name'))
+                                        <input id="name" type="file" class="form-control" name="sheet" value="{{ old('sheet') }}" placeholder="Choose Sheet" required autofocus>
+                                        @if ($errors->has('sheet'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label">Member Phone</label>
-
-                                    <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Enter Phone" required autofocus>
-                                        <p class="alert-info">Please Enter Valid Phone Number Like <b style="color: black">+11212343412</b></p>
-                                        @if ($errors->has('phone'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('phone') }}</strong>
+                                        <strong>{{ $errors->first('sheet') }}</strong>
                                     </span>
                                         @endif
                                     </div>

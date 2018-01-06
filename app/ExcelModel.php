@@ -11,6 +11,10 @@ class ExcelModel extends Model
         'first_name',
         'last_name',
         'address',
+        'city',
+        'state',
+        'country',
+        'zip_code',
         'phone',
         'email',
     ];

@@ -58,7 +58,7 @@
                                     <label for="name" class="col-md-4 control-label">Enter Message</label>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <textarea rows="14" class="col-md-12" name="sms_text" ></textarea>
+                                            <textarea rows="14" class="col-md-12" name="sms_text" required ></textarea>
                                         </div>
                                         @if ($errors->has('sms'))
                                             <span class="help-block">

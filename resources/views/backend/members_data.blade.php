@@ -6,7 +6,7 @@
   {{--<link href="{{asset('/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">--}}
   {{--<link href="{{asset('/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">--}}
   {{--<link href="{{asset('/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">--}}
-  @endsection
+@endsection
 @section('content')
   <div class="right_col" role="main">
     <div class="">
@@ -18,6 +18,9 @@
         <div class="pull-right">
           <a href="{{ route('addMember') }}" >
             <button type="button" class="btn btn-success">Add New Member</button>
+          </a>
+          <a href="{{ route('addMemberbyExcel') }}" >
+            <button type="button" class="btn btn-success">Save Excel Sheet</button>
           </a>
         </div>
       </div>
@@ -50,50 +53,83 @@
                 <tr>
                   <th>Members Name</th>
                   <th>Members Phone</th>
-                  {{--<th>Members Category</th>--}}
-                  <th>Created Date</th>
+                  <th>Members Category</th>
+
+                  @if($dataType == 'Excell')
+                    <th>Members Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Zip Code</th>
+                    <th>Members Email</th>
+                  @else
+                    <th>Created Date</th>
+                  @endif
                   <th>Action</th>
                 </tr>
                 </thead>
 
                 <tbody>
+
                 @if($getData)
-                @foreach($getData as $members)
-                  <tr>
-                    <td>{{ $members->name }}</td>
-                    <td>{{ $members->phone }}</td>
-{{--                    <td>{{ $members->membertype_id }}</td>--}}
-                    <td>{{ $members->created_at }}</td>
-                    <td>
-                      {{--<a href="{{ route('edit-template-data', $membersCategory->id) }}" ><button type="button" class="btn btn-danger">Edit</button></a>--}}
-                      <a href="{{ route('delete-member-data', $members->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
-                    </td>
-                  </tr>
-                @endforeach
-                  @endif
+                  @foreach($getData as $members)
+                    @foreach($members->members as $membersData)
+                      @if($membersData->type == $dataType )
+                        <tr>
+                          @if($dataType == 'Excell')
+                            <td>{{ $membersData->first_name }} {{ $membersData->last_name }}</td>
+                          @else
+                            <td>{{ $membersData->name }}</td>
+                          @endif
+                          <td>{{ $membersData->phone }}</td>
+                          <th>{{ $members->type }}</th>
+                          @if($dataType == 'Excell')
+                            <th>{{ $membersData->address }}</th>
+                            <th>{{ $membersData->city }}</th>
+                            <th>{{ $membersData->state }}</th>
+                            <th>{{ $membersData->country }}</th>
+                            <th>{{ $membersData->zip_code }}</th>
+                            <th>{{ $membersData->email }}</th>
+                          @else
+                            <td>{{ $membersData->created_at }}</td>
+                          @endif
+                          <td>
+                            {{--<a href="{{ route('edit-template-data', $membersDataCategory->id) }}" ><button type="button" class="btn btn-danger">Edit</button></a>--}}
+                            @if($dataType == 'Excell')
+                              <a href="{{ route('delete-member-data-excel', $membersData->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
+                            @else
+                              <a href="{{ route('delete-member-data', $membersData->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
+
+                            @endif
+                          </td>
+                        </tr>
+                      @endif
+                    @endforeach
+                  @endforeach
+                @endif
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
-  </div>
-@stop
-@section('pagejs')
-  <!-- Datatables -->
-    <script src="{{asset('/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    {{--<script src="{{asset('/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/jszip/dist/jszip.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/pdfmake/build/pdfmake.min.js')}}"></script>--}}
-    {{--<script src="{{asset('/admin/vendors/pdfmake/build/vfs_fonts.js')}}"></script>--}}
+    </div>
+  @stop
+  @section('pagejs')
+    <!-- Datatables -->
+      <script src="{{asset('/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+  {{--<script src="{{asset('/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/jszip/dist/jszip.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/pdfmake/build/pdfmake.min.js')}}"></script>--}}
+  {{--<script src="{{asset('/admin/vendors/pdfmake/build/vfs_fonts.js')}}"></script>--}}
 @endsection

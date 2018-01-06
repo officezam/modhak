@@ -22,7 +22,7 @@ class SmsSendController extends Controller
 
     public function __construct()
     {
-        $this->plivo = new Plivo\RestAPI($auth_id = "MANDIWNGMYY2M2MJMXYT", $auth_token = "Nzk4M2E2ZmI4NjdjY2NkMTY0ZDUwY2E0NTlmMzkz");
+        $this->plivo = new Plivo\RestAPI($auth_id = "", $auth_token = "");
     }
 
     public function index()

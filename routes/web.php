@@ -70,6 +70,15 @@ Route::get('Add-Member', 'MembersController@registerForm')->name('addMember');
 Route::get('delete-member/{member_id}', 'MembersController@deletMember')->name('delete-member-data');
 Route::post('Save-Member', 'MembersController@register')->name('save_member');
 
+Route::get('memberstype/{membertype_id}', 'MembersController@membersType')->name('memberstype-data');
+
+
+Route::get('excel-members-data', 'MembersController@excellMembersData')->name('excel-members-data');
+Route::get('Add-Member-by-Excel', 'MembersController@ExcelForm')->name('addMemberbyExcel');
+Route::post('Save-Member-by-Excel', 'ExcelReadController@excelReader')->name('save_member_by_excell');
+Route::get('delete-member-data-excel/{member_id}', 'MembersController@deletMemberExcel')->name('delete-member-data-excel');
+
+
 Route::get('bulk-sms-sending', 'MembersController@smsPage')->name('bulkmessages');
 Route::post('Sms-send', 'SmsSendTwilioController@smsBulkSend')->name('smsBulkSend');
 Route::get('Single-sms-sending', 'MembersController@smsSinglePage')->name('singlemessages');

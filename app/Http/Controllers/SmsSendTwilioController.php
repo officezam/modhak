@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ExcelModel;
 use Illuminate\Http\Request;
 use App\Members;
 use Aloha\Twilio\Twilio;
@@ -15,10 +16,13 @@ class SmsSendTwilioController extends Controller
 
 	public function smsBulkSend(Request $request)
 	{
+
 		$members = Members::where('membertype_id' ,'=',$request->membertype_id)->get();
+
 		$message = $request->sms_text;
 		foreach ($members as $useData):
-			$response = $this->twilio->message($useData->phone, $message);
+			$number = str_replace('-', '',$useData->phone);
+			$response = $this->twilio->message($number, $message);
 		endforeach;
 
 		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
