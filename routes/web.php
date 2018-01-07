@@ -101,4 +101,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('excel-read', 'ExcelReadController@excelReader');
 
+
+Route::get('schedule-sms', 'ScheduleSmsController@showSchedule')->name('schedule_sms');
+Route::get('add-schedule-sms', 'ScheduleSmsController@addScheduleSms')->name('addScheduleSms');
+Route::get('delete-schedule/{schedule_id}', 'ScheduleSmsController@deletSchedule')->name('delete-schedule');
+Route::post('save-schedule-sms', 'ScheduleSmsController@saveScheduleSms')->name('saveScheduleSms');
+
+Route::get('scheduleSMSDailySnding', 'ScheduleSmsController@scheduleSMSDailySnding')->name('scheduleSMSDailySnding');
+Route::get('scheduleSMSWeeklySnding', 'ScheduleSmsController@scheduleSMSWeeklySnding')->name('scheduleSMSWeeklySnding');
+Route::get('scheduleSMSMonthlySnding', 'ScheduleSmsController@scheduleSMSMonthlySnding')->name('scheduleSMSMonthlySnding');
+Route::get('scheduleSMSOnceSnding', 'ScheduleSmsController@scheduleSMSOnceSnding')->name('scheduleSMSOnceSnding');
+
+
+
+
+
 });

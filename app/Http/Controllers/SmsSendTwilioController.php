@@ -37,4 +37,19 @@ class SmsSendTwilioController extends Controller
 		return redirect()->route('singlemessages');
 	}
 
+
+
+	/*
+	 * Schedule SMS Sending Function
+	*/
+	public function scheduleSms($membertype_id, $message)
+	{
+		$members = Members::where('membertype_id' ,'=',$membertype_id)->get();
+		foreach ($members as $useData):
+			$number = str_replace('-', '',$useData->phone);
+			$response = $this->twilio->message($number, $message);
+		endforeach;
+	}
+
+
 }
