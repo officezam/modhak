@@ -18,6 +18,7 @@ class Leadsdetail extends Migration
 		    $table->string('leads_id');
 		    $table->string('question');
 		    $table->string('answer');
+		    $table->integer('question_no');
 		    $table->string('static_reply')->nullable();
 		    $table->string('audio')->nullable();
 		    $table->timestamps();

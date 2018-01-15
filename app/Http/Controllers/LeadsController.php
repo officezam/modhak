@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Leads;
 use App\Leadsdetail;
+use App\Memberstype;
 
 class LeadsController extends Controller
 {
@@ -13,6 +14,7 @@ class LeadsController extends Controller
 
 		$this->Leads = new Leads();
 		$this->Leadsdetail = new Leadsdetail();
+		$this->Membertype  = new Memberstype();
 	}
 
 	/*
@@ -50,6 +52,7 @@ class LeadsController extends Controller
 					'leads_id' => $id,
 					'question' => $request->question[$key],
 					'answer' => $request->answer[$key],
+					'question_no' => $request->question_no[$key],
 					'static_reply' => $request->static_reply[$key]
 				]);
 			}
@@ -86,6 +89,15 @@ class LeadsController extends Controller
 		return redirect(route('leadsmanagement'));
 	}
 
+	/*
+	 * Leads Campaign Page
+	 * */
+	public function leadsCampaign()
+	{
+		$meberType  = $this->Membertype->get();
+		$leads      = $this->Leads->get();
+		return view('backend.leadcampaign', compact('meberType', 'leads'));
+	}
 
 
 }

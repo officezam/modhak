@@ -49,6 +49,7 @@
                 <thead>
                 <tr>
                   <th>Leads Name</th>
+                  <th>Description</th>
                   <th>Show Leads Detail</th>
                   <th>Created Date</th>
                   <th>Action</th>
@@ -60,6 +61,7 @@
                   @foreach($leads as $lead)
                     <tr>
                       <td>{{ $lead->name }}</td>
+                      <td>{{ $lead->description }}</td>
                       <td>
                         <a href="{{ route('leadsQuestiondata', $lead->id) }}" ><button type="button" class="btn btn-info">Leads Question Detail</button></a>
                       </td>

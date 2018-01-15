@@ -129,6 +129,7 @@
                             <li><a href="{{ route('singlemessages') }}">Indvidual SMS</a></li>
                             <li><a href="{{ route('schedule_sms') }}">Schedule SMS</a></li>
                             <li><a href="{{ route('leadsmanagement') }}">Leads Managment</a></li>
+                            <li><a href="{{ route('leadscampaign') }}">Start Leads Campaign</a></li>
 
                         </ul>
                     </li>

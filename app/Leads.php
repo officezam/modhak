@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Leads extends Model
 {
 	protected $table = 'leads';
-	protected $fillable = ['name', 'type', 'status'];
+	protected $fillable = ['name','description', 'type', 'status'];
 
 }

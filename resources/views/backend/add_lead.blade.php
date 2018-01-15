@@ -26,7 +26,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3" for="firstName">Lead Name:</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Lead Name">
+                                                    <input type="text" name="name" required value="{{ old('name') }}" class="form-control" id="name" placeholder="Lead Name">
                                                     @if ($errors->has('name'))
                                                         <div class=" has-error">
                                                         <span class="control-label has-error">
@@ -42,9 +42,9 @@
                                     <div class="col-md-6">
                                         <div class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="control-label col-md-3" for="postalAddress">Lead Description:</label>
-                                                <div class="col-md-9">
-                                                    <textarea rows="3" name="address" class="form-control" id="description" placeholder="Lead Description">{{ old('description') }}</textarea>
+                                                <label class="control-label col-md-4" for="postalAddress">Lead Description:</label>
+                                                <div class="col-md-8">
+                                                    <textarea rows="3" name="description" class="form-control" id="description" placeholder="Lead Description">{{ old('description') }}</textarea>
                                                     @if ($errors->has('description'))
                                                         <div class=" has-error">
                                                         <span class="control-label has-error">
@@ -56,7 +56,43 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="hr-line-dashed"></div>
+                                    <div class="clearfix">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label class="control-labe" for="firstName">Question:</label>
+                                                        <input type="text" name="question[]" required="" value="" class="form-control" id="question" placeholder="Lead Question">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label class="control-labe" for="Middle Name">Answer:</label>
+                                                        <input type="text" name="answer[]" required="" value="" class="form-control" id="answer" placeholder="Answer">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label class="control-labe" for="firstName">Static Reply(Optional):</label>
+                                                        <input type="text" name="static_reply[]" value="" class="form-control" id="static_reply" placeholder="Static Reply">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label class="control-labe" for="firstName">Question No</label>
+                                                        <input type="number" name="question_no[]" value="" required class="form-control" id="question_no" placeholder="Select Question Number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group" id="addMoreFields">
                                         <div class="col-md-offset-3 col-md-9">
                                             <button class="btn btn-success" onclick="addMoreAnsFields();" type="button">Add Lead Question</button>
@@ -135,25 +171,25 @@
                     var html = '';
                     html += '<div class="clearfix remove'+totalFields+'">';
                     html += '<div class="row">';
-                    html += '<div class="col-md-4">';
+                    html += '<div class="col-md-3">';
                     html += '<div class="form-group">';
                     html += '<div class="col-md-12">';
                     html += '<label class="control-labe" for="firstName">Question:</label>';
                     html += '<input type="text" name="question[]" required value="" class="form-control" id="question" placeholder="Lead Question">';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
 
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '<div class="col-md-4">';
+                    html += '<div class="col-md-3">';
                     html += '<div class="form-group">';
                     html += '<div class="col-md-12">';
                     html += '<label class="control-labe" for="Middle Name">Answer:</label>';
                     html += '<input type="text" name="answer[]" required value="" class="form-control" id="answer" placeholder="Answer">';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
 
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '<div class="col-md-4">';
+                    html += '<div class="col-md-3">';
                     html += '<div class="form-group">';
                     html += '<div class="col-md-12">';
                     html += '<label class="control-labe" for="firstName">Static Reply(Optional):</label>';
@@ -161,7 +197,17 @@
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';
+
+                    html += '<div class="col-md-3">';
+                    html += '<div class="form-group">';
+                    html += '<div class="col-md-12">';
+                    html += '<label class="control-labe" for="firstName">Question No</label>';
+                    html += '<input type="number" name="question_no[]" value="" class="form-control" id="question_no" placeholder="Select Question Number">';
                     html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+
                     return html;
                 }
             </script>

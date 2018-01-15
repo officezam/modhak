@@ -48,6 +48,7 @@
               <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                 <tr>
+                  <th>Question No</th>
                   <th>Question</th>
                   <th>Answer</th>
                   <th>Static Reply</th>
@@ -58,6 +59,7 @@
                 @if($leadsDetail)
                   @foreach($leadsDetail as $question_id)
                     <tr>
+                      <td>{{ $question_id->question_no }}</td>
                       <td>{{ $question_id->question }}</td>
                       <td>{{ $question_id->answer }}</td>
                       <td>{{ $question_id->static_reply }}</td>
