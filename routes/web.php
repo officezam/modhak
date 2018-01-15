@@ -113,6 +113,14 @@ Route::get('scheduleSMSMonthlySnding', 'ScheduleSmsController@scheduleSMSMonthly
 Route::get('scheduleSMSOnceSnding', 'ScheduleSmsController@scheduleSMSOnceSnding')->name('scheduleSMSOnceSnding');
 
 
+Route::get('leads-management', 'LeadsController@index')->name('leadsmanagement');
+Route::get('add-lead', 'LeadsController@addLead')->name('add_lead');
+Route::post('save-lead', 'LeadsController@saveLead')->name('saveLead');
+Route::get('delete-lead-data/{lead_id}', 'LeadsController@deleteLead')->name('delete-lead-data');
+Route::get('leads-Question-detail/{lead_id}', 'LeadsController@leadsQuestiondata')->name('leadsQuestiondata');
+Route::get('delete-question/{question_id}', 'LeadsController@deleteQuestion')->name('delete-question');
+
+
 
 
 

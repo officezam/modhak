@@ -42,7 +42,7 @@ class ScheduleSmsController extends Controller
 		$combinedDT = date('Y-m-d H:i:s', strtotime("$request->date $request->time"));
 		$this->ScheduleSms->create([
 			'membertype_id' => $request->membertype_id,
-			'type' => $request->type,
+			'type' => 'once',//$request->type,
 			'sms' => $request->sms_text,
 			'dateandtime' => $combinedDT,
 			'status' => 'Active'
@@ -153,6 +153,7 @@ class ScheduleSmsController extends Controller
 //			$nextDate =  \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $schdeule->dateandtime)->addWeekday();
 			$this->ScheduleSms->where('id',$schdeule->id)->update(['status' => 'Sent']);
 		}
+		return 'success';
 	}
 
 

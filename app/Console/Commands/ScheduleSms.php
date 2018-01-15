@@ -39,10 +39,11 @@ class ScheduleSms extends Command
      */
     public function handle()
     {
+	    \Log::info("Cron running fine@ ". \Carbon\Carbon::now());
 	    $this->ScheduleSmsController->scheduleSMSDailySnding();
 	    $this->ScheduleSmsController->scheduleSMSWeeklySnding();
 	    $this->ScheduleSmsController->scheduleSMSMonthlySnding();
 	    $this->ScheduleSmsController->scheduleSMSOnceSnding();
-//        \Log::info("This is my first Schedul command @ ". \Carbon\Carbon::now());
+        \Log::info("Cron running fine THE END @ ". \Carbon\Carbon::now());
     }
 }

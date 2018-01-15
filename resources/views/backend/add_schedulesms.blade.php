@@ -96,27 +96,27 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label">Select Type</label>
+                                {{--<div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">--}}
+                                    {{--<label for="name" class="col-md-4 control-label">Select Type</label>--}}
 
-                                    <div class="col-md-6">
+                                    {{--<div class="col-md-6">--}}
 
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" checked=""  value="Daily" id="optionsRadios1" name="type">Daily
-                                            </label>
-                                            <label>
-                                                <input type="radio" checked="" value="Weekly" id="optionsRadios1" name="type">Weekly
-                                            </label>
-                                            <label>
-                                                <input type="radio" checked="" value="Monhtly" id="optionsRadios1" name="type">Monhtly
-                                            </label>
-                                            <label>
-                                                <input type="radio" checked="" value="once" id="optionsRadios1" name="type">Run Only Selected Date & Time
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                                        {{--<div class="radio">--}}
+                                            {{--<label>--}}
+                                                {{--<input type="radio" checked=""  value="Daily" id="optionsRadios1" name="type">Daily--}}
+                                            {{--</label>--}}
+                                            {{--<label>--}}
+                                                {{--<input type="radio" checked="" value="Weekly" id="optionsRadios1" name="type">Weekly--}}
+                                            {{--</label>--}}
+                                            {{--<label>--}}
+                                                {{--<input type="radio" checked="" value="Monhtly" id="optionsRadios1" name="type">Monhtly--}}
+                                            {{--</label>--}}
+                                            {{--<label>--}}
+                                                {{--<input type="radio" checked="" value="once" id="optionsRadios1" name="type">Run Only Selected Date & Time--}}
+                                            {{--</label>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">

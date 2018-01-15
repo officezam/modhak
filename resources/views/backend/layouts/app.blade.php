@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Bulk SMS</title>
 
     <!-- Bootstrap -->
@@ -82,6 +83,21 @@
 {{--<script src="{{asset('/admin/vendors/cropper/dist/cropper.min.js')}}"></script>--}}
 
   <script src="{{asset('/admin/build/js/custom.min.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        setInterval(function(){
+           // console.log('run')
+            //code goes here that will be run every 1 Minute.
+            $.ajax({
+                type: "GET",
+                url: "{{ route('scheduleSMSOnceSnding') }}",
+                success: function(result) {
+//                   // alert(result);
+                }
+            });
+        }, 10000);
+    });
+</script>
 
 @yield('pagejs')
 </body>
