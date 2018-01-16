@@ -21,11 +21,11 @@
                             <div class="row">
                                 <form class="form-horizontal" method="POST" action="{{ route('saveLead') }}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="control-label col-md-3" for="firstName">Lead Name:</label>
-                                                <div class="col-md-9">
+                                                <label class="control-label col-md-2" for="firstName">Lead Name:</label>
+                                                <div class="col-md-10">
                                                     <input type="text" name="name" required value="{{ old('name') }}" class="form-control" id="name" placeholder="Lead Name">
                                                     @if ($errors->has('name'))
                                                         <div class=" has-error">
@@ -39,12 +39,13 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="control-label col-md-4" for="postalAddress">Lead Description:</label>
-                                                <div class="col-md-8">
-                                                    <textarea rows="3" name="description" class="form-control" id="description" placeholder="Lead Description">{{ old('description') }}</textarea>
+                                                <label class="control-label col-md-2" for="postalAddress">Lead Structure:</label>
+                                                <div class="col-md-10">
+                                                    <label>Use This short Code For Questions @{{Questions}}</label>
+                                                    <textarea rows="6" required name="description" class="form-control" id="description" placeholder="Lead Structure">{{ old('description') }}</textarea>
                                                     @if ($errors->has('description'))
                                                         <div class=" has-error">
                                                         <span class="control-label has-error">
@@ -56,41 +57,84 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="clearfix">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <div class="col-md-12">
-                                                        <label class="control-labe" for="firstName">Question:</label>
-                                                        <input type="text" name="question[]" required="" value="" class="form-control" id="question" placeholder="Lead Question">
-                                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="firstName">Lead Auto Reply</label>
+                                                <div class="col-md-10">
+                                                    <label>When User Reply back Wrong Input</label>
+                                                    <input type="text" name="wrong_input_reply" required value="{{ old('wrong_input_reply') }}" class="form-control" id="wrong_input_reply" placeholder="Lead Auto Reply When User Reply Wrong">
+                                                    @if ($errors->has('wrong_input_reply'))
+                                                        <div class=" has-error">
+                                                        <span class="control-label has-error">
+                                                            <strong>{{ $errors->first('wrong_input_reply') }}</strong>
+                                                        </span>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <div class="col-md-12">
-                                                        <label class="control-labe" for="Middle Name">Answer:</label>
-                                                        <input type="text" name="answer[]" required="" value="" class="form-control" id="answer" placeholder="Answer">
-                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="question">Lead Question:</label>
+                                                <div class="col-md-10">
+                                                    <label>Submit Question for User</label>
+                                                    <input type="text" name="question[]" value="{{ old('question') }}" class="form-control" id="question" placeholder="Lead Question">
+                                                    @if ($errors->has('question'))
+                                                        <div class=" has-error">
+                                                        <span class="control-label has-error">
+                                                            <strong>{{ $errors->first('question') }}</strong>
+                                                        </span>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <div class="col-md-12">
-                                                        <label class="control-labe" for="firstName">Static Reply(Optional):</label>
-                                                        <input type="text" name="static_reply[]" value="" class="form-control" id="static_reply" placeholder="Static Reply">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="question_no"></label>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <label class="control-labe" for="firstName">Question No</label>
+                                                            <input type="number" name="question_no[]" value=""  class="form-control" min="1" id="question_no" placeholder="Select Question Number">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <div class="col-md-12">
-                                                        <label class="control-labe" for="firstName">Question No</label>
-                                                        <input type="number" name="question_no[]" value="" required class="form-control" id="question_no" placeholder="Select Question Number">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <label class="control-labe" for="Middle Name">Answer:</label>
+                                                            <input type="text" name="answer[]"  value="" class="form-control" id="answer" placeholder="Question Right Answer">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="static_reply">Question Reply:</label>
+                                                <div class="col-md-10">
+                                                    <label>When User Reply back right Input</label>
+                                                    <input type="text" name="static_reply[]" value="{{ old('static_reply') }}" class="form-control" id="static_reply" placeholder="Reply To user On true answer">
+                                                    @if ($errors->has('static_reply'))
+                                                        <div class=" has-error">
+                                                        <span class="control-label has-error">
+                                                            <strong>{{ $errors->first('static_reply') }}</strong>
+                                                        </span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     </div>
 
                                     <div class="form-group" id="addMoreFields">
@@ -171,38 +215,53 @@
                     var html = '';
                     html += '<div class="clearfix remove'+totalFields+'">';
                     html += '<div class="row">';
-                    html += '<div class="col-md-3">';
-                    html += '<div class="form-group">';
+
+
                     html += '<div class="col-md-12">';
-                    html += '<label class="control-labe" for="firstName">Question:</label>';
+                    html += '<div class="form-horizontal">';
+                    html += '<div class="form-group">';
+                    html += '<label class="control-label col-md-2" for="question">Lead Question:</label>';
+                    html += '<div class="col-md-10">';
+                    html += '<label>Submit Question for User</label>';
                     html += '<input type="text" name="question[]" required value="" class="form-control" id="question" placeholder="Lead Question">';
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';
+                    html += '</div>';
 
-                    html += '<div class="col-md-3">';
-                    html += '<div class="form-group">';
                     html += '<div class="col-md-12">';
-                    html += '<label class="control-labe" for="Middle Name">Answer:</label>';
-                    html += '<input type="text" name="answer[]" required value="" class="form-control" id="answer" placeholder="Answer">';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-
-                    html += '<div class="col-md-3">';
+                    html += '<div class="form-horizontal">';
                     html += '<div class="form-group">';
-                    html += '<div class="col-md-12">';
-                    html += '<label class="control-labe" for="firstName">Static Reply(Optional):</label>';
-                    html += '<input type="text" name="static_reply[]" value="" class="form-control" id="static_reply" placeholder="Static Reply">';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-
-                    html += '<div class="col-md-3">';
+                    html += '<label class="control-label col-md-2" for="question_no"></label>';
+                    html += '<div class="col-md-5">';
                     html += '<div class="form-group">';
                     html += '<div class="col-md-12">';
                     html += '<label class="control-labe" for="firstName">Question No</label>';
-                    html += '<input type="number" name="question_no[]" value="" class="form-control" id="question_no" placeholder="Select Question Number">';
+                    html += '<input type="number" name="question_no[]" value="" required class="form-control" min="1" id="question_no" placeholder="Select Question Number">';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="col-md-5">';
+                    html += '<div class="form-group">';
+                    html += '<div class="col-md-12">';
+                    html += '<label class="control-labe" for="Middle Name">Answer:</label>';
+                    html += '<input type="text" name="answer[]" required="" value="" class="form-control" id="answer" placeholder="Question Right Answer">';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+
+                    html += '<div class="col-md-12">';
+                    html += '<div class="form-horizontal">';
+                    html += '<div class="form-group">';
+                    html += '<label class="control-label col-md-2" for="question">Question Reply:</label>';
+                    html += '<div class="col-md-10">';
+                    html += '<label>When User Reply back right Input</label>';
+                    html += '<input type="text" name="question[]" required value="" class="form-control" id="question" placeholder="Reply To user On true answer">';
+                    html += '</div>';
+                    html += '</div>';
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';

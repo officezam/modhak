@@ -27,6 +27,10 @@ class CreateMembersTable extends Migration
 	        $table->string('phone')->nullable();
 	        $table->string('email')->nullable();
 	        $table->string('type')->nullable();
+	        $table->string('status')->nullable();
+	        $table->integer('leads_id')->nullable();
+	        $table->integer('question_id')->nullable();
+	        $table->string('last_answer')->nullable();
             $table->timestamps();
         });
     }

@@ -50,6 +50,7 @@
                 <tr>
                   <th>Leads Name</th>
                   <th>Description</th>
+                  <th>Leads Autoreply</th>
                   <th>Show Leads Detail</th>
                   <th>Created Date</th>
                   <th>Action</th>
@@ -62,6 +63,7 @@
                     <tr>
                       <td>{{ $lead->name }}</td>
                       <td>{{ $lead->description }}</td>
+                      <td>{{ $lead->wrong_input_reply }}</td>
                       <td>
                         <a href="{{ route('leadsQuestiondata', $lead->id) }}" ><button type="button" class="btn btn-info">Leads Question Detail</button></a>
                       </td>

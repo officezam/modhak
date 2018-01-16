@@ -42,6 +42,7 @@ class LeadsController extends Controller
 	{
 		$leadSaved = $this->Leads->create([
 			'name' => $request->name,
+			'wrong_input_reply' => $request->wrong_input_reply,
 			'description' => $request->description
 		]);
 		$id = $leadSaved->id;
