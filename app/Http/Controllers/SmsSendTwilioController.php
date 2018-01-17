@@ -8,6 +8,7 @@ use App\Leadsdetail;
 use Illuminate\Http\Request;
 use App\Members;
 use Aloha\Twilio\Twilio;
+use App\ReceiveSms;
 
 class SmsSendTwilioController extends Controller
 {
@@ -71,11 +72,35 @@ class SmsSendTwilioController extends Controller
 
 		foreach ($members as $useData):
 			$number = str_replace('-', '',$useData->phone);
-			$response = $this->twilio->message($number, $message);
+			//$response = $this->twilio->message($number, $message);
 		endforeach;
-
+		Members::where('membertype_id' ,'=',$request->membertype_id)->update(['leads_id' => $request->leads_id]);
 		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
 		return redirect()->route('leadscampaign');
 	}
+
+	/*
+	 * Recieve SMS
+	 * */
+	public function receiveSms(Request $request) {
+		//dd($request);
+		// Sender's phone numer
+		$from_number = $_REQUEST['From'];
+		// Receiver's phone number - Plivo number
+		$to_number = $_REQUEST['To'];
+		// The SMS text message which was received
+		$body = $_REQUEST['Body'];
+		// Output the text which was received to the log file.
+
+		$receiveSms = ReceiveSms::create( [ 'from' => $from_number, 'to' => $to_number, 'keyword' => $body ] );
+
+	}
+
+
+
+
+
+
+
 
 }

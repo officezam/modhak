@@ -12,7 +12,8 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/receive-sms/'
+        '/receive-sms/',
+	    '/receive-lead-sms/'
     ];
 
 
