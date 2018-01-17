@@ -83,7 +83,6 @@ class SmsSendTwilioController extends Controller
 	 * Recieve SMS
 	 * */
 	public function receiveSms(Request $request) {
-		//dd($request);
 		// Sender's phone numer
 		$from_number = $_REQUEST['From'];
 		// Receiver's phone number - Plivo number

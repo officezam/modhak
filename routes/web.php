@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('receive-lead-sms', 'SmsSendTwilioController@receiveSms')->name('leadsmsmsend');
+Route::post('receive-lead-sms', 'SmsSendTwilioController@receiveSms');
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
