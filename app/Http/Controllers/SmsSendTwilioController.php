@@ -111,7 +111,7 @@ class SmsSendTwilioController extends Controller
 				if($body == 'unsub' || $body == 'unsubscribe'){
 					Members::where('phone' ,'=',$from_number)->update(['status' => 'unsubscribe']);
 				}else{
-					$invalidAnswer = 'Please Reply Only Valid Answer';
+					$invalidAnswer = $leadsdetailData->wrong_input_reply;
 					$response = $this->twilio->message($from_number, $invalidAnswer);
 				}
 
