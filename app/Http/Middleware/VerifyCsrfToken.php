@@ -17,19 +17,19 @@ class VerifyCsrfToken extends Middleware
     ];
 
 
-//    //modify this function
-//    public function handle($request, Closure $next)
-//    {
-//        //add this condition
-//        foreach($this->except as $route) {
-//
-//            if ($request->is($route)) {
-//                return $this->next($request);
-//            }
-//        }
-//
-//        return parent::handle($request, $next);
-//    }
+    //modify this function
+    public function handle($request, Closure $next)
+    {
+        //add this condition
+        foreach($this->except as $route) {
+
+            if ($request->is($route)) {
+                return $this->next($request);
+            }
+        }
+
+        return parent::handle($request, $next);
+    }
 
 
 
