@@ -72,7 +72,7 @@ class SmsSendTwilioController extends Controller
 
 		foreach ($members as $useData):
 			$number = str_replace('-', '',$useData->phone);
-			//$response = $this->twilio->message($number, $message);
+			$response = $this->twilio->message($number, $message);
 		endforeach;
 		Members::where('membertype_id' ,'=',$request->membertype_id)->update(['leads_id' => $request->leads_id]);
 		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
