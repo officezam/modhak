@@ -57,7 +57,7 @@ class SmsSendTwilioController extends Controller
 	 * */
 	public function leadsSms(Request $request)
 	{
-		$members   = Members::where('membertype_id' ,'=',$request->membertype_id)->where('status', '!=', 'unsubscribe')->get();
+		$members   = Members::where([['membertype_id' ,'=',$request->membertype_id],['status', '<>', 'unsubscribe']])->get();
 		$leadsData = Leads::find($request->leads_id);
 		$message = $leadsData->description;
 
