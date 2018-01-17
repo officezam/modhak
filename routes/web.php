@@ -11,6 +11,7 @@
 |
 */
 Route::post('receive-lead-sms', 'SmsSendTwilioController@receiveSms');
+Route::get('receiveSmsTest', 'SmsSendTwilioController@receiveSmsTest');
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
