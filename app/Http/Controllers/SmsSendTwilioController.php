@@ -35,6 +35,12 @@ class SmsSendTwilioController extends Controller
 	public function smssingleSend(Request $request)
 	{
 		$response = $this->twilio->message($request->phone, $request->sms_text);
+//		$response = $this->twilio->create($request->phone,
+//			array(
+//				'from' => '+13233100845',
+//				'body' => $request->sms_text
+//			)
+//		);
 
 		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
 		return redirect()->route('singlemessages');
@@ -64,12 +70,14 @@ class SmsSendTwilioController extends Controller
 		if(strpos( $message, '{{Questions}}' ) != false)
 		{
 			$leadsQuestion = Leadsdetail::where('leads_id',$request->leads_id)->orderBy('question_no', 'asc')->get();
+			$message1 = '';
 			foreach ($leadsQuestion as $item )
 			{
-				$message = str_replace('{{Questions}}',$item->question, $message);
+				$message1 = $message1."\r\n".$item->question;
 			}
 		}
 
+		$message = str_replace('{{Questions}}',$message1, $message);
 		foreach ($members as $useData):
 			$number = str_replace('-', '',$useData->phone);
 			$response = $this->twilio->message($number, $message);
