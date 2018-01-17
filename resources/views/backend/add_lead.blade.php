@@ -259,7 +259,7 @@
                     html += '<label class="control-label col-md-2" for="question">Question Reply:</label>';
                     html += '<div class="col-md-10">';
                     html += '<label>When User Reply back right Input</label>';
-                    html += '<input type="text" name="question[]" required value="" class="form-control" id="question" placeholder="Reply To user On true answer">';
+                    html += '<input type="text" name="static_reply[]" required value="" class="form-control" id="static_reply" placeholder="Reply To user On true answer">';
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';

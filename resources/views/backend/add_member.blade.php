@@ -60,20 +60,20 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--<div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">--}}
-                                    {{--<label for="name" class="col-md-4 control-label">Select Member Category</label>--}}
+                                <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                                    <label for="name" class="col-md-4 control-label">Select Member Category</label>
 
-                                    {{--<div class="col-md-6">--}}
-                                        {{--<select id="heard" class="form-control" required="" name="membertype_id">--}}
-                                            {{--@if($meberType)--}}
-                                                {{--@foreach($meberType as $type)--}}
-                                                    {{--<option value="{{ $type->id }}">{{ $type->type }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--@endif--}}
-                                        {{--</select>--}}
+                                    <div class="col-md-6">
+                                        <select id="heard" class="form-control" required="" name="membertype_id">
+                                            @if($meberType)
+                                                @foreach($meberType as $type)
+                                                    <option value="{{ $type->id }}">{{ $type->type }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
 
-                                    {{--</div>--}}
-                                {{--</div>--}}
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">

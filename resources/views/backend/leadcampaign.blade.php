@@ -38,7 +38,7 @@
                         </div>
                         <div class="x_content">
                             <br>
-                            <form class="form-horizontal" method="POST" action="{{ route('smsBulkSend') }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('leadsmsmsend') }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group">
@@ -58,7 +58,7 @@
                                     <label for="name" class="col-md-4 control-label">Select Lead</label>
 
                                     <div class="col-md-6">
-                                        <select id="heard" class="form-control" required="" name="membertype_id">
+                                        <select id="heard" class="form-control" required="" name="leads_id">
                                             @if($leads)
                                                 @foreach($leads as $lead)
                                                     <option value="{{ $lead->id }}">{{ $lead->name }}</option>

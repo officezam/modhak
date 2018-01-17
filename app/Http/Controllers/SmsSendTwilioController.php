@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ExcelModel;
+use App\Leads;
+use App\Leadsdetail;
 use Illuminate\Http\Request;
 use App\Members;
 use Aloha\Twilio\Twilio;
@@ -37,8 +39,6 @@ class SmsSendTwilioController extends Controller
 		return redirect()->route('singlemessages');
 	}
 
-
-
 	/*
 	 * Schedule SMS Sending Function
 	*/
@@ -51,5 +51,31 @@ class SmsSendTwilioController extends Controller
 		endforeach;
 	}
 
+	/*
+	 * Bulk SMS Sending
+	 * */
+	public function leadsSms(Request $request)
+	{
+		$members   = Members::where('membertype_id' ,'=',$request->membertype_id)->get();
+		$leadsData = Leads::find($request->leads_id);
+		$message = $leadsData->description;
+
+		if(strpos( $message, '{{Questions}}' ) != false)
+		{
+			$leadsQuestion = Leadsdetail::where('leads_id',$request->leads_id)->orderBy('question_no', 'asc')->get();
+			foreach ($leadsQuestion as $item )
+			{
+				$message = str_replace('{{Questions}}',$item->question, $message);
+			}
+		}
+
+		foreach ($members as $useData):
+			$number = str_replace('-', '',$useData->phone);
+			$response = $this->twilio->message($number, $message);
+		endforeach;
+
+		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
+		return redirect()->route('leadscampaign');
+	}
 
 }

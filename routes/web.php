@@ -121,6 +121,7 @@ Route::get('leads-Question-detail/{lead_id}', 'LeadsController@leadsQuestiondata
 Route::get('delete-question/{question_id}', 'LeadsController@deleteQuestion')->name('delete-question');
 
 Route::get('leads-campaign', 'LeadsController@leadsCampaign')->name('leadscampaign');
+Route::post('leads-sms-sending', 'SmsSendTwilioController@leadsSms')->name('leadsmsmsend');
 
 
 
