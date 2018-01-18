@@ -75,9 +75,10 @@ class SmsSendTwilioController extends Controller
 			{
 				$message1 = $message1."\r\n".$item->question;
 			}
+			$message = str_replace('{{Questions}}',$message1, $message);
 		}
 
-		$message = str_replace('{{Questions}}',$message1, $message);
+
 		foreach ($members as $useData):
 			$number = str_replace('-', '',$useData->phone);
 			$response = $this->twilio->message($number, $message);

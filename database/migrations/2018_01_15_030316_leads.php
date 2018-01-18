@@ -17,7 +17,7 @@ class Leads extends Migration
 		    $table->increments('id');
 		    $table->string('name');
 		    $table->string('type')->nullable();
-		    $table->string('description')->nullable();
+		    $table->text('description')->nullable();
 		    $table->string('status')->nullable();
 		    $table->string('wrong_input_reply')->nullable();
 		    $table->timestamps();
