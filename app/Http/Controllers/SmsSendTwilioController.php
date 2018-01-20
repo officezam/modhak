@@ -131,7 +131,7 @@ class SmsSendTwilioController extends Controller
 					}
 
 				}
-				Members::where('phone' ,'=',$from_number)->update(['member_funnel' => 'test', 'question_id' => $question_id,'last_answer' => $last_answer ]);
+				Members::where('phone' ,'=',$from_number)->update(['member_funnel' => $funnel_type, 'question_id' => $question_id,'last_answer' => $last_answer ]);
 			}else
 			{
 				if($body == 'unsub' || $body == 'unsubscribe'){
