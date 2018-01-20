@@ -16,6 +16,7 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
             $table->string('membertype_id');
+	        $table->string('member_funnel')->nullable();
 	        $table->string('name')->nullable();
 	        $table->string('first_name')->nullable();
 	        $table->string('last_name')->nullable();

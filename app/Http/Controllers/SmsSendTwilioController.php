@@ -81,6 +81,11 @@ class SmsSendTwilioController extends Controller
 
 		foreach ($members as $useData):
 			$number = str_replace('-', '',$useData->phone);
+			$message = str_replace('{{FirstName}}',$useData->first_name, $message);
+			$message = str_replace('{{LastName}}',$useData->last_name, $message);
+			$message = str_replace('{{Email}}',$useData->email, $message);
+			$message = str_replace('{{Phone}}',$useData->phone, $message);
+			$message = str_replace('{{Country}}',$useData->country, $message);
 			$response = $this->twilio->message($number, $message);
 		endforeach;
 		Members::where('membertype_id' ,'=',$request->membertype_id)->update(['leads_id' => $request->leads_id]);
@@ -114,7 +119,19 @@ class SmsSendTwilioController extends Controller
 				$question_id = $leadsdetailData->question_id;
 				$last_answer = $body;
 				$response = $this->twilio->message($from_number, $answerReply);
-				Members::where('phone' ,'=',$from_number)->update(['question_id' => $question_id,'last_answer' => $last_answer ]);
+				if($body == 'I am already in'){
+					$funnel_type = 'Funnel B';
+				}else{
+					$funnel_typeNull = Members::orWhereNull('funnel_type')->get();
+					if($funnel_typeNull)
+					{
+						$funnel_type = 'Funnel A';
+					}else{
+						$funnel_type = $funnel_typeNull->funnel_type;
+					}
+
+				}
+				Members::where('phone' ,'=',$from_number)->update(['funnel_type' => $funnel_type, 'question_id' => $question_id,'last_answer' => $last_answer ]);
 			}else
 			{
 				if($body == 'unsub' || $body == 'unsubscribe'){

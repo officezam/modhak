@@ -44,7 +44,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-2" for="postalAddress">Lead Structure:</label>
                                                 <div class="col-md-10">
-                                                    <label>Use This short Code For Questions @{{Questions}}</label>
+                                                    <label>Use This short Code For Questions @{{Questions}}@{{FirstName}}@{{LastName}}@{{Email}}@{{Phone}}@{{Country}}</label>
                                                     <textarea rows="6" required name="description" class="form-control" id="description" placeholder="Lead Structure">{{ old('description') }}</textarea>
                                                     @if ($errors->has('description'))
                                                         <div class=" has-error">
