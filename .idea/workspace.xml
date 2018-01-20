@@ -4,6 +4,7 @@
     <list default="true" id="732b3c8d-daad-465a-9393-a39b8325423c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SmsSendTwilioController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SmsSendTwilioController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/logs/laravel.log" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +38,8 @@
       <file leaf-file-name="SmsSendTwilioController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsSendTwilioController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="134" column="21" lean-forward="false" selection-start-line="134" selection-start-column="21" selection-end-line="134" selection-end-column="21" />
+            <state relative-caret-position="371">
+              <caret line="130" column="89" lean-forward="true" selection-start-line="130" selection-start-column="89" selection-end-line="130" selection-end-column="89" />
               <folding>
                 <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
@@ -412,12 +413,12 @@
       <workItem from="1516262701648" duration="30000" />
       <workItem from="1516276428805" duration="1040000" />
       <workItem from="1516379095277" duration="3021000" />
-      <workItem from="1516442422437" duration="7166000" />
+      <workItem from="1516442422437" duration="8890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="418684000" />
+    <option name="totallyTimeSpent" value="420408000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -846,8 +847,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsSendTwilioController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="134" column="21" lean-forward="false" selection-start-line="134" selection-start-column="21" selection-end-line="134" selection-end-column="21" />
+        <state relative-caret-position="371">
+          <caret line="130" column="89" lean-forward="true" selection-start-line="130" selection-start-column="89" selection-end-line="130" selection-end-column="89" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
