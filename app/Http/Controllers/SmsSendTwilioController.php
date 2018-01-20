@@ -112,14 +112,14 @@ class SmsSendTwilioController extends Controller
 		if($memberData)
 		{
 			$leads_id   = $memberData->leads_id;
-			$member_funnel = $memberData->member_funnel;
+			$member_funnel = 'Amir Dunnel'.$memberData->member_funnel;
 			$leadsdetailData = Leadsdetail::where('leads_id' ,'=',$leads_id)->where('answer' ,'=',$body)->first();
 			if($leadsdetailData)
 			{
 				$answerReply = $leadsdetailData->static_reply;
 				$question_id = $leadsdetailData->question_id;
 				$last_answer = $body;
-				//$response = $this->twilio->message($from_number, $answerReply);
+				$response = $this->twilio->message($from_number, $member_funnel);
 				if($body == 'I am already in'){
 					$member_funnel = 'Funnel B';
 					$response = $this->twilio->message($from_number, $member_funnel);
