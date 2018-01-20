@@ -120,7 +120,7 @@ class SmsSendTwilioController extends Controller
 				$question_id = $leadsdetailData->question_id;
 				$last_answer = $body;
 				$response = $this->twilio->message($from_number, $answerReply);
-				if(stripos($body,'I am already in'))
+				if(strpos($body,'I am already in'))
 				{
 					$member_funnel = 'Funnel B';
 				}else{
