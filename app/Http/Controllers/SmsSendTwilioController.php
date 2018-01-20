@@ -122,7 +122,7 @@ class SmsSendTwilioController extends Controller
 				if($body == 'I am already in'){
 					$funnel_type = 'Funnel B';
 				}else{
-					$funnel_typeNull = Members::orWhereNull('funnel_type')->get();
+					$funnel_typeNull = Members::whereNull('funnel_type')->get();
 					if($funnel_typeNull)
 					{
 						$funnel_type = 'Funnel A';
@@ -131,7 +131,7 @@ class SmsSendTwilioController extends Controller
 					}
 
 				}
-				Members::where('phone' ,'=',$from_number)->update(['member_funnel' => Members::orWhereNull('funnel_type')->get(), 'question_id' => $question_id,'last_answer' => $last_answer ]);
+				Members::where('phone' ,'=',$from_number)->update(['member_funnel' => $funnel_type, 'question_id' => $question_id,'last_answer' => $last_answer ]);
 			}else
 			{
 				if($body == 'unsub' || $body == 'unsubscribe'){
