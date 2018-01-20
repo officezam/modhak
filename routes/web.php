@@ -124,4 +124,7 @@ Route::get('delete-question/{question_id}', 'LeadsController@deleteQuestion')->n
 Route::get('leads-campaign', 'LeadsController@leadsCampaign')->name('leadscampaign');
 Route::post('leads-sms-sending', 'SmsSendTwilioController@leadsSms')->name('leadsmsmsend');
 
+Route::get('receive1-sms-data', 'SmsSendTwilioController@receiveSmsData')->name('receivesmsdata');
+Route::get('receive2-sms-reply/{reply_sms_id}', 'SmsSendTwilioController@reply_sms')->name('reply-sms');
+
 });

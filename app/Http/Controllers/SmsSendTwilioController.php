@@ -206,7 +206,15 @@ class SmsSendTwilioController extends Controller
 
 
 
-
+	/*
+	 * Receive sms Data fetch
+	 * receiveSmsData
+	*/
+	public function receiveSmsData()
+	{
+		$receiveSms = ReceiveSms::get();
+		return view('backend.receivesms_data', compact('receiveSms'));
+	}
 
 
 
