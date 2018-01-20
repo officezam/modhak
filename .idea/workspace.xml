@@ -37,11 +37,21 @@
       <file leaf-file-name="SmsSendTwilioController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsSendTwilioController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="133" column="89" lean-forward="false" selection-start-line="133" selection-start-column="89" selection-end-line="133" selection-end-column="89" />
+            <state relative-caret-position="448">
+              <caret line="135" column="13" lean-forward="true" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
               <folding>
                 <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2017_12_13_184737_create_members_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2017_12_13_184737_create_members_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -412,12 +422,12 @@
       <workItem from="1516262701648" duration="30000" />
       <workItem from="1516276428805" duration="1040000" />
       <workItem from="1516379095277" duration="3021000" />
-      <workItem from="1516442422437" duration="4076000" />
+      <workItem from="1516442422437" duration="4184000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="415594000" />
+    <option name="totallyTimeSpent" value="415702000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -838,16 +848,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2017_12_13_184737_create_members_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="32" column="55" lean-forward="true" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+        <state relative-caret-position="153">
+          <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsSendTwilioController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="133" column="89" lean-forward="false" selection-start-line="133" selection-start-column="89" selection-end-line="133" selection-end-column="89" />
+        <state relative-caret-position="448">
+          <caret line="135" column="13" lean-forward="true" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
