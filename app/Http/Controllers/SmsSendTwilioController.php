@@ -123,11 +123,12 @@ class SmsSendTwilioController extends Controller
 				if(stripos($body,'I am already in'))
 				{
 					$member_funnel = 'Funnel B';
-				}else
+				}else{
 					if(is_null($member_funnel))
 					{
 						$member_funnel = 'Funnel A';
 					}
+				}
 				Members::where('phone' ,'=',$from_number)->update(['member_funnel' => $member_funnel, 'question_id' => $question_id,'last_answer' => $last_answer ]);
 			}else
 			{
