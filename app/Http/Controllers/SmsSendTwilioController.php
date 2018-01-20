@@ -129,10 +129,7 @@ class SmsSendTwilioController extends Controller
 					{
 						$member_funnel = 'Funnel A';
 						$response = $this->twilio->message($from_number, $member_funnel);
-					}else{
-						$member_funnel = 'Funnel A';
-						$response = $this->twilio->message($from_number, $member_funnel);
-				}
+					}
 				Members::where('phone' ,'=',$from_number)->update(['member_funnel' => $member_funnel, 'question_id' => $question_id,'last_answer' => $last_answer ]);
 			}else
 			{
