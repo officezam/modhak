@@ -86,11 +86,17 @@ class SmsSendTwilioController extends Controller
 			$message = str_replace('{{Email}}',$useData->email, $message);
 			$message = str_replace('{{Phone}}',$useData->phone, $message);
 			$message = str_replace('{{Country}}',$useData->country, $message);
-			$response = $this->twilio->message($number, $message);
+			$count =1;
+			$number = str_replace('+1','', $number);
+				if(strlen(trim($number)) == '10')
+				{
+					$response = $this->twilio->message($number, $message);
+				}
+
 		endforeach;
 		Members::where('membertype_id' ,'=',$request->membertype_id)->update(['leads_id' => $request->leads_id]);
 		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
-		return redirect()->route('leadscampaign');
+		//return redirect()->route('leadscampaign');
 	}
 
 	/*
