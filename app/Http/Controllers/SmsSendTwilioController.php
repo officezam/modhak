@@ -122,12 +122,11 @@ class SmsSendTwilioController extends Controller
 				if($body == 'I am already in'){
 					$funnel_type = 'Funnel B';
 				}else{
-					$funnel_typeNull = Members::whereNull('funnel_type')->get();
-					if($funnel_typeNull)
+					if($memberData == NULL)
 					{
 						$funnel_type = 'Funnel A';
 					}else{
-						$funnel_type = $funnel_typeNull->funnel_type;
+						$funnel_type = $memberData->funnel_type;
 					}
 
 				}
