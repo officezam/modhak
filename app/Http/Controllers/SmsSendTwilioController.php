@@ -120,21 +120,21 @@ class SmsSendTwilioController extends Controller
 				$last_answer = $body;
 				//$response = $this->twilio->message($from_number, $answerReply);
 				if($body == 'I am already in'){
-					$funnel_type = 'Funnel B';
-					$response = $this->twilio->message($from_number, $funnel_type);
+					$member_funnel = 'Funnel B';
+					$response = $this->twilio->message($from_number, $member_funnel);
 				}else{
-					$response = $this->twilio->message($from_number, $memberData->funnel_type.'Else');
+					$response = $this->twilio->message($from_number, $memberData->member_funnel.'Else');
 					if($memberData->funnel_type == '')
 					{
-						$response = $this->twilio->message($from_number, $memberData->funnel_type.'Empty');
-						$funnel_type = 'Funnel A';
+						$response = $this->twilio->message($from_number, $memberData->member_funnel.'Empty');
+						$member_funnel = 'Funnel A';
 					}else{
-						$response = $this->twilio->message($from_number, $memberData->funnel_type.'Else');
-						$funnel_type = $memberData->funnel_type;
+						$response = $this->twilio->message($from_number, $memberData->member_funnel.'Else');
+						$member_funnel = $memberData->funnel_type;
 					}
 
 				}
-				Members::where('phone' ,'=',$from_number)->update(['member_funnel' => $funnel_type, 'question_id' => $question_id,'last_answer' => $last_answer ]);
+				Members::where('phone' ,'=',$from_number)->update(['member_funnel' => $member_funnel, 'question_id' => $question_id,'last_answer' => $last_answer ]);
 			}else
 			{
 				if($body == 'unsub' || $body == 'unsubscribe'){
