@@ -86,10 +86,10 @@ class SmsSendTwilioController extends Controller
 			$message = str_replace('{{Email}}',$useData->email, $message);
 			$message = str_replace('{{Phone}}',$useData->phone, $message);
 			$message = str_replace('{{Country}}',$useData->country, $message);
-			$count =1;
 			$number = str_replace('+1','', $number);
 				if(strlen(trim($number)) == '10')
 				{
+					$number = '+1'.$number;
 					$response = $this->twilio->message($number, $message);
 				}
 
