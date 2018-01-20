@@ -217,6 +217,14 @@ class SmsSendTwilioController extends Controller
 	}
 
 
-
+	/*
+	 * Receive sms Data fetch
+	 * receiveSmsData
+	*/
+	public function reply_sms($reply_sms_id)
+	{
+		$replySms = ReceiveSms::where('id',$reply_sms_id)->first();
+		return view('backend.replysms', compact('replySms'));
+	}
 
 }
