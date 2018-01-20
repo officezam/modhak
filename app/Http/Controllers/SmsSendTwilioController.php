@@ -123,14 +123,14 @@ class SmsSendTwilioController extends Controller
 					$member_funnel = 'Funnel B';
 					$response = $this->twilio->message($from_number, $member_funnel);
 				}else{
-					$response = $this->twilio->message($from_number, $memberData->member_funnel.'Else');
-					if($memberData->funnel_type == '')
+					$response = $this->twilio->message($from_number, 'Else');
+					if($memberData->funnel_type != '')
 					{
-						$response = $this->twilio->message($from_number, $memberData->member_funnel.'Empty');
-						$member_funnel = 'Funnel A';
-					}else{
-						$response = $this->twilio->message($from_number, $memberData->member_funnel.'Else');
 						$member_funnel = $memberData->funnel_type;
+						$response = $this->twilio->message($from_number, $member_funnel);
+					}else{
+						$member_funnel = 'Funnel A';
+						$response = $this->twilio->message($from_number, $member_funnel);
 					}
 
 				}
