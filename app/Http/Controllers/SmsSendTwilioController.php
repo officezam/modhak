@@ -96,7 +96,7 @@ class SmsSendTwilioController extends Controller
 		endforeach;
 		Members::where('membertype_id' ,'=',$request->membertype_id)->update(['leads_id' => $request->leads_id]);
 		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
-		//return redirect()->route('leadscampaign');
+		return redirect()->route('leadscampaign');
 	}
 
 	/*
