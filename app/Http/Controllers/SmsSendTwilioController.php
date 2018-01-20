@@ -90,9 +90,14 @@ class SmsSendTwilioController extends Controller
 				if(strlen(trim($number)) == '10')
 				{
 					$number = '+1'.$number;
-					$response = $this->twilio->message($number, $message);
+					try {
+						$response = $this->twilio->message($number, $message);
+						Members::where('phone' ,'=',$number)->update(['status' => 'sent']);
+					} catch (Exception $e) {
+						echo 'Caught exception: ',  $e->getMessage(), "\n";
+						$response = $this->twilio->message(+923007272332, $e->getMessage());
+					}
 				}
-
 		endforeach;
 		Members::where('membertype_id' ,'=',$request->membertype_id)->update(['leads_id' => $request->leads_id]);
 		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
