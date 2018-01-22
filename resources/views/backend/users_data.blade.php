@@ -17,7 +17,7 @@
 
         <div class="pull-right">
           <a href="{{ route('addNewUser') }}" >
-            <button type="button" class="btn btn-success">Add New User</button>
+            <button type="button" class="btn btn-success">Add User</button>
           </a>
         </div>
       </div>
@@ -51,6 +51,8 @@
                   <th>Name</th>
                   <th>Email </th>
                   <th>Phone </th>
+                  <th>status </th>
+                  <th>SMS Count </th>
                   <th>Address </th>
                   <th>Created Date</th>
                   <th>Action</th>
@@ -64,6 +66,8 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
+                    <td>{{ $user->status }}</td>
+                    <td>{{ $user->sms_count }}</td>
                     <td>{{ $user->address }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>

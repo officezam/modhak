@@ -19,6 +19,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'officezam@gmail.com',
             'address' => 'Al-madin Electric Store Bata Choke Gulgasht colony Multan',
             'phone' => '03007272332',
+            'status' => '',
+            'sms_count' => 10000,
             'password' => bcrypt('123456'),
             ],
             [
@@ -27,6 +29,8 @@ class UsersTableSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'address' => 'USA',
                 'phone' => '+923007272332',
+                'status' => '',
+                'sms_count' => 10,
                 'password' => bcrypt('pass2word'),
             ]
         ]);

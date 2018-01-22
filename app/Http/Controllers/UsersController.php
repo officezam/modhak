@@ -36,9 +36,10 @@ class UsersController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|unique:users',
             'address' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|unique:users',
+            'sms_count' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -58,6 +59,7 @@ class UsersController extends Controller
             'phone' => $data['phone'],
             'remember_token' => $data['_token'],
             'type' => 'user',
+            'sms_count' => $data['sms_count'],
             'password' => bcrypt($data['password']),
         ]);
     }

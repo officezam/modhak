@@ -15,7 +15,8 @@ Route::get('receiveSmsTest', 'SmsSendTwilioController@receiveSmsTest');
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
-Route::get('/',  'MemberstypeController@membersTypeData');
+Route::get('/',  'MembersController@smsSinglePage');
+//Route::get('/',  'MemberstypeController@membersTypeData');
 Route::get('add-time', function () {return view('backend.add_time');})->name('add_time_form');
 Route::get('update-time/{namaz_id}', 'MosqueController@getNamazTime')->name('updae-time');
 Route::get('delete-mosque-data/{mosque_id}', 'MosqueController@deleteMosqueData')->name('delete-mosque-data');
