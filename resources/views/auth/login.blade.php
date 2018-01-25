@@ -6,9 +6,11 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
-
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    @if(Session::has('login-error'))
+                        <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('login-error') }}</p>
+                    @endif
+                    <form class="form-horizontal" method="POST" action="{{ route('verifylogin') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -54,7 +56,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>

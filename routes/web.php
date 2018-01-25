@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('logins', 'UsersController@login')->name('verifylogin');
+Route::post('verify-code', 'UsersController@verification_code')->name('verification_code');
 Route::post('receive-lead-sms', 'SmsSendTwilioController@receiveSms');
 Route::get('receiveSmsTest', 'SmsSendTwilioController@receiveSmsTest');
 Auth::routes();

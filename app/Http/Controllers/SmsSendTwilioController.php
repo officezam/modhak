@@ -194,13 +194,11 @@ class SmsSendTwilioController extends Controller
 					$invalidAnswer = 'Please Reply Only Valid Answer';
 					$response = $this->twilio->message($from_number, $invalidAnswer);
 				}
-
 			}
 		}else{
 			$invalidNumber = 'This Number not Register';
 			$response = $this->twilio->message($from_number, $invalidNumber);
 		}
-
 	}
 
 
@@ -227,4 +225,10 @@ class SmsSendTwilioController extends Controller
 		return view('backend.replysms', compact('replySms'));
 	}
 
+	/*
+	 * Send Verification Code to Member*/
+	public function sendVerificationCode($toNumber, $verificationCode)
+	{
+		$response = $this->twilio->message($toNumber, $verificationCode);
+	}
 }
