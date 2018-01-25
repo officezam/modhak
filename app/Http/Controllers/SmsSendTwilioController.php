@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Members;
 use Aloha\Twilio\Twilio;
 use App\ReceiveSms;
+use Auth;
+use App\User;
 
 class SmsSendTwilioController extends Controller
 {
@@ -34,13 +36,26 @@ class SmsSendTwilioController extends Controller
 
 	public function smssingleSend(Request $request)
 	{
-		$response = $this->twilio->message($request->phone, $request->sms_text);
-//		$response = $this->twilio->create($request->phone,
-//			array(
-//				'from' => '+13233100845',
-//				'body' => $request->sms_text
-//			)
-//		);
+		$textCount    = strlen($request->sms_text);
+		$smsCount     = intval(ceil($textCount/153));
+		$userSmsCount = Auth::user()->sms_count;
+		if(Auth::user()->type == 'admin')
+		{
+			$response = $this->twilio->message($request->phone, $request->sms_text);
+			$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
+			return redirect()->route('singlemessages');
+		}
+		if($smsCount == $userSmsCount || $userSmsCount > $smsCount)
+		{
+			$response = $this->twilio->message($request->phone, $request->sms_text);
+			$remainingSms = ($userSmsCount-$smsCount);
+			User::where('id', Auth::id())->update(['sms_count' => $remainingSms ]);
+			$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
+			return redirect()->route('singlemessages');
+		}else{
+			$request->session()->flash('Error', 'Your Sms Character Increased you have only '.$userSmsCount.' and Your Current Character Messages '.$smsCount);
+			return redirect()->route('singlemessages');
+		}
 
 		$request->session()->flash('send', 'SMS Send Successfully Responce True and Queu..!');
 		return redirect()->route('singlemessages');

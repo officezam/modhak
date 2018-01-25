@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Aloha\Twilio\Twilio;
 
-
 class UsersController extends Controller
 {
 
@@ -77,6 +76,36 @@ class UsersController extends Controller
 		return redirect()->route('users-data');
 	}
 
+	public function edit($user_id){
+		$userData = User::where('id',$user_id)->first();
+		return view('auth.edit', compact('userData'));
+	}
+
+	public function updateUser(Request $request)
+	{
+		if(isset($request->password))
+		{
+			Validator::make($request->all(), [
+				'name' => 'required|string|max:255',
+				'email' => 'required',
+				'address' => 'required',
+				'phone' => 'required',
+				'sms_count' => 'required',
+				'password' => 'required|string|min:6|confirmed',
+			])->validate();
+			$userData = User::where('id',$request->id)->update(['name'=>$request->name,'sms_count' => $request->sms_count, 'email' => $request->email, 'address' => $request->email, 'phone' => $request->phone, 'password' => bcrypt($request->password)]);
+		}else{
+			Validator::make($request->all(), [
+				'name' => 'required|string|max:255',
+				'email' => 'required',
+				'address' => 'required',
+				'phone' => 'required',
+				'sms_count' => 'required',
+			])->validate();
+			$userData = User::where('id',$request->id)->update(['name'=>$request->name,'sms_count' => $request->sms_count, 'email' => $request->email, 'address' => $request->email, 'phone' => $request->phone]);
+		}
+		return redirect()->route('users-data');
+	}
 	/*
 	 * Send Verification notification
 	*/
@@ -118,7 +147,7 @@ class UsersController extends Controller
 			$userEmail = $request->email;
 			$password  = $request->password;
 			if($user != null){
-				Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+				$response = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 				return redirect('/');
 			}else{
 				$request->session()->flash( 'verify-error', 'Confirmation code does not Match' );

@@ -100,6 +100,8 @@ Route::get('users', 'UsersController@usersData')->name('users-data');
 Route::get('Add-New-User', 'UsersController@registerForm')->name('addNewUser');
 Route::post('Save-Users', 'UsersController@register')->name('register_user');
 Route::get('Delete-User/{user_id}', 'UsersController@deletUser')->name('delete-user-data');
+Route::get('edit-user-data/{user_id}', 'UsersController@edit')->name('edit-user-data');
+Route::post('update-user', 'UsersController@updateUser')->name('update_user');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

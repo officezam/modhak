@@ -66,12 +66,12 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
-                    <td>{{ $user->status }}</td>
+                    <td>@if($user->status == null) <p class="alert alert-success">Active</p>@else <p class="alert alert-info">Disabled</p> @endif</td>
                     <td>{{ $user->sms_count }}</td>
                     <td>{{ $user->address }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
-                      {{--<a href="{{ route('edit-template-data', $user->id) }}" ><button type="button" class="btn btn-danger">Edit</button></a>--}}
+                      <a href="{{ route('edit-user-data', $user->id) }}" ><button type="button" class="btn btn-info">Edit</button></a>
                       <a href="{{ route('delete-user-data', $user->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
                     </td>
                   </tr>

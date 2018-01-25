@@ -17,17 +17,17 @@
                         @if (Session::get('empty'))
                             <div class="alert alert-danger">{{ Session::get('empty') }}</div>
                         @endif
+                        @if (Session::get('Error'))
+                            <div class="alert alert-danger">{{ Session::get('Error') }}</div>
+                        @endif
                         @if (Session::get('send'))
                             <div class="alert alert-success">{{ Session::get('send') }}</div>
                         @endif
                         <div class="x_title">
                             <h2>Enter Message <small>Send Message to Idvidual</small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
+                            @if(Auth::user()->type != 'admin')
+                                <p class="btn btn-success">Remaining Messages <button class="btn-info"> {{ Auth::user()->sms_count }} </button></p>
+                            @endif
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
